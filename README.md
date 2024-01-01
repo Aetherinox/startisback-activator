@@ -3,7 +3,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/github/v/tag/Aetherinox/startallback-activator?logo=GitHub&label=version&color=ba5225) ![Downloads](https://img.shields.io/github/downloads/Aetherinox/startallback-activator/total) ![Repo Size](https://img.shields.io/github/repo-size/Aetherinox/startallback-activator?label=size&color=59702a) ![Last Commit)](https://img.shields.io/github/last-commit/Aetherinox/startallback-activator?color=b43bcc)
+![Version](https://img.shields.io/github/v/tag/Aetherinox/startisback-activator?logo=GitHub&label=version&color=ba5225) ![Downloads](https://img.shields.io/github/downloads/Aetherinox/startisback-activator/total) ![Repo Size](https://img.shields.io/github/repo-size/Aetherinox/startisback-activator?label=size&color=59702a) ![Last Commit)](https://img.shields.io/github/last-commit/Aetherinox/startisback-activator?color=b43bcc)
 
 </div>
 
