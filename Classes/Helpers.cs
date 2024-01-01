@@ -16,6 +16,7 @@ using Lng = SIBActivator.Properties.Resources;
 using Cfg = SIBActivator.Properties.Settings;
 using System.Management.Automation.Runspaces;
 using System.Management.Automation.Language;
+using System.Data;
 
 [AttributeUsage( AttributeTargets.Assembly )]
 internal class BuildDateAttribute : Attribute
@@ -38,29 +39,33 @@ namespace SIBActivator
     class Helpers
     {
 
-        private static string patcher_exe_dir   = System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetEntryAssembly( ).Location );
+        private static string patch_launch_dir  = System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetEntryAssembly( ).Location );
         private static string sib_exe_filename  = Cfg.Default.app_target_exe;
 
-        private static string sib_exe_appdata   = Path.Combine(
+        /*
+             StartIsBack Search Locations
+        */
+
+        private static string findSib_Appdata   = Path.Combine(
                                                     Environment.GetFolderPath( Environment.SpecialFolder.LocalApplicationData ),
                                                     "StartIsBack",
                                                     sib_exe_filename
                                                 );
 
-        private static string sib_exe_prog64    = Path.Combine(
+        private static string findSib_Prog64    = Path.Combine(
                                                     Environment.GetFolderPath( Environment.SpecialFolder.ProgramFiles ),
                                                     "StartIsBack",
                                                     sib_exe_filename
                                                 );
 
-        private static string sib_exe_prog86    = Path.Combine(
+        private static string findSib_Prog86    = Path.Combine(
                                                     Environment.GetFolderPath( Environment.SpecialFolder.ProgramFilesX86 ),
                                                     "StartIsBack",
                                                     sib_exe_filename
                                                 );
 
-        private static string sib_exe_home      = Path.Combine(
-                                                    patcher_exe_dir,
+        private static string findSib_PatchHome = Path.Combine(
+                                                    patch_launch_dir,
                                                     "StartIsBack",
                                                     sib_exe_filename
                                                 );
@@ -95,25 +100,19 @@ namespace SIBActivator
             foreach ( String folder in folders )
             {
                 if ( File.Exists( folder + sib_exe_filename ) )
-                {
                     return folder;
-                }
                 else if ( File.Exists( folder + "\\" + sib_exe_filename ) )
-                {
                     return folder + "\\";
-                }
             }
-
 
             /*
                 Program files 64
                     C:\Program Files
             */
 
-            if ( File.Exists( sib_exe_prog64 ) )
+            if ( File.Exists( findSib_Prog64 ) )
             {
-                string file_dir = Path.GetDirectoryName( sib_exe_prog64 );
-                return file_dir;
+                return Path.GetDirectoryName( findSib_Prog64 );
             }
 
             /*
@@ -121,10 +120,9 @@ namespace SIBActivator
                     C:\Program Files (x86)
             */
 
-            if ( File.Exists( sib_exe_prog86 ) )
+            if ( File.Exists( findSib_Prog86 ) )
             {
-                string file_dir = Path.GetDirectoryName( sib_exe_prog86 );
-                return file_dir;
+                return Path.GetDirectoryName( findSib_Prog86 );
             }
 
             /*
@@ -132,10 +130,9 @@ namespace SIBActivator
                     C:\Users\$USER\AppData\Local
             */
 
-            if ( File.Exists( sib_exe_appdata ) )
+            if ( File.Exists( findSib_Appdata ) )
             {
-                string file_dir = Path.GetDirectoryName( sib_exe_appdata );
-                return file_dir;
+                return Path.GetDirectoryName( findSib_Appdata );
             }
 
             /*
@@ -143,10 +140,9 @@ namespace SIBActivator
                     This is where the exe patcher resides
             */
 
-            if ( File.Exists( sib_exe_home ) )
+            if ( File.Exists( findSib_PatchHome ) )
             {
-                string file_dir = Path.GetDirectoryName( sib_exe_home );
-                return file_dir;
+                return Path.GetDirectoryName( findSib_PatchHome );
             }
 
             /*
@@ -184,9 +180,7 @@ namespace SIBActivator
         public static string ProgramFiles( )
         {
             if ( 4 == IntPtr.Size || ( !String.IsNullOrEmpty( Environment.GetEnvironmentVariable( "PROCESSOR_ARCHITEW6432" ) ) ) )
-            {
                 return Environment.GetEnvironmentVariable( "ProgramFiles(x86)" );
-            }
 
             return Environment.GetEnvironmentVariable( "ProgramFiles" );
         }
@@ -296,12 +290,12 @@ namespace SIBActivator
                 Collection<PSObject> PSOutput = ps.Invoke( );
                 StringBuilder sb = new StringBuilder( );
 
-                foreach ( PSObject outputItem in PSOutput )
+                foreach ( PSObject PSItem in PSOutput )
                 {
-                    if ( outputItem != null )
+                    if ( PSItem != null )
                     {
-                        Console.WriteLine( $"Output line: [{outputItem}]" );
-                        sb.AppendLine( outputItem.ToString( ) );
+                        Console.WriteLine( $"Output line: [{PSItem}]" );
+                        sb.AppendLine( PSItem.ToString( ) );
                     }
                 }
 
@@ -314,57 +308,71 @@ namespace SIBActivator
             }
         }
 
-        public static bool IsSigned( string filepath )
+
+        /*
+            x509 > File Is Signed
+            checks to see if a target file has been signed with x509 cert
+
+            @param      : str filepath
+            @return     : bool
+        */
+
+        public static bool x509_FileSigned( string filepath )
         {
-            var runspaceConfiguration = RunspaceConfiguration.Create();
-            using (var runspace = RunspaceFactory.CreateRunspace(runspaceConfiguration))
+            var runeConfig = RunspaceConfiguration.Create();
+            using ( var rune = RunspaceFactory.CreateRunspace( runeConfig ) )
             {
-                runspace.Open();
-                using (var pipeline = runspace.CreatePipeline())
+                rune.Open( );
+                using ( var pipe = rune.CreatePipeline())
                 {
                     string cmd_exe      = "Get-AuthenticodeSignature \"" + filepath + "\"";
-                    pipeline.Commands.AddScript( cmd_exe );
-                    var results         = pipeline.Invoke();
-                    runspace.Close();
+                    pipe.Commands.AddScript( cmd_exe );
+                    var results         = pipe.Invoke();
+                    rune.Close          ( );
  
-                    var signature       = results[0].BaseObject as Signature;
+                    var sig             = results[ 0 ].BaseObject as Signature;
 
-                    return signature == null || signature.SignerCertificate == null ? 
-                           false : ( signature.Status != SignatureStatus.NotSigned );
+                    return sig == null || sig.SignerCertificate == null ? 
+                           false : ( sig.Status != SignatureStatus.NotSigned );
                 }
             }
         }
 
-        public string x509_Thumbprint(string filepath)
+        /*
+            x509 > Thumbprint
+            returns the thumbprint for a target file if signed with x509 cert.
+
+            @param      : str filepath
+            @return     : str
+        */
+
+        public string x509_Thumbprint( string filepath )
         {
-            bool bSigned = Helpers.IsSigned( filepath );
-            if ( bSigned )
+            if ( Helpers.x509_FileSigned( filepath ) )
             {
 
-                var runspaceConfiguration = RunspaceConfiguration.Create( );
-                using ( var runspace = RunspaceFactory.CreateRunspace( runspaceConfiguration ) )
+                var runeConfig = RunspaceConfiguration.Create( );
+                using ( var rune = RunspaceFactory.CreateRunspace( runeConfig ) )
                 {
-                    runspace.Open( );
-                    using ( var pipeline = runspace.CreatePipeline( ) )
+                    rune.Open( );
+                    using ( var pipe = rune.CreatePipeline( ) )
                     {
                         string cmd_exe      = "Get-AuthenticodeSignature \"" + filepath + "\"";
-                        pipeline.Commands.AddScript( cmd_exe );
-                        var results         = pipeline.Invoke( );
-                        runspace.Close      ( );
+                        pipe.Commands.AddScript( cmd_exe );
+                        var results         = pipe.Invoke( );
+                        rune.Close          ( );
  
-                        var certsig         = results[ 0 ].BaseObject as Signature;
+                        var sig             = results[ 0 ].BaseObject as Signature;
 
-                        if ( certsig != null) 
-                            return certsig.SignerCertificate.GetCertHashString( );
+                        if ( sig != null ) 
+                            return sig.SignerCertificate.GetCertHashString( );
 
-                        return "Unknown";
-
+                        return "1";
                     }
                 }
-
             }
 
-            return "false";
+            return "0";
         }
 
     }

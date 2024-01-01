@@ -15,6 +15,8 @@ using System.Text;
 using Lng = SIBActivator.Properties.Resources;
 using Cfg = SIBActivator.Properties.Settings;
 using System.Management.Automation.Language;
+using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace SIBActivator
 {
@@ -63,31 +65,34 @@ namespace SIBActivator
     {
 
         private Helpers Helpers                 = new Helpers( );
+        private Perms Perms                     = new Perms( );
 
-        private static string patcher_exe_dir   = System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetEntryAssembly( ).Location );
+        private static string patch_launch_dir  = System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetEntryAssembly( ).Location );
         private static string sib_exe_filename  = Cfg.Default.app_target_exe;
 
-        private static string sib_exe_appdata   = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.LocalApplicationData ),
+        /*
+             StartIsBack Search Locations
+        */
+
+        private static string findSib_Appdata   = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.LocalApplicationData ),
                                                     "StartIsBack",
                                                     sib_exe_filename
                                                 );
 
-        private static string sib_exe_prog64    = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.ProgramFiles ),
+        private static string findSib_Prog64    = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.ProgramFiles ),
                                                     "StartIsBack",
                                                     sib_exe_filename
                                                 );
 
-        private static string sib_exe_prog86    = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.ProgramFilesX86 ),
+        private static string findSib_Prog86    = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.ProgramFilesX86 ),
                                                     "StartIsBack",
                                                     sib_exe_filename
                                                 );
 
-        private static string sib_exe_home      = Path.Combine( patcher_exe_dir,
+        private static string findSib_PatchHome = Path.Combine( patch_launch_dir,
                                                     "StartIsBack",
                                                     sib_exe_filename
                                                 );
-
-        private string query_result;
 
         /*
              Start Patch
@@ -108,43 +113,43 @@ namespace SIBActivator
         */
 
             Array.Resize( ref paths_lst, paths_lst.Length + 1 );
-            paths_lst [ paths_lst.Length - 1 ] = sib_exe_appdata;
+            paths_lst [ paths_lst.Length - 1 ] = findSib_Appdata;
 
             Array.Resize( ref paths_lst, paths_lst.Length + 1 );
-            paths_lst [ paths_lst.Length - 1 ] = sib_exe_prog64;
+            paths_lst [ paths_lst.Length - 1 ] = findSib_Prog64;
 
             Array.Resize( ref paths_lst, paths_lst.Length + 1 );
-            paths_lst [ paths_lst.Length - 1 ] = sib_exe_prog86;
+            paths_lst [ paths_lst.Length - 1 ] = findSib_Prog86;
 
             Array.Resize( ref paths_lst, paths_lst.Length + 1 );
-            paths_lst [ paths_lst.Length - 1 ] = sib_exe_home;
+            paths_lst [ paths_lst.Length - 1 ] = findSib_PatchHome;
 
             /*
                 define
             */
 
-            if ( File.Exists( sib_exe_appdata ) )
+            if ( File.Exists( findSib_Appdata ) )
             {
                 Array.Resize( ref paths_arr, paths_arr.Length + 1 );
-                paths_arr [ paths_arr.Length - 1 ] = sib_exe_appdata;
+                paths_arr [ paths_arr.Length - 1 ] = findSib_Appdata;
             }
 
-            if ( File.Exists( sib_exe_prog64 ) )
+            if ( File.Exists( findSib_Prog64 ) )
             {
                 Array.Resize( ref paths_arr, paths_arr.Length + 1 );
-                paths_arr [ paths_arr.Length - 1 ] = sib_exe_prog64;
+                paths_arr [ paths_arr.Length - 1 ] = findSib_Prog64;
             }
 
-            if ( File.Exists( sib_exe_prog86 ) )
+            if ( File.Exists( findSib_Prog86 ) )
             {
                 Array.Resize( ref paths_arr, paths_arr.Length + 1 );
-                paths_arr [ paths_arr.Length - 1 ] = sib_exe_prog86;
+                paths_arr [ paths_arr.Length - 1 ] = findSib_Prog86;
             }
 
-            if ( File.Exists( sib_exe_home ) )
+            if ( File.Exists( findSib_PatchHome ) )
             {
                 Array.Resize( ref paths_arr, paths_arr.Length + 1 );
-                paths_arr [ paths_arr.Length - 1 ] = sib_exe_home;
+                paths_arr [ paths_arr.Length - 1 ] = findSib_PatchHome;
             }
 
             /*
@@ -220,9 +225,7 @@ namespace SIBActivator
                 string ext_default      = @"c:\";
 
                 if ( !String.IsNullOrEmpty( src_file_path ) )
-                {
                     ext_default = src_file_path;
-                }
 
                 OpenFileDialog dlg      = new OpenFileDialog( );
                 dlg.Title               = "Locate StartIsBack EXE";
@@ -259,23 +262,30 @@ namespace SIBActivator
             }
 
             /*
+                msimg32.dll filename
+            */
+            
+            string msImg32_filename             = Cfg.Default.app_patch_file;
+
+            /*
                 loop each dll path
             */
 
-            foreach ( string path_exe in paths_arr )
+            foreach ( string sib_path_exe in paths_arr )
             {
-                string path_backup      = path_exe + ".bak";
-                string query_var        = "$user_current = $env:username";
-                string query_takeown    = "takeown /f \'" + path_backup + "'";
-                string query_icalcs     = "icacls \'\" + path_backup +\"' /grant \"${user_current}:F\" /C /L";
+                string StartIsBackCfg_folder    = Path.GetDirectoryName( sib_path_exe );
+                string patch_bak_fullpath       = sib_path_exe + ".bak";
+                string ps_query_var             = "$user_current = $env:username";
+                string ps_query_takeown         = "takeown /f \'" + patch_bak_fullpath + "'";
+                string ps_query_icalcs          = "icacls \'\" + patch_bak_fullpath +\"' /grant \"${user_current}:F\" /C /L";
 
                 #if DEBUG
                     try
                     {
                         StreamWriter sw_o       = new StreamWriter( "sibactivator.dmp", true );
-                                                sw_o.WriteLine( query_var );
-                                                sw_o.WriteLine( query_takeown );
-                                                sw_o.WriteLine( query_icalcs );
+                                                sw_o.WriteLine( ps_query_var );
+                                                sw_o.WriteLine( ps_query_takeown );
+                                                sw_o.WriteLine( ps_query_icalcs );
                                                 sw_o.Close( );
                     }
                     catch ( Exception e )
@@ -289,10 +299,11 @@ namespace SIBActivator
                 #endif
 
                 /*
-                    backup file exists
+                    if full backup path exists
+                        x:\path\to\StartIsBackCfg.exe.bak
                 */
 
-                if ( File.Exists( path_backup ) )
+                if ( File.Exists( patch_bak_fullpath ) )
                 {
 
                     /*
@@ -302,9 +313,9 @@ namespace SIBActivator
                     using ( PowerShell ps = PowerShell.Create( ) )
                     {
 
-                        ps.AddScript( query_var );
-                        ps.AddScript( query_takeown );
-                        ps.AddScript( query_icalcs );
+                        ps.AddScript( ps_query_var );
+                        ps.AddScript( ps_query_takeown );
+                        ps.AddScript( ps_query_icalcs );
 
                         Collection<PSObject> PSOutput   = ps.Invoke( );
                         StringBuilder sb                = new StringBuilder( );
@@ -325,27 +336,38 @@ namespace SIBActivator
                     }
 
                     #if DEBUG
-                        MessageBox.Show( string.format( ".bak backup file already exists, deleting it and creating new\n\n{0}", path_backup ),
+                        MessageBox.Show( string.format( ".bak backup file already exists, deleting it and creating new\n\n{0}", patch_bak_fullpath ),
                             "Debug: Found existing",
                             MessageBoxButtons.OK, MessageBoxIcon.None
                         );
                     #endif
                     
-                    File.Delete         ( path_exe );
-                    File.Move           ( path_backup, path_exe );
+                    /*
+                        DELETE existing x:\path\to\StartIsBackCfg.exe.bak
+                    */
+
+                    File.Delete         ( sib_path_exe );
+
+                    /*
+                        CREATE new x:\path\to\StartIsBackCfg.exe.bak
+                    */
+
+                    File.Move           ( patch_bak_fullpath, sib_path_exe );
                 }
 
                 /*
-                    Patch
+                    SET     attributes on StartIsBackCfg.exe
+                    COPY    StartIsBackCfg.exe -> StartIsBackCfg.exe.bak
+                    SET     attributes on StartIsBackCfg.exe.bak
                 */
 
-                File.SetAttributes      ( path_exe,     FileAttributes.Normal );
-                File.Copy               ( path_exe,     path_backup );
-                File.SetAttributes      ( path_backup,  FileAttributes.Normal );
+                File.SetAttributes      ( sib_path_exe,         FileAttributes.Normal );
+                File.Copy               ( sib_path_exe,         patch_bak_fullpath );
+                File.SetAttributes      ( patch_bak_fullpath,   FileAttributes.Normal );
 
                 #if DEBUG
                     MessageBox.Show(
-                        "The following file will be backed up: \n\n" + path_exe + "\n" + path_backup,
+                        "The following file will be backed up: \n\n" + sib_path_exe + "\n" + patch_bak_fullpath,
                         "Debug: Create Backup of DLL",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.None
@@ -353,13 +375,13 @@ namespace SIBActivator
                 #endif
 
                 /*
-                    extract resource file to same folder as patcher exe ran from
+                    extract msimg32.dll patched file to folder where patcher exe ran from
                 */
 
                 File.WriteAllBytes( Cfg.Default.app_patch_file, SIBActivator.Properties.Resources.msimg32 );
 
                 /*
-                    resource extraction failed for whatever reason
+                    msimg32.dll extraction failed for whatever reason
                 */
 
                 if ( !File.Exists( Cfg.Default.app_patch_file ) )
@@ -373,29 +395,22 @@ namespace SIBActivator
                 }
 
                 /*
-                string a1   = Cfg.Default.app_patch_file;
-                string a2   = patcher_exe_dir + @"\" + Cfg.Default.app_patch_file;
-
-
-                if ( File.Exists( a1 ) )
-                    File.Move( a1, a2 );
-
-                */
-
-
-                /*
                     get StartIsBack exe path from stripped dll full path
                         C:\Program Files\StartIsBack\StartIsBackCfg.exe ->
                         C:\Program Files\StartIsBack\
                 */
 
-                string path_sib_dir         = Path.GetDirectoryName( path_exe );
+                string msImg32_fullpath_to          = StartIsBackCfg_folder + @"\" + msImg32_filename;
 
+                /*
+                    make sure StartIsBack installation dir exists
+                */
 
-                if ( !String.IsNullOrEmpty( path_sib_dir ) )
+                if ( !String.IsNullOrEmpty( StartIsBackCfg_folder ) )
                 {
-                    string path_sib_exe     = path_sib_dir + "\\" + Cfg.Default.app_target_exe;
-                    string x509_cert        = Helpers.x509_Thumbprint( Cfg.Default.app_patch_file );
+
+                    string StartIsBackCfg_fullpath  = StartIsBackCfg_folder + "\\" + Cfg.Default.app_target_exe;
+                    string x509_cert                = Helpers.x509_Thumbprint( Cfg.Default.app_patch_file );
 
                     /*
                         x509 certificate
@@ -448,10 +463,24 @@ namespace SIBActivator
                         return;
                     }
 
+                    /*
+                        patched dll already exists, delete
+                    */
+
+                    if ( File.Exists( msImg32_fullpath_to ) )
+                        File.Delete( msImg32_fullpath_to );
+
+                    /*
+                        copy new patched dll to StartIsBack install folder
+                    */
+
+                    if ( File.Exists( msImg32_filename ) )
+                        File.Move( msImg32_filename, msImg32_fullpath_to );
+
                     /* start application */
 
-                    if ( File.Exists( path_sib_exe ) )
-                        System.Diagnostics.Process.Start( path_sib_exe );
+                    if ( File.Exists( StartIsBackCfg_fullpath ) )
+                        System.Diagnostics.Process.Start( StartIsBackCfg_fullpath );
                 }
             }
 
