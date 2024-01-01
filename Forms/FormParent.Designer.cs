@@ -53,6 +53,8 @@ namespace SIBActivator
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.githubUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.validateSignatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.status_Label = new System.Windows.Forms.ToolStripStatusLabel();
@@ -64,7 +66,6 @@ namespace SIBActivator
             this.rtxt_Intro = new System.Windows.Forms.RichTextBox();
             this.btnOpenFolder = new SIBActivator.AetherxButton();
             this.btnPatch = new SIBActivator.AetherxButton();
-            this.validateSignatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTop.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -146,7 +147,7 @@ namespace SIBActivator
             this.exitToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.exitToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.mnu_Item_Exit_Click);
             // 
@@ -155,6 +156,7 @@ namespace SIBActivator
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.githubUpdatesToolStripMenuItem,
             this.validateSignatureToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -169,6 +171,25 @@ namespace SIBActivator
             this.githubUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.githubUpdatesToolStripMenuItem.Text = "Check for Updates";
             this.githubUpdatesToolStripMenuItem.Click += new System.EventHandler(this.mnu_Item_GithubUpdates_Click);
+            // 
+            // validateSignatureToolStripMenuItem
+            // 
+            this.validateSignatureToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.validateSignatureToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.validateSignatureToolStripMenuItem.Name = "validateSignatureToolStripMenuItem";
+            this.validateSignatureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.validateSignatureToolStripMenuItem.Text = "Validate Signature";
+            this.validateSignatureToolStripMenuItem.Click += new System.EventHandler(this.validateSignatureToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.AutoSize = false;
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Paint += new System.Windows.Forms.PaintEventHandler(this.mnu_Sep_Exit_Paint);
             // 
             // aboutToolStripMenuItem1
             // 
@@ -304,15 +325,6 @@ namespace SIBActivator
             this.btnPatch.UseVisualStyleBackColor = false;
             this.btnPatch.Click += new System.EventHandler(this.btn_Patch_Click);
             // 
-            // validateSignatureToolStripMenuItem
-            // 
-            this.validateSignatureToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.validateSignatureToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.validateSignatureToolStripMenuItem.Name = "validateSignatureToolStripMenuItem";
-            this.validateSignatureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.validateSignatureToolStripMenuItem.Text = "Validate Signature";
-            this.validateSignatureToolStripMenuItem.Click += new System.EventHandler(this.validateSignatureToolStripMenuItem_Click);
-            // 
             // FormParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -373,6 +385,7 @@ namespace SIBActivator
         private RichTextBox rtxt_Intro;
         private ToolStripMenuItem githubUpdatesToolStripMenuItem;
         private ToolStripMenuItem validateSignatureToolStripMenuItem;
+        private ToolStripSeparator toolStripMenuItem1;
     }
 }
 

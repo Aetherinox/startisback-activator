@@ -87,6 +87,9 @@ namespace SIBActivator
             mnuTop.Renderer             = new ToolStripProfessionalRenderer( new mnu_Top_ColorTable( ) );
             status_Label.Text           = string.Format( Lng.statusbar_generate );
             statusStrip.Refresh( );
+
+
+
         }
 
         #region "Main Window: Control Buttons"
@@ -238,14 +241,14 @@ namespace SIBActivator
                     a top-level System.Windows.Forms.ToolStripMenuItem is pressed.
                 */
 
-                public override Color MenuItemPressedGradientBegin => Color.FromArgb( 55, 55, 55 );
+                public override Color MenuItemPressedGradientBegin => Color.FromArgb( 255, 55, 55, 55 );
 
                 /*
                     Gets the end color of the gradient used when a top-level
                     System.Windows.Forms.ToolStripMenuItem is pressed.
                 */
 
-                public override Color MenuItemPressedGradientEnd => Color.FromArgb( 55, 55, 55 );
+                public override Color MenuItemPressedGradientEnd => Color.FromArgb( 255, 55, 55, 55 );
 
                 /*
                     Gets the border color to use with a
@@ -259,45 +262,45 @@ namespace SIBActivator
                     System.Windows.Forms.ToolStripMenuItem is selected.
                 */
 
-                public override Color MenuItemSelectedGradientBegin => Color.FromArgb( 222, 31, 103 );
+                public override Color MenuItemSelectedGradientBegin => Color.FromArgb( 255, 222, 31, 103 );
 
                 /*
                     Gets the end color of the gradient used when the
                     System.Windows.Forms.ToolStripMenuItem is selected.
                 */
 
-                public override Color MenuItemSelectedGradientEnd => Color.FromArgb( 222, 31, 103 );
+                public override Color MenuItemSelectedGradientEnd => Color.FromArgb( 255, 222, 31, 103 );
 
                 /*
                     Gets the solid background color of the
                     System.Windows.Forms.ToolStripDropDown.
                 */
 
-                public override Color ToolStripDropDownBackground => Color.FromArgb( 40, 40, 40 );
+                public override Color ToolStripDropDownBackground => Color.FromArgb( 255, 40, 40, 40 );
 
                 /*
                     Top Menu > Image > Start Gradient Color
                 */
 
-                public override Color ImageMarginGradientBegin => Color.FromArgb( 222, 31, 103 );
+                public override Color ImageMarginGradientBegin => Color.FromArgb( 255, 222, 31, 103 );
 
                 /*
                     Top Menu > Image > Middle Gradient Color
                 */
 
-                public override Color ImageMarginGradientMiddle => Color.FromArgb( 222, 31, 103 );
+                public override Color ImageMarginGradientMiddle => Color.FromArgb( 0, 222, 31, 103 );
 
                 /*
                     Top Menu > Image > End Gradient Color
                 */
 
-                public override Color ImageMarginGradientEnd => Color.FromArgb( 222, 31, 103 );
+                public override Color ImageMarginGradientEnd => Color.FromArgb( 0, 222, 31, 103 );
 
                 /*
                     Top Menu > Shadow Effect
                 */
 
-                public override Color SeparatorDark => Color.FromArgb( 0, 45, 45, 45 );
+                public override Color SeparatorDark => Color.FromArgb( 0, 255, 255, 255 );
 
                 /*
                     Top Menu > Border Color
@@ -309,7 +312,7 @@ namespace SIBActivator
                      Top Menu > Item Hover BG Color
                  */
 
-                public override Color MenuItemSelected => Color.FromArgb( 222, 31, 103 );
+                public override Color MenuItemSelected => Color.FromArgb( 255, 222, 31, 103 );
             }
         #endregion
 
@@ -535,6 +538,20 @@ namespace SIBActivator
                     MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
             }
+        }
+
+        private void mnu_Sep_Exit_Paint( object sender, PaintEventArgs e )
+        {
+            ToolStripSeparator toolStripSeparator = (ToolStripSeparator)sender;
+
+            int width           = toolStripSeparator.Width;
+            int height          = toolStripSeparator.Height;
+            Color bt            = Color.FromArgb( 255, 40, 40, 40 );
+            Color backColor     = Color.FromArgb( 255, 222, 31, 103 );
+
+            // Fill the background.
+            e.Graphics.FillRectangle( new SolidBrush( bt ), 0, 0, width, height );
+            e.Graphics.FillRectangle( new SolidBrush( backColor ), 0, 2, width, 2 );
         }
     }
 }
