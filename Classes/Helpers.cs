@@ -11,12 +11,11 @@ using System.Reflection;
 using System.Globalization;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
-using System.Windows.Forms;
-using Lng = SIBActivator.Properties.Resources;
-using Cfg = SIBActivator.Properties.Settings;
 using System.Management.Automation.Runspaces;
 using System.Management.Automation.Language;
 using System.Data;
+using Lng = SIBActivator.Properties.Resources;
+using Cfg = SIBActivator.Properties.Settings;
 
 [AttributeUsage( AttributeTargets.Assembly )]
 internal class BuildDateAttribute : Attribute
@@ -83,8 +82,7 @@ namespace SIBActivator
                 -   Patcher exe directory (Where the patcher was executed from)
                 -   Powershell where command
 
-            @returns
-                string | directory name
+            @return     str | directory name
         */
 
         public string FindApp( )
@@ -169,12 +167,14 @@ namespace SIBActivator
         }
 
         /*
-            return ProgramFiles directory
+            ProgramFiles directory
                 different way of checking for 32 vs 64 bit OS. Need it for special purposes VS the built-in functions.
 
             IntPtr.Size
                 4   = 32-bit
                 8   = 64-bit
+
+            @return     : str
         */
 
         public static string ProgramFiles( )
@@ -186,7 +186,9 @@ namespace SIBActivator
         }
 
         /*
-            return ProgramFiles64 directory
+            ProgramFiles64 directory
+
+            @return     : str
         */
 
         public static string ProgramFilesx64( )
@@ -248,7 +250,7 @@ namespace SIBActivator
             An alternative method to obtaining the build date of the software. 
             The functions above should not be used incombination with the one below.
 
-            @usage  : DateTime build_date = Helpers.GetBuildDate(Assembly.GetExecutingAssembly( ));
+            @usage  : DateTime build_date = Helpers.GetBuildDate( Assembly.GetExecutingAssembly( ) );
         */
 
         public static DateTime GetBuildDate( Assembly assembly )
@@ -279,6 +281,14 @@ namespace SIBActivator
             var attribute = assembly.GetCustomAttribute<BuildDateAttribute>( );
             return attribute?.DateTime ?? default( DateTime );
         }
+
+        /*
+            Execute powershell query
+            checks to see if a target file has been signed with x509 cert
+
+            @param      : str query
+            @return     : str
+        */
 
         public string PowershellQ( string query )
         {
@@ -375,12 +385,21 @@ namespace SIBActivator
             return "0";
         }
 
+        /*
+            Validate Executables
+            returns if a target file is an executable.
+            All executables begin with "MZ" or the hexadecimal "4D 5A"
+
+            @param      : str filepath
+            @return     : bool
+        */
+
         public bool IsExeFile( string filepath )
         {
             var bytesBegin = new byte[ 2 ];
-            using( var fileStream = File.Open( filepath, FileMode.Open ) )
+            using( var fs = File.Open( filepath, FileMode.Open ) )
             {
-                fileStream.Read( bytesBegin, 0, 2 );
+                fs.Read( bytesBegin, 0, 2 );
             }
 
             return Encoding.UTF8.GetString( bytesBegin ) == "MZ";
