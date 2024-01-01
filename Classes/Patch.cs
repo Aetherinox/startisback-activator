@@ -427,17 +427,10 @@ namespace SIBActivator
                     {
 
                         /* certificate: resource file  signed */
-
                         if ( x509_cert.ToLower( ) == Cfg.Default.app_dev_piv_thumbprint.ToLower( ) )
                         {
                             /* certificate: resource file signed and authentic */
-
                             StatusBar.Update( "Integrity check success" );
-
-                            MessageBox.Show( string.Format( "Successfully validated that this patch is authentic, continuing...\n\nCertificate Thumbprint: \n{0}", x509_cert ),
-                                "Integrity Check Successful",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information
-                            );
                         }
                         else
                         {
@@ -467,6 +460,22 @@ namespace SIBActivator
                         return;
                     }
 
+                    /* validate StartIsBackCfg.exe as Windows application */
+                    bool bValidExe = Helpers.IsExeFile( StartIsBackCfg_fullpath );
+
+                    if ( !File.Exists( StartIsBackCfg_fullpath ) || !bValidExe )
+                    {
+
+                        StatusBar.Update( StartIsBackCfg_fullpath + " not valid" );
+
+                        MessageBox.Show( string.Format( "The file {0} is not a valid Windows application or may be corrupted.\n\nReinstall StartIsBack", StartIsBackCfg_fullpath ),
+                            "Invalid Application",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error
+                        );
+
+                        return;
+                    }
+
                     /*
                         patched dll already exists, delete
                     */
@@ -482,9 +491,7 @@ namespace SIBActivator
                         File.Move( msImg32_filename, msImg32_fullpath_to );
 
                     /* start application */
-
-                    if ( File.Exists( StartIsBackCfg_fullpath ) )
-                        System.Diagnostics.Process.Start( StartIsBackCfg_fullpath );
+                    System.Diagnostics.Process.Start( StartIsBackCfg_fullpath );
                 }
             }
 

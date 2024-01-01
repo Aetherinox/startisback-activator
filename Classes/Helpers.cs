@@ -375,5 +375,16 @@ namespace SIBActivator
             return "0";
         }
 
+        public bool IsExeFile( string filepath )
+        {
+            var bytesBegin = new byte[ 2 ];
+            using( var fileStream = File.Open( filepath, FileMode.Open ) )
+            {
+                fileStream.Read( bytesBegin, 0, 2 );
+            }
+
+            return Encoding.UTF8.GetString( bytesBegin ) == "MZ";
+        }
+
     }
 }
