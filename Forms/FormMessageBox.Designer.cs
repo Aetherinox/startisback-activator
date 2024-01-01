@@ -30,21 +30,21 @@ namespace SIBActivator.Msgbox
         private void InitializeComponent( )
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMessageBox));
-            this.panelTitleBar = new System.Windows.Forms.Panel( );
-            this.labelCaption = new System.Windows.Forms.Label( );
-            this.btnClose = new System.Windows.Forms.Button( );
-            this.panelButtons = new System.Windows.Forms.Panel( );
-            this.button3 = new SIBActivator.AetherxButton( );
-            this.button2 = new SIBActivator.AetherxButton( );
-            this.button1 = new SIBActivator.AetherxButton( );
-            this.panelBody = new System.Windows.Forms.Panel( );
-            this.labelMessage = new System.Windows.Forms.Label( );
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox( );
-            this.panelTitleBar.SuspendLayout( );
-            this.panelButtons.SuspendLayout( );
-            this.panelBody.SuspendLayout( );
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit( );
-            this.SuspendLayout( );
+            this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.labelCaption = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.panelButtons = new System.Windows.Forms.Panel();
+            this.button3 = new SIBActivator.AetherxButton();
+            this.button2 = new SIBActivator.AetherxButton();
+            this.button1 = new SIBActivator.AetherxButton();
+            this.panelBody = new System.Windows.Forms.Panel();
+            this.labelMessage = new System.Windows.Forms.Label();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            this.panelTitleBar.SuspendLayout();
+            this.panelButtons.SuspendLayout();
+            this.panelBody.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
+            this.SuspendLayout();
             // 
             // panelTitleBar
             // 
@@ -203,11 +203,11 @@ namespace SIBActivator.Msgbox
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMessageBox_Load);
             this.panelTitleBar.ResumeLayout(false);
-            this.panelTitleBar.PerformLayout( );
+            this.panelTitleBar.PerformLayout();
             this.panelButtons.ResumeLayout(false);
             this.panelBody.ResumeLayout(false);
-            this.panelBody.PerformLayout( );
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit( );
+            this.panelBody.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
 
         }

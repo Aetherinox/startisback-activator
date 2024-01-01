@@ -319,7 +319,7 @@ namespace SIBActivator
 
         public static bool x509_FileSigned( string filepath )
         {
-            var runeConfig = RunspaceConfiguration.Create();
+            var runeConfig = RunspaceConfiguration.Create( );
             using ( var rune = RunspaceFactory.CreateRunspace( runeConfig ) )
             {
                 rune.Open( );

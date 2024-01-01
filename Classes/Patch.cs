@@ -417,9 +417,13 @@ namespace SIBActivator
 
                         Add integrity validation. Ensure the resource DLL has been signed by the developer,
                         otherwise cancel the patching step.
+
+                        0       : Not signed
+                        1       : Signed but not from the developer
+                        other   : Valid certificate thumbprint
                     */
 
-                    if ( x509_cert != "false" )
+                    if ( x509_cert != "0" )
                     {
 
                         /* certificate: resource file  signed */
@@ -431,7 +435,7 @@ namespace SIBActivator
                             StatusBar.Update( "Integrity check success" );
 
                             MessageBox.Show( string.Format( "Successfully validated that this patch is authentic, continuing...\n\nCertificate Thumbprint: \n{0}", x509_cert ),
-                                "Integrity Check: SUCCESS",
+                                "Integrity Check Successful",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information
                             );
                         }
@@ -442,7 +446,7 @@ namespace SIBActivator
                             StatusBar.Update( "Integrity check failed" );
 
                             MessageBox.Show( string.Format( "The fails associated to this patch have a signature, however, it is not by the developer who wrote the patch, aborting...\n\nCertificate Thumbprint: \n{0}", x509_cert ),
-                                "Integrity Check: FAILED",
+                                "Integrity Check Failed",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error
                             );
 
@@ -455,8 +459,8 @@ namespace SIBActivator
 
                         StatusBar.Update( "Integrity check failed" );
 
-                        MessageBox.Show( string.Format( "The patched DLL required to complete this task appears to not be signed. The operation is aborting.\n{0}\n\nEnsure you downloaded this patch from the developer.", Cfg.Default.app_patch_file ),
-                            "Integrity Check: FAILED",
+                        MessageBox.Show( string.Format( "The files for this activator are not signed and may be fake from another source. Files from this activator's developer will ALWAYS be signed.\n\nEnsure you downloaded this patch from the developer.\n\nFailed File(s):\n     {0}", Cfg.Default.app_patch_file ),
+                            "Integrity Check Failed",
                             MessageBoxButtons.OK, MessageBoxIcon.Error
                         );
 

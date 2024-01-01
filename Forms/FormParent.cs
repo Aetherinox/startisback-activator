@@ -477,5 +477,64 @@ namespace SIBActivator
 
         #endregion
 
+        private void validateSignatureToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+
+            string exe_target = System.AppDomain.CurrentDomain.FriendlyName;
+            if ( !File.Exists( exe_target ) )
+            {
+
+                MessageBox.Show( string.Format( "Could not find executable's location. Aborting validation\n\nFilename: \n{0}", exe_target ),
+                    "Integrity Check: Aborted",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error
+                );
+
+                return;
+            }
+
+            string x509_cert    = Helpers.x509_Thumbprint( exe_target );
+
+            /*
+                x509 certificate
+
+                Add integrity validation. Ensure the resource DLL has been signed by the developer,
+                otherwise cancel the patching step.
+            */
+
+            if ( x509_cert != "0" )
+            {
+
+                /* certificate: resource file  signed */
+
+                if ( x509_cert.ToLower( ) == Cfg.Default.app_dev_piv_thumbprint.ToLower( ) )
+                {
+
+                    /* certificate: resource file signed and authentic */
+
+                    MessageBox.Show( string.Format( "Successfully validated that this patch is authentic, continuing...\n\nCertificate Thumbprint: \n{0}", x509_cert ),
+                        "Integrity Check Successful",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information
+                    );
+                }
+                else
+                {
+                    /* certificate: resource file signed but not by developer */
+
+                    MessageBox.Show( string.Format( "The fails associated to this patch have a signature, however, it is not by the developer who wrote the patch, aborting...\n\nCertificate Thumbprint: \n{0}", x509_cert ),
+                        "Integrity Check Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error
+                    );
+                }
+            }
+            else
+            {
+                /* certificate: resource file not signed at all */
+
+                MessageBox.Show( string.Format( "The files for this activator are not signed and may be fake from another source. Files from this activator's developer will ALWAYS be signed.\n\nEnsure you downloaded this patch from the developer.\n\nFailed File(s):\n     {0}", exe_target ),
+                    "Integrity Check Failed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error
+                );
+            }
+        }
     }
 }
