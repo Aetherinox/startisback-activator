@@ -99,12 +99,12 @@ I scanned with Windows Defender and it reported that the files are clean.
 
 # Previews
 
-<p align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535" src="https://i.imgur.com/uZZMz8w.png"></p>
+<p style="border: 1px solid #353535;" align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/uZZMz8w.png"></p>
 
-<p align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535" src="https://i.imgur.com/f9dwTAT.png"></p>
+<p style="border: 1px solid #353535;" align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/f9dwTAT.png"></p>
 
-<p align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535" src="https://i.imgur.com/8mDwu0k.png"></p>
+<p style="border: 1px solid #353535;" align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/8mDwu0k.png"></p>
 
-<p align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535" src="https://i.imgur.com/coygbwM.png"></p>
+<p style="border: 1px solid #353535;" align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/coygbwM.png"></p>
 
-<p align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535" src="https://i.imgur.com/wK56rlg.png"></p>
+<p style="border: 1px solid #353535;" align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/wK56rlg.png"></p>
