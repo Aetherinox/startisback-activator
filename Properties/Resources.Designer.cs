@@ -332,7 +332,7 @@ namespace SIBActivator.Properties {
         ///   Looks up a localized string similar to The fails associated to this patch have a signature, however, it is not by the developer who wrote the patch, aborting...
         ///
         ///Certificate Thumbprint:
-        ///   {0}.
+        ///     {0}.
         /// </summary>
         internal static string msgbox_integrity_fail_msg {
             get {

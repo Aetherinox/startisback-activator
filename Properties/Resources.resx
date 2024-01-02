@@ -119,23 +119,23 @@
   </resheader>
   <data name="about_hdr_desc" xml:space="preserve">
     <value>Educational purposes only. No ads, no music, no bullshit.</value>
-    <comment>F:About &gt;Header Description</comment>
+    <comment>About &gt;Header Description</comment>
   </data>
   <data name="about_lbl_gpg" xml:space="preserve">
     <value>GPG KeyID</value>
-    <comment>F:About &gt;GPG ID Label</comment>
+    <comment>About &gt;GPG ID Label</comment>
   </data>
   <data name="about_lbl_thumbprint" xml:space="preserve">
     <value>Digital Signature Thumbprint</value>
-    <comment>F:About &gt;PIV ID Label</comment>
+    <comment>About &gt;PIV ID Label</comment>
   </data>
   <data name="about_lnk_github" xml:space="preserve">
     <value>Patcher Updates</value>
-    <comment>F:About &gt;Link &gt; Github</comment>
+    <comment>About &gt;Link &gt; Github</comment>
   </data>
   <data name="about_lnk_tpb" xml:space="preserve">
     <value>Releases</value>
-    <comment>F:About &gt;Link &gt; TPB</comment>
+    <comment>About &gt;Link &gt; TPB</comment>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="bch" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -149,10 +149,11 @@
   </data>
   <data name="btn_locate" xml:space="preserve">
     <value>&amp;Manually Locate DLL</value>
+    <comment>Manually Locate DLL button</comment>
   </data>
   <data name="btn_patch" xml:space="preserve">
     <value>&amp;Patch</value>
-    <comment>F:Parent &gt; Save Keyfile</comment>
+    <comment>Patch button</comment>
   </data>
   <data name="chat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Materials\bell.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -161,15 +162,19 @@
     <value>Dev Dump: Exception:
 
 {0}</value>
+    <comment>Console.Write</comment>
   </data>
   <data name="cwrite_dmp_finish" xml:space="preserve">
     <value>Dev Dump: Finished</value>
+    <comment>Console.Write</comment>
   </data>
   <data name="dlg_cancelled" xml:space="preserve">
     <value>Cancelled by user</value>
+    <comment>File dialog box</comment>
   </data>
   <data name="dlg_title" xml:space="preserve">
     <value>Locate StartIsBack EXE</value>
+    <comment>File dialog box</comment>
   </data>
   <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Materials\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,31 +204,38 @@
     <value>The file {0} is not a valid Windows application or may be corrupted.
 
 Reinstall StartIsBack</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_app_invalid_title" xml:space="preserve">
     <value>Invalid Application</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_dev_bak_msg" xml:space="preserve">
     <value>The following file will be backed up:
 
 {0}
 {1}</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_dev_bak_title" xml:space="preserve">
     <value>Debug: Create Backup of DLL</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_extract_err_msg" xml:space="preserve">
     <value>Could not extract patched DLL
 {0}</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_extract_err_title" xml:space="preserve">
     <value>Fatal Error</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_integrity_fail_msg" xml:space="preserve">
     <value>The fails associated to this patch have a signature, however, it is not by the developer who wrote the patch, aborting...
 
 Certificate Thumbprint:
-   {0}</value>
+     {0}</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_integrity_fail_nosign_msg" xml:space="preserve">
     <value>The files for this activator are not signed and may be fake from another source. Files from this activator's developer will ALWAYS be signed.
@@ -232,33 +244,42 @@ Ensure you downloaded this patch from the developer.
 
 Failed File(s):
      {0}</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_integrity_fail_nosign_title" xml:space="preserve">
     <value>Integrity Check Failed</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_integrity_fail_title" xml:space="preserve">
     <value>Integrity Check Failed</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_nolocopen_msg" xml:space="preserve">
     <value>Could not find StartIsBack. It must be installed first before you can run the patcher.</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_nolocopen_title" xml:space="preserve">
     <value>StartIsBack Not Found</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_nolocpath_msg" xml:space="preserve">
     <value>Patcher cannot determine where StartIsBack is installed
 Tried looking in {0}
 
 You will be prompted to manually locate StartIsBackCfg.exe. Ensure that StartIsBack is installed on your system.</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_nolocpath_title" xml:space="preserve">
     <value>Cannot Locate StartIsBack</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_patch_compl_msg" xml:space="preserve">
     <value>StartIsBack has been successfully patched.</value>
+    <comment>Message box</comment>
   </data>
   <data name="msgbox_patch_compl_title" xml:space="preserve">
     <value>Patch Complete</value>
+    <comment>Message box</comment>
   </data>
   <data name="msimg32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\msimg32.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -274,36 +295,47 @@ You will be prompted to manually locate StartIsBackCfg.exe. Ensure that StartIsB
   </data>
   <data name="status_app_invalid" xml:space="preserve">
     <value>{0} - invalid win32</value>
+    <comment>Status bar</comment>
   </data>
   <data name="status_dlg_loaded" xml:space="preserve">
     <value>Loaded {0}</value>
+    <comment>Status bar</comment>
   </data>
   <data name="status_generate" xml:space="preserve">
     <value>Click Patch to begin ...</value>
+    <comment>Status bar</comment>
   </data>
   <data name="status_integrity_fail" xml:space="preserve">
     <value>Integrity check failed</value>
+    <comment>Status bar</comment>
   </data>
   <data name="status_integrity_success" xml:space="preserve">
     <value>Integrity check success</value>
+    <comment>Status bar</comment>
   </data>
   <data name="status_manual_locate" xml:space="preserve">
     <value>StartIsBack not found, loading manual dialog ...</value>
+    <comment>Status bar</comment>
   </data>
   <data name="status_patch_complete" xml:space="preserve">
     <value>Successfully patched StartIsBack</value>
+    <comment>Status bar</comment>
   </data>
   <data name="status_sib_not_found" xml:space="preserve">
     <value>StartIsBack not found</value>
+    <comment>Status bar</comment>
   </data>
   <data name="status_taskkill_cmd" xml:space="preserve">
     <value>Could not restart task explorer.exe</value>
+    <comment>Status bar</comment>
   </data>
   <data name="status_taskkill_proc" xml:space="preserve">
     <value>Could not kill task explorer.exe</value>
+    <comment>Status bar</comment>
   </data>
   <data name="status_taskkill_startisback" xml:space="preserve">
     <value>Could not kill StartIsBackCfg.exe</value>
+    <comment>Status bar</comment>
   </data>
   <data name="template_btn_abort" xml:space="preserve">
     <value>&amp;Abort</value>
