@@ -135,7 +135,7 @@ namespace SIBActivator
             this.mnuTop.TabIndex = 1;
             this.mnuTop.Text = "menuStrip1";
             this.mnuTop.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnu_Main_ItemClicked);
-            this.mnuTop.Paint += new System.Windows.Forms.PaintEventHandler(this.mnuTop_Paint);
+            this.mnuTop.Paint += new System.Windows.Forms.PaintEventHandler(this.mnu_Paint);
             // 
             // fileToolStripMenuItem
             // 
@@ -169,7 +169,7 @@ namespace SIBActivator
             this.donateToolStripMenuItem.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
             this.donateToolStripMenuItem.Size = new System.Drawing.Size(92, 34);
             this.donateToolStripMenuItem.Text = "Contribute";
-            this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.mnu_Item_Contribute_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -202,7 +202,7 @@ namespace SIBActivator
             this.validateSignatureToolStripMenuItem.Name = "validateSignatureToolStripMenuItem";
             this.validateSignatureToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.validateSignatureToolStripMenuItem.Text = "Validate Signature";
-            this.validateSignatureToolStripMenuItem.Click += new System.EventHandler(this.validateSignatureToolStripMenuItem_Click);
+            this.validateSignatureToolStripMenuItem.Click += new System.EventHandler(this.mnu_Item_Validate_Click);
             // 
             // toolStripMenuItem1
             // 

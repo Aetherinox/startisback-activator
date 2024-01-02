@@ -1,6 +1,6 @@
 ﻿/*
     @app        : StartIsBack Activator
-    @repo       : https://github.com/Aetherinox/startallback-activator
+    @repo       : https://github.com/Aetherinox/startisback-activator
     @author     : Aetherinox
 */
 
@@ -22,17 +22,14 @@ namespace SIBActivator
     {
 
         /*
-            Define
+            Define > Classes
         */
 
         private Patch Patch         = new Patch( );
         private Helpers Helpers     = new Helpers( );
 
-        private bool mouseDown;
-        private Point lastLocation;
-
         /*
-            Define Helpers
+            Define > Internal > Helper
         */
 
         internal Helpers Helper
@@ -40,6 +37,13 @@ namespace SIBActivator
             set     { Helpers = value;  }
             get     { return Helpers;   }
         }
+
+        /*
+            Define > Mouse
+        */
+
+        private bool mouseDown;
+        private Point lastLocation;
 
         /*
             Frame > Parent
@@ -103,22 +107,22 @@ namespace SIBActivator
 
         private void FormParent_Load( object sender, EventArgs e )
         {
-            mnuTop.Renderer             = new ToolStripProfessionalRenderer( new mnu_Top_ColorTable( ) );
+            mnuTop.Renderer             = new ToolStripProfessionalRenderer( new mnu_ColorTable( ) );
             status_Label.Text           = string.Format( Lng.statusbar_generate );
             statusStrip.Refresh( );
         }
 
         #region "Main Window: Control Buttons"
 
-        /*
-            Control Buttons
-                ->  Minimize
-                ->  Maximize
-                ->  Close
+            /*
+                Control Buttons
+                    ->  Minimize
+                    ->  Maximize
+                    ->  Close
 
-            Icons:  http://modernicons.io/segoe-mdl2/cheatsheet/
-            Font:   Segoe MDL2 Assets
-        */
+                Icons:  http://modernicons.io/segoe-mdl2/cheatsheet/
+                Font:   Segoe MDL2 Assets
+            */
 
             /*
                 Window > Button > Minimize > Click
@@ -219,48 +223,13 @@ namespace SIBActivator
 
         #endregion
 
-        #region "Menu"
-
-            /*
-                Top Menu > Click Item
-            */
-
-            private void mnu_Main_ItemClicked( object sender, ToolStripItemClickedEventArgs e ) { }
-
-            /*
-                Top Menu Item > File > Exit
-            */
-
-            private void mnu_Item_Exit_Click( object sender, EventArgs e )
-            {
-                Application.Exit( );
-            }
-
-            /*
-                Top Menu Item > Help > About
-            */
-
-            private void mnu_Item_About_Click( object sender, EventArgs e )
-            {
-                FormAbout to    = new FormAbout( );
-                to.TopMost      = true;
-                to.Show( );
-            }
-
-            /*
-                Top Menu Item > Help > Github Updates
-            */
-
-            private void mnu_Item_GithubUpdates_Click( object sender, EventArgs e )
-            {
-                System.Diagnostics.Process.Start( Cfg.Default.app_url_github );
-            }
+        #region "Top Menu"
 
             /*
                 Top Menu > Color Overrides
             */
 
-            public class mnu_Top_ColorTable : ProfessionalColorTable
+            public class mnu_ColorTable : ProfessionalColorTable
             {
                 /*
                     Gets the starting color of the gradient used when
@@ -340,6 +309,257 @@ namespace SIBActivator
 
                 public override Color MenuItemSelected => Color.FromArgb( 255, 222, 31, 103 );
             }
+
+            /*
+                Top Menu > Paint
+            */
+
+            private void mnu_Paint( object sender, PaintEventArgs e )
+            {
+                Graphics g                  = e.Graphics;
+                Color backColor             = Color.FromArgb( 35, 255, 255, 255 );
+                var imgSize                 = mnuTop.ClientSize;
+                e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, 1, imgSize.Width - 2, 1 );
+                e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, imgSize.Height - 2, imgSize.Width - 2, 1 );
+            }
+
+            /*
+                Top Menu > Click Item
+            */
+
+            private void mnu_Main_ItemClicked( object sender, ToolStripItemClickedEventArgs e ) { }
+
+            /*
+                Top Menu > Help > About
+            */
+
+            private void mnu_Item_About_Click( object sender, EventArgs e )
+            {
+                FormAbout to    = new FormAbout( );
+                to.TopMost      = true;
+                to.Show( );
+            }
+
+            /*
+                Top Menu > Help > Contribute
+            */
+
+            private void mnu_Item_Contribute_Click( object sender, EventArgs e )
+            {
+                FormContribute to   = new FormContribute( );
+                to.TopMost      = true;
+                to.Show( );
+            }
+
+            /*
+                Top Menu > Help > Github Updates
+            */
+
+            private void mnu_Item_GithubUpdates_Click( object sender, EventArgs e )
+            {
+                System.Diagnostics.Process.Start( Cfg.Default.app_url_github );
+            }
+
+            /*
+                Top Menu > Help > x509 Certificate Validation
+            */
+
+            private void mnu_Item_Validate_Click( object sender, EventArgs e )
+            {
+
+                string exe_target = System.AppDomain.CurrentDomain.FriendlyName;
+                if ( !File.Exists( exe_target ) )
+                {
+
+                    MessageBox.Show( string.Format( "Could not find executable's location. Aborting validation\n\nFilename: \n{0}", exe_target ),
+                        "Integrity Check: Aborted",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error
+                    );
+
+                    return;
+                }
+
+                string x509_cert    = Helpers.x509_Thumbprint( exe_target );
+
+                /*
+                    x509 certificate
+
+                    Add integrity validation. Ensure the resource DLL has been signed by the developer,
+                    otherwise cancel the patching step.
+                */
+
+                if ( x509_cert != "0" )
+                {
+
+                    /* certificate: resource file  signed */
+
+                    if ( x509_cert.ToLower( ) == Cfg.Default.app_dev_piv_thumbprint.ToLower( ) )
+                    {
+
+                        /* certificate: resource file signed and authentic */
+
+                        MessageBox.Show( string.Format( "Successfully validated that this patch is authentic, continuing...\n\nCertificate Thumbprint: \n{0}", x509_cert ),
+                            "Integrity Check Successful",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information
+                        );
+                    }
+                    else
+                    {
+                        /* certificate: resource file signed but not by developer */
+
+                        MessageBox.Show( string.Format( "The fails associated to this patch have a signature, however, it is not by the developer who wrote the patch, aborting...\n\nCertificate Thumbprint: \n{0}", x509_cert ),
+                            "Integrity Check Failed",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error
+                        );
+                    }
+                }
+                else
+                {
+                    /* certificate: resource file not signed at all */
+
+                    MessageBox.Show( string.Format( "The files for this activator are not signed and may be fake from another source. Files from this activator's developer will ALWAYS be signed.\n\nEnsure you downloaded this patch from the developer.\n\nFailed File(s):\n     {0}", exe_target ),
+                        "Integrity Check Failed",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error
+                    );
+                }
+            }
+
+            /*
+                Top Menu > Separator
+                Separates "Exit" from the other items in "About" dropdown.
+            */
+
+            private void mnu_Sep_Exit_Paint( object sender, PaintEventArgs e )
+            {
+                ToolStripSeparator toolStripSeparator = (ToolStripSeparator)sender;
+
+                int width           = toolStripSeparator.Width;
+                int height          = toolStripSeparator.Height;
+                Color backColor     = Color.FromArgb( 255, 222, 31, 103 );
+
+                // Fill the background.
+                e.Graphics.FillRectangle( new SolidBrush( backColor ), 0, 0, width, height );
+            }
+
+            /*
+                Top Menu > File > Exit
+            */
+
+            private void mnu_Item_Exit_Click( object sender, EventArgs e )
+            {
+                Application.Exit( );
+            }
+
+        #endregion
+
+        #region "Header"
+
+            private void imgHeader_MouseDown( object sender, MouseEventArgs e )
+            {
+                mouseDown = true;
+                lastLocation = e.Location;
+            }
+
+            private void imgHeader_MouseUp( object sender, MouseEventArgs e )
+            {
+                mouseDown       = false;
+            }
+
+            private void imgHeader_MouseMove( object sender, MouseEventArgs e )
+            {
+                if ( mouseDown )
+                {
+                    this.Location = new Point(
+                        ( this.Location.X - lastLocation.X ) + e.X,
+                        ( this.Location.Y - lastLocation.Y ) + e.Y
+                    );
+
+                    this.Update( );
+                }
+            }
+
+        #endregion
+
+        #region "Label: Title"
+
+            private void lbl_Title_Click( object sender, EventArgs e ) { }
+
+            private void lbl_Title_MouseDown( object sender, MouseEventArgs e )
+            {
+                mouseDown = true;
+                lastLocation = e.Location;
+            }
+
+            private void lbl_Title_MouseUp( object sender, MouseEventArgs e )
+            {
+                mouseDown = false;
+            }
+
+            private void lbl_Title_MouseMove( object sender, MouseEventArgs e )
+            {
+                if ( mouseDown )
+                {
+                    this.Location = new Point(
+                        ( this.Location.X - lastLocation.X ) + e.X,
+                        ( this.Location.Y - lastLocation.Y ) + e.Y
+                    );
+
+                    this.Update( );
+                }
+            }
+
+        #endregion
+
+        #region "Body: Intro"
+
+            private void lbl_intro_MouseDown( object sender, MouseEventArgs e )
+            {
+                mouseDown = true;
+                lastLocation = e.Location;
+            }
+
+            private void lbl_intro_MouseUp( object sender, MouseEventArgs e )
+            {
+                mouseDown       = false;
+            }
+
+            private void lbl_intro_MouseMove( object sender, MouseEventArgs e )
+            {
+                if ( mouseDown )
+                {
+                    this.Location = new Point(
+                        ( this.Location.X - lastLocation.X ) + e.X,
+                        ( this.Location.Y - lastLocation.Y ) + e.Y
+                    );
+
+                    this.Update( );
+                }
+            }
+
+            private void rtxt_Intro_MouseDown( object sender, MouseEventArgs e )
+            {
+                mouseDown = true;
+                lastLocation = e.Location;
+            }
+
+            private void rtxt_Intro_MouseUp( object sender, MouseEventArgs e )
+            {
+                mouseDown       = false;
+            }
+
+            private void rtxt_Intro_MouseMove( object sender, MouseEventArgs e )
+            {
+                if ( mouseDown )
+                {
+                    this.Location = new Point(
+                        ( this.Location.X - lastLocation.X ) + e.X,
+                        ( this.Location.Y - lastLocation.Y ) + e.Y
+                    );
+
+                    this.Update( );
+                }
+            }
+
         #endregion
 
         #region "Button: Patch"
@@ -405,36 +625,6 @@ namespace SIBActivator
             }
         #endregion
 
-        #region "Label: Title"
-
-            private void lbl_Title_Click( object sender, EventArgs e ) { }
-
-            private void lbl_Title_MouseDown( object sender, MouseEventArgs e )
-            {
-                mouseDown = true;
-                lastLocation = e.Location;
-            }
-
-            private void lbl_Title_MouseUp( object sender, MouseEventArgs e )
-            {
-                mouseDown = false;
-            }
-
-            private void lbl_Title_MouseMove( object sender, MouseEventArgs e )
-            {
-                if ( mouseDown )
-                {
-                    this.Location = new Point(
-                        ( this.Location.X - lastLocation.X ) + e.X,
-                        ( this.Location.Y - lastLocation.Y ) + e.Y
-                    );
-
-                    this.Update( );
-                }
-            }
-
-        #endregion
-
         #region "Status Bar"
 
             /*
@@ -443,6 +633,10 @@ namespace SIBActivator
             */
 
             private void status_Strip_ItemClicked( object sender, ToolStripItemClickedEventArgs e ) { }
+
+            /*
+                Statusbar > Mouse Actions
+            */
 
             private void status_MouseDown( object sender, MouseEventArgs e )
             {
@@ -466,6 +660,18 @@ namespace SIBActivator
 
                     this.Update( );
                 }
+            }
+
+            /*
+                Statusbar > Paint
+            */
+
+            private void statusStrip_Paint( object sender, PaintEventArgs e )
+            {
+                Graphics g                  = e.Graphics;
+                Color backColor             = Color.FromArgb( 35, 255, 255, 255 );
+                var imgSize                 = statusStrip.ClientSize;
+                e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, 1, imgSize.Width - 2, 2 );
             }
 
             /*
@@ -506,172 +712,5 @@ namespace SIBActivator
 
         #endregion
 
-        private void validateSignatureToolStripMenuItem_Click( object sender, EventArgs e )
-        {
-
-            string exe_target = System.AppDomain.CurrentDomain.FriendlyName;
-            if ( !File.Exists( exe_target ) )
-            {
-
-                MessageBox.Show( string.Format( "Could not find executable's location. Aborting validation\n\nFilename: \n{0}", exe_target ),
-                    "Integrity Check: Aborted",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error
-                );
-
-                return;
-            }
-
-            string x509_cert    = Helpers.x509_Thumbprint( exe_target );
-
-            /*
-                x509 certificate
-
-                Add integrity validation. Ensure the resource DLL has been signed by the developer,
-                otherwise cancel the patching step.
-            */
-
-            if ( x509_cert != "0" )
-            {
-
-                /* certificate: resource file  signed */
-
-                if ( x509_cert.ToLower( ) == Cfg.Default.app_dev_piv_thumbprint.ToLower( ) )
-                {
-
-                    /* certificate: resource file signed and authentic */
-
-                    MessageBox.Show( string.Format( "Successfully validated that this patch is authentic, continuing...\n\nCertificate Thumbprint: \n{0}", x509_cert ),
-                        "Integrity Check Successful",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information
-                    );
-                }
-                else
-                {
-                    /* certificate: resource file signed but not by developer */
-
-                    MessageBox.Show( string.Format( "The fails associated to this patch have a signature, however, it is not by the developer who wrote the patch, aborting...\n\nCertificate Thumbprint: \n{0}", x509_cert ),
-                        "Integrity Check Failed",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error
-                    );
-                }
-            }
-            else
-            {
-                /* certificate: resource file not signed at all */
-
-                MessageBox.Show( string.Format( "The files for this activator are not signed and may be fake from another source. Files from this activator's developer will ALWAYS be signed.\n\nEnsure you downloaded this patch from the developer.\n\nFailed File(s):\n     {0}", exe_target ),
-                    "Integrity Check Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error
-                );
-            }
-        }
-
-        private void mnu_Sep_Exit_Paint( object sender, PaintEventArgs e )
-        {
-            ToolStripSeparator toolStripSeparator = (ToolStripSeparator)sender;
-
-            int width           = toolStripSeparator.Width;
-            int height          = toolStripSeparator.Height;
-            Color backColor     = Color.FromArgb( 255, 222, 31, 103 );
-
-            // Fill the background.
-            e.Graphics.FillRectangle( new SolidBrush( backColor ), 0, 0, width, height );
-        }
-
-        private void statusStrip_Paint( object sender, PaintEventArgs e )
-        {
-            Graphics g                  = e.Graphics;
-            Color backColor             = Color.FromArgb( 35, 255, 255, 255 );
-            var imgSize                 = statusStrip.ClientSize;
-            e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, 1, imgSize.Width - 2, 2 );
-        }
-
-        private void mnuTop_Paint( object sender, PaintEventArgs e )
-        {
-            Graphics g                  = e.Graphics;
-            Color backColor             = Color.FromArgb( 35, 255, 255, 255 );
-            var imgSize                 = mnuTop.ClientSize;
-            e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, 1, imgSize.Width - 2, 1 );
-            e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, imgSize.Height - 2, imgSize.Width - 2, 1 );
-        }
-
-        private void donateToolStripMenuItem_Click( object sender, EventArgs e )
-        {
-            FormContribute to   = new FormContribute( );
-            to.TopMost      = true;
-            to.Show( );
-        }
-
-        private void imgHeader_MouseDown( object sender, MouseEventArgs e )
-        {
-            mouseDown = true;
-            lastLocation = e.Location;
-        }
-
-        private void imgHeader_MouseUp( object sender, MouseEventArgs e )
-        {
-            mouseDown       = false;
-        }
-
-        private void imgHeader_MouseMove( object sender, MouseEventArgs e )
-        {
-            if ( mouseDown )
-            {
-                this.Location = new Point(
-                    ( this.Location.X - lastLocation.X ) + e.X,
-                    ( this.Location.Y - lastLocation.Y ) + e.Y
-                );
-
-                this.Update( );
-            }
-        }
-
-        private void lbl_intro_MouseDown( object sender, MouseEventArgs e )
-        {
-            mouseDown = true;
-            lastLocation = e.Location;
-        }
-
-        private void lbl_intro_MouseUp( object sender, MouseEventArgs e )
-        {
-            mouseDown       = false;
-        }
-
-        private void lbl_intro_MouseMove( object sender, MouseEventArgs e )
-        {
-            if ( mouseDown )
-            {
-                this.Location = new Point(
-                    ( this.Location.X - lastLocation.X ) + e.X,
-                    ( this.Location.Y - lastLocation.Y ) + e.Y
-                );
-
-                this.Update( );
-            }
-        }
-
-        private void rtxt_Intro_MouseDown( object sender, MouseEventArgs e )
-        {
-            mouseDown = true;
-            lastLocation = e.Location;
-        }
-
-        private void rtxt_Intro_MouseUp( object sender, MouseEventArgs e )
-        {
-            mouseDown       = false;
-        }
-
-        private void rtxt_Intro_MouseMove( object sender, MouseEventArgs e )
-        {
-            if ( mouseDown )
-            {
-                this.Location = new Point(
-                    ( this.Location.X - lastLocation.X ) + e.X,
-                    ( this.Location.Y - lastLocation.Y ) + e.Y
-                );
-
-                this.Update( );
-            }
-        }
     }
 }

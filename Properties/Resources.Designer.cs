@@ -375,9 +375,9 @@ namespace SIBActivator.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Could not kill StartIsBackCfg.exe.
         /// </summary>
-        internal static string statusbar_taskkill_startallback {
+        internal static string statusbar_taskkill_startisback {
             get {
-                return ResourceManager.GetString("statusbar_taskkill_startallback", resourceCulture);
+                return ResourceManager.GetString("statusbar_taskkill_startisback", resourceCulture);
             }
         }
         

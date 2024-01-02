@@ -1,6 +1,6 @@
 ﻿/*
     @app        : StartIsBack Activator
-    @repo       : https://github.com/Aetherinox/startallback-activator
+    @repo       : https://github.com/Aetherinox/startisback-activator
     @author     : Aetherinox
 */
 
@@ -313,7 +313,7 @@ namespace SIBActivator
             }
 
             /*
-                 kill task StartAllBackCfg.exe
+                 kill task StartIsBackCfg.exe
              */
 
             try
@@ -326,7 +326,7 @@ namespace SIBActivator
             }
             catch ( Exception )
             {
-                StatusBar.Update( Lng.statusbar_taskkill_startallback );
+                StatusBar.Update( Lng.statusbar_taskkill_startisback );
                 return;
             }
 

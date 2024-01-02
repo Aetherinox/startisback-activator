@@ -229,7 +229,7 @@ You will be prompted to manually locate StartIsBackCfg.exe. Ensure that StartIsB
   <data name="statusbar_taskkill_proc" xml:space="preserve">
     <value>Could not kill task explorer.exe</value>
   </data>
-  <data name="statusbar_taskkill_startallback" xml:space="preserve">
+  <data name="statusbar_taskkill_startisback" xml:space="preserve">
     <value>Could not kill StartIsBackCfg.exe</value>
   </data>
   <data name="template_btn_abort" xml:space="preserve">
