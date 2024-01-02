@@ -1058,10 +1058,7 @@
         MXodl6C9sDVa7WXv31QV4L+leg66JRXHh+Zwi+da98E9bIEIr//Z
 </value>
   </data>
-  <metadata name="txt_contrib_intro.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="txt_contrib_intro.Value" xml:space="preserve">
+  <data name="lbl_contrib_intro.Text" xml:space="preserve">
     <value>I do this because I enjoy giving back, and I'm not looking to make a profit off my work. However, donations would help immensely for one purpose -- purchasing libraries and other commercial products which have insane licensing systems. These types of products would make life much easier and get releases pumped out on a more regular basis. Don't feel obligated, this is just "if you can". My main goal is better tools.</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

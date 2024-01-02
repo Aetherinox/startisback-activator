@@ -267,6 +267,69 @@ namespace SIBActivator
             
             string msImg32_filename             = Cfg.Default.app_patch_file;
 
+
+            /*
+                Temp kill automatic shell restart when process is killed
+                AutoRestartShell = 0
+            */
+
+            RegistryKey ourKey  = Registry.LocalMachine;
+            ourKey              = ourKey.OpenSubKey(
+                                    @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon",
+                                    true
+                                );
+            ourKey.SetValue     ( "AutoRestartShell", 0 );
+
+            /*
+                 kill task explorer.exe
+             */
+
+            try
+            {
+                Process[] processes = Process.GetProcessesByName( "explorer" );
+                foreach ( Process proc in processes )
+                {
+                    proc.Kill( );
+                }
+            }
+            catch ( Exception )
+            {
+                StatusBar.Update( Lng.statusbar_taskkill_proc );
+                return;
+            }
+
+            /*
+                 kill / restart task explorer.exe
+             */
+
+            try
+            {
+                Process.Start( "cmd", "/c taskkill /f /im explorer.exe" ).WaitForExit( );
+            }
+            catch ( Exception )
+            {
+                StatusBar.Update( Lng.statusbar_taskkill_cmd );
+                return;
+            }
+
+            /*
+                 kill task StartAllBackCfg.exe
+             */
+
+            try
+            {
+                Process[] processes = Process.GetProcessesByName( "StartIsBackCfg" );
+                foreach ( Process proc in processes )
+                {
+                    proc.Kill( );
+                }
+            }
+            catch ( Exception )
+            {
+                StatusBar.Update( Lng.statusbar_taskkill_startallback );
+                return;
+            }
+
             /*
                 loop each dll path
             */
@@ -494,6 +557,20 @@ namespace SIBActivator
                     System.Diagnostics.Process.Start( StartIsBackCfg_fullpath );
                 }
             }
+
+            /*
+                start task explorer.exe
+            */
+
+            Process.Start( "explorer" );
+
+            /*
+                re-enable AutoRestartShell in registry
+                AutoRestartShell = 1
+            */
+
+            ourKey.SetValue( "AutoRestartShell", 1 );
+            ourKey.Close( );
 
             /*
                 re-enable AutoRestartShell in registry

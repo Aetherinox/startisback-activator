@@ -200,10 +200,6 @@
     <None Include="Materials\btc.png" />
     <None Include="Materials\eth.png" />
     <Content Include="Materials\sib_128.ico" />
-    <None Include="Resources\5.jpg" />
-    <None Include="Resources\4.jpg" />
-    <None Include="Resources\3.jpg" />
-    <None Include="Resources\2.jpg" />
     <None Include="Resources\bg_about.jpg" />
     <None Include="Resources\msimg32.dll" />
     <None Include="Materials\sib_logo_1.png" />

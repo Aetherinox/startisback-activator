@@ -99,7 +99,8 @@ I scanned with Windows Defender and it reported that the files are clean.
 
 # Previews
 
-![Main Screen](https://i.imgur.com/ft40md5.png)
-![Unregistered Version](https://i.imgur.com/n0Qt91R.png)
-![StartIsBack Unregistered](https://i.imgur.com/KaH25vP.png)
-![StartIsBack Registered](https://i.imgur.com/itppsKr.png)
+![Main Screen](https://i.imgur.com/uZZMz8w.png)
+![Start Menu Type](https://i.imgur.com/f9dwTAT.png)
+![Start Menu Type](https://i.imgur.com/8mDwu0k.png)
+![StartIsBack Unregistered](https://i.imgur.com/coygbwM.png)
+![StartIsBack Registered](https://i.imgur.com/wK56rlg.png)

@@ -37,12 +37,12 @@
             this.lbl_ETH = new System.Windows.Forms.Label();
             this.txt_BCH = new SIBActivator.AetherxTextBox();
             this.lbl_BCH = new System.Windows.Forms.Label();
-            this.txt_contrib_intro = new SIBActivator.AetherxTextBox();
             this.lbl_Subtitle = new System.Windows.Forms.Label();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.pic_BTC = new System.Windows.Forms.PictureBox();
             this.pic_ETH = new System.Windows.Forms.PictureBox();
             this.pic_BCH = new System.Windows.Forms.PictureBox();
+            this.lbl_contrib_intro = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_BTC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ETH)).BeginInit();
@@ -188,35 +188,6 @@
             this.lbl_BCH.TabIndex = 15;
             this.lbl_BCH.Text = "BCH";
             // 
-            // txt_contrib_intro
-            // 
-            this.txt_contrib_intro.AllowFocus = false;
-            this.txt_contrib_intro.AutoScroll = true;
-            this.txt_contrib_intro.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.txt_contrib_intro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.txt_contrib_intro.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
-            this.txt_contrib_intro.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
-            this.txt_contrib_intro.BorderSize = 2;
-            this.txt_contrib_intro.CausesValidation = false;
-            this.txt_contrib_intro.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txt_contrib_intro.ForeColor = System.Drawing.Color.DarkGray;
-            this.txt_contrib_intro.Location = new System.Drawing.Point(15, 144);
-            this.txt_contrib_intro.Margin = new System.Windows.Forms.Padding(0);
-            this.txt_contrib_intro.Multiline = true;
-            this.txt_contrib_intro.MultilineScrollbars = false;
-            this.txt_contrib_intro.Name = "txt_contrib_intro";
-            this.txt_contrib_intro.Padding = new System.Windows.Forms.Padding(9);
-            this.txt_contrib_intro.PasswordChar = false;
-            this.txt_contrib_intro.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_contrib_intro.PlaceholderText = "";
-            this.txt_contrib_intro.ReadOnly = true;
-            this.txt_contrib_intro.Selectable = false;
-            this.txt_contrib_intro.Size = new System.Drawing.Size(503, 137);
-            this.txt_contrib_intro.TabIndex = 17;
-            this.txt_contrib_intro.UnderlineStyle = false;
-            this.txt_contrib_intro.Value = resources.GetString("txt_contrib_intro.Value");
-            this.txt_contrib_intro._TextChanged += new System.EventHandler(this.aetherxTextBox3__TextChanged);
-            // 
             // lbl_Subtitle
             // 
             this.lbl_Subtitle.AutoSize = true;
@@ -227,6 +198,9 @@
             this.lbl_Subtitle.Size = new System.Drawing.Size(54, 19);
             this.lbl_Subtitle.TabIndex = 35;
             this.lbl_Subtitle.Text = "Version";
+            this.lbl_Subtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseDown);
+            this.lbl_Subtitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseMove);
+            this.lbl_Subtitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseUp);
             // 
             // lbl_Title
             // 
@@ -238,6 +212,9 @@
             this.lbl_Title.Size = new System.Drawing.Size(129, 32);
             this.lbl_Title.TabIndex = 34;
             this.lbl_Title.Text = "Contribute";
+            this.lbl_Title.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseDown);
+            this.lbl_Title.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseMove);
+            this.lbl_Title.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseUp);
             // 
             // pic_BTC
             // 
@@ -272,6 +249,23 @@
             this.pic_BCH.TabIndex = 38;
             this.pic_BCH.TabStop = false;
             // 
+            // lbl_contrib_intro
+            // 
+            this.lbl_contrib_intro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_contrib_intro.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbl_contrib_intro.ForeColor = System.Drawing.Color.Gray;
+            this.lbl_contrib_intro.Location = new System.Drawing.Point(15, 143);
+            this.lbl_contrib_intro.Name = "lbl_contrib_intro";
+            this.lbl_contrib_intro.Padding = new System.Windows.Forms.Padding(10);
+            this.lbl_contrib_intro.Size = new System.Drawing.Size(503, 137);
+            this.lbl_contrib_intro.TabIndex = 39;
+            this.lbl_contrib_intro.Text = resources.GetString("lbl_contrib_intro.Text");
+            this.lbl_contrib_intro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_contrib_intro_MouseDown);
+            this.lbl_contrib_intro.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_contrib_intro_MouseMove);
+            this.lbl_contrib_intro.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_contrib_intro_MouseUp);
+            // 
             // FormContribute
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -279,12 +273,12 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(530, 481);
             this.ControlBox = false;
+            this.Controls.Add(this.lbl_contrib_intro);
             this.Controls.Add(this.pic_BCH);
             this.Controls.Add(this.pic_ETH);
             this.Controls.Add(this.pic_BTC);
             this.Controls.Add(this.lbl_Subtitle);
             this.Controls.Add(this.lbl_Title);
-            this.Controls.Add(this.txt_contrib_intro);
             this.Controls.Add(this.txt_BCH);
             this.Controls.Add(this.lbl_BCH);
             this.Controls.Add(this.txt_ETH);
@@ -325,11 +319,11 @@
         private System.Windows.Forms.Label lbl_ETH;
         private AetherxTextBox txt_BCH;
         private System.Windows.Forms.Label lbl_BCH;
-        private AetherxTextBox txt_contrib_intro;
         private System.Windows.Forms.Label lbl_Subtitle;
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.PictureBox pic_BTC;
         private System.Windows.Forms.PictureBox pic_ETH;
         private System.Windows.Forms.PictureBox pic_BCH;
+        private System.Windows.Forms.Label lbl_contrib_intro;
     }
 }

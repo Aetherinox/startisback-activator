@@ -47,7 +47,7 @@ namespace SIBActivator.Forms
             lbl_Subtitle.Text           = "v" + ver + " by " + tm;
             lbl_Subtitle.Text           = product;
 
-            txt_contrib_intro.Value     = Lng.txt_contrib_intro;
+            lbl_contrib_intro.Text      = Lng.txt_contrib_intro;
             lbl_BTC.Text                = Lng.lbl_contrib_btc; 
             lbl_ETH.Text                = Lng.lbl_contrib_eth; 
             lbl_BCH.Text                = Lng.lbl_contrib_bch; 
@@ -123,6 +123,78 @@ namespace SIBActivator.Forms
         private void aetherxTextBox3__TextChanged( object sender, EventArgs e )
         {
 
+        }
+
+        private void lbl_Title_MouseDown( object sender, MouseEventArgs e )
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void lbl_Title_MouseUp( object sender, MouseEventArgs e )
+        {
+            mouseDown       = false;
+        }
+
+        private void lbl_Title_MouseMove( object sender, MouseEventArgs e )
+        {
+            if ( mouseDown )
+            {
+                this.Location = new Point(
+                    ( this.Location.X - lastLocation.X ) + e.X,
+                    ( this.Location.Y - lastLocation.Y ) + e.Y
+                );
+
+                this.Update( );
+            }
+        }
+
+        private void lbl_Subtitle_MouseDown( object sender, MouseEventArgs e )
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void lbl_Subtitle_MouseUp( object sender, MouseEventArgs e )
+        {
+            mouseDown       = false;
+        }
+
+        private void lbl_Subtitle_MouseMove( object sender, MouseEventArgs e )
+        {
+            if ( mouseDown )
+            {
+                this.Location = new Point(
+                    ( this.Location.X - lastLocation.X ) + e.X,
+                    ( this.Location.Y - lastLocation.Y ) + e.Y
+                );
+
+                this.Update( );
+            }
+        }
+
+        private void lbl_contrib_intro_MouseDown( object sender, MouseEventArgs e )
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void lbl_contrib_intro_MouseUp( object sender, MouseEventArgs e )
+        {
+            mouseDown       = false;
+        }
+
+        private void lbl_contrib_intro_MouseMove( object sender, MouseEventArgs e )
+        {
+            if ( mouseDown )
+            {
+                this.Location = new Point(
+                    ( this.Location.X - lastLocation.X ) + e.X,
+                    ( this.Location.Y - lastLocation.Y ) + e.Y
+                );
+
+                this.Update( );
+            }
         }
     }
 }
