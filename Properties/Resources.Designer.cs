@@ -108,9 +108,29 @@ namespace SIBActivator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bg_about {
+        internal static System.Drawing.Bitmap bch {
             get {
-                object obj = ResourceManager.GetObject("bg_about", resourceCulture);
+                object obj = ResourceManager.GetObject("bch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_header {
+            get {
+                object obj = ResourceManager.GetObject("bg_header", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btc {
+            get {
+                object obj = ResourceManager.GetObject("btc", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -149,6 +169,16 @@ namespace SIBActivator.Properties {
         internal static System.Drawing.Bitmap error {
             get {
                 object obj = ResourceManager.GetObject("error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eth {
+            get {
+                object obj = ResourceManager.GetObject("eth", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

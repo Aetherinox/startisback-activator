@@ -69,7 +69,7 @@ namespace SIBActivator.Msgbox
             this.labelCaption.TabIndex = 4;
             this.labelCaption.Text = "labelCaption";
             // 
-            // btnClose
+            // btn_Close
             // 
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
@@ -79,7 +79,7 @@ namespace SIBActivator.Msgbox
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Location = new System.Drawing.Point(316, 0);
-            this.btnClose.Name = "btnClose";
+            this.btnClose.Name = "btn_Close";
             this.btnClose.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.btnClose.Size = new System.Drawing.Size(30, 25);
             this.btnClose.TabIndex = 3;

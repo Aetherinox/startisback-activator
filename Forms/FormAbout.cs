@@ -80,11 +80,11 @@ This key is used to sign the releases on Github.com, all commits are also signed
             lbl_Product.Parent      = imgHeader;
             lbl_Product.BackColor   = Color.Transparent;
 
-            txt_Version.Parent      = imgHeader;
-            txt_Version.BackColor   = Color.Transparent;
+            lbl_Version.Parent      = imgHeader;
+            lbl_Version.BackColor   = Color.Transparent;
 
-            btnClose.Parent         = imgHeader;
-            btnClose.BackColor      = Color.Transparent;
+            btn_Close.Parent        = imgHeader;
+            btn_Close.BackColor     = Color.Transparent;
 
             lbl_Edu.Parent          = imgHeader;
             lbl_Edu.BackColor       = Color.Transparent;
@@ -95,7 +95,7 @@ This key is used to sign the releases on Github.com, all commits are also signed
             lnk_Github.Parent       = imgHeader;
             lnk_Github.BackColor    = Color.Transparent;
 
-            txt_Version.Text        = "v" + ver + " by " + tm;
+            lbl_Version.Text        = "v" + ver + " by " + tm;
             lbl_Product.Text        = product;
 
             txt_Terms.Value         = GetReadme(product, ver, tm);
@@ -169,7 +169,7 @@ This key is used to sign the releases on Github.com, all commits are also signed
 
         private void btn_Window_Close_MouseEnter(object sender, EventArgs e)
         {
-            btnClose.ForeColor = Color.FromArgb(222, 31, 100);
+            btn_Close.ForeColor = Color.FromArgb(222, 31, 100);
         }
 
         /*
@@ -178,7 +178,7 @@ This key is used to sign the releases on Github.com, all commits are also signed
 
         private void btn_Window_Close_MouseLeave(object sender, EventArgs e)
         {
-            btnClose.ForeColor = Color.FromArgb(255, 255, 255);
+            btn_Close.ForeColor = Color.FromArgb(255, 255, 255);
         }
 
         /*
@@ -254,6 +254,54 @@ This key is used to sign the releases on Github.com, all commits are also signed
         }
 
         private void imgHeader_MouseMove( object sender, MouseEventArgs e )
+        {
+            if ( mouseDown )
+            {
+                this.Location = new Point(
+                    ( this.Location.X - lastLocation.X ) + e.X,
+                    ( this.Location.Y - lastLocation.Y ) + e.Y
+                );
+
+                this.Update( );
+            }
+        }
+
+        private void lbl_Product_MouseDown( object sender, MouseEventArgs e )
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void lbl_Product_MouseUp( object sender, MouseEventArgs e )
+        {
+            mouseDown = false;
+        }
+
+        private void lbl_Product_MouseMove( object sender, MouseEventArgs e )
+        {
+            if ( mouseDown )
+            {
+                this.Location = new Point(
+                    ( this.Location.X - lastLocation.X ) + e.X,
+                    ( this.Location.Y - lastLocation.Y ) + e.Y
+                );
+
+                this.Update( );
+            }
+        }
+
+        private void lbl_Edu_MouseDown( object sender, MouseEventArgs e )
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void lbl_Edu_MouseUp( object sender, MouseEventArgs e )
+        {
+            mouseDown = false;
+        }
+
+        private void lbl_Edu_MouseMove( object sender, MouseEventArgs e )
         {
             if ( mouseDown )
             {

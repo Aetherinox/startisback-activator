@@ -37,8 +37,9 @@ namespace SIBActivator
         /// </summary>
         private void InitializeComponent( )
         {
-            this.btnClose = new System.Windows.Forms.Label();
-            this.txt_Version = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout));
+            this.btn_Close = new System.Windows.Forms.Label();
+            this.lbl_Version = new System.Windows.Forms.Label();
             this.lbl_Product = new System.Windows.Forms.Label();
             this.lbl_Edu = new System.Windows.Forms.Label();
             this.lnk_TPBLink = new System.Windows.Forms.LinkLabel();
@@ -52,57 +53,63 @@ namespace SIBActivator
             ((System.ComponentModel.ISupportInitialize)(this.imgHeader)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnClose
+            // btn_Close
             // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Font = new System.Drawing.Font("Segoe MDL2 Assets", 14.25F, System.Drawing.FontStyle.Bold);
-            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnClose.Location = new System.Drawing.Point(494, 7);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(24, 32);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnClose.Click += new System.EventHandler(this.btn_Window_Close_Click);
-            this.btnClose.MouseEnter += new System.EventHandler(this.btn_Window_Close_MouseEnter);
-            this.btnClose.MouseLeave += new System.EventHandler(this.btn_Window_Close_MouseLeave);
+            this.btn_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btn_Close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Close.Font = new System.Drawing.Font("Segoe MDL2 Assets", 14.25F, System.Drawing.FontStyle.Bold);
+            this.btn_Close.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btn_Close.Location = new System.Drawing.Point(492, 7);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(24, 32);
+            this.btn_Close.TabIndex = 4;
+            this.btn_Close.Text = "";
+            this.btn_Close.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Window_Close_Click);
+            this.btn_Close.MouseEnter += new System.EventHandler(this.btn_Window_Close_MouseEnter);
+            this.btn_Close.MouseLeave += new System.EventHandler(this.btn_Window_Close_MouseLeave);
             // 
-            // txt_Version
+            // lbl_Version
             // 
-            this.txt_Version.AutoSize = true;
-            this.txt_Version.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txt_Version.ForeColor = System.Drawing.Color.White;
-            this.txt_Version.Location = new System.Drawing.Point(413, 103);
-            this.txt_Version.Name = "txt_Version";
-            this.txt_Version.Size = new System.Drawing.Size(38, 15);
-            this.txt_Version.TabIndex = 4;
-            this.txt_Version.Text = "label1";
-            this.txt_Version.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.txt_Version.Click += new System.EventHandler(this.lbl_Serial_Click);
+            this.lbl_Version.AutoSize = true;
+            this.lbl_Version.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lbl_Version.ForeColor = System.Drawing.Color.White;
+            this.lbl_Version.Location = new System.Drawing.Point(413, 103);
+            this.lbl_Version.Name = "lbl_Version";
+            this.lbl_Version.Size = new System.Drawing.Size(38, 15);
+            this.lbl_Version.TabIndex = 4;
+            this.lbl_Version.Text = "label1";
+            this.lbl_Version.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lbl_Version.Click += new System.EventHandler(this.lbl_Serial_Click);
             // 
             // lbl_Product
             // 
             this.lbl_Product.AutoSize = true;
             this.lbl_Product.Font = new System.Drawing.Font("Myriad Pro Light", 20F);
-            this.lbl_Product.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
-            this.lbl_Product.Location = new System.Drawing.Point(10, 9);
+            this.lbl_Product.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(41)))), ((int)(((byte)(101)))));
+            this.lbl_Product.Location = new System.Drawing.Point(10, 19);
             this.lbl_Product.Name = "lbl_Product";
             this.lbl_Product.Size = new System.Drawing.Size(79, 32);
             this.lbl_Product.TabIndex = 5;
             this.lbl_Product.Text = "label1";
             this.lbl_Product.Click += new System.EventHandler(this.lbl_Product_Click);
+            this.lbl_Product.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Product_MouseDown);
+            this.lbl_Product.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Product_MouseMove);
+            this.lbl_Product.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Product_MouseUp);
             // 
             // lbl_Edu
             // 
             this.lbl_Edu.AutoSize = true;
             this.lbl_Edu.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbl_Edu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.lbl_Edu.Location = new System.Drawing.Point(12, 41);
+            this.lbl_Edu.Location = new System.Drawing.Point(12, 51);
             this.lbl_Edu.Name = "lbl_Edu";
             this.lbl_Edu.Size = new System.Drawing.Size(355, 19);
             this.lbl_Edu.TabIndex = 8;
             this.lbl_Edu.Text = "Educational purposes only. No ads, no music, no bullshit.";
+            this.lbl_Edu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Edu_MouseDown);
+            this.lbl_Edu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Edu_MouseMove);
+            this.lbl_Edu.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Edu_MouseUp);
             // 
             // lnk_TPBLink
             // 
@@ -110,7 +117,7 @@ namespace SIBActivator
             this.lnk_TPBLink.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lnk_TPBLink.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnk_TPBLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lnk_TPBLink.Location = new System.Drawing.Point(14, 101);
+            this.lnk_TPBLink.Location = new System.Drawing.Point(14, 100);
             this.lnk_TPBLink.Name = "lnk_TPBLink";
             this.lnk_TPBLink.Size = new System.Drawing.Size(60, 19);
             this.lnk_TPBLink.TabIndex = 1;
@@ -124,7 +131,7 @@ namespace SIBActivator
             this.lnk_Github.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lnk_Github.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnk_Github.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lnk_Github.Location = new System.Drawing.Point(94, 101);
+            this.lnk_Github.Location = new System.Drawing.Point(94, 100);
             this.lnk_Github.Name = "lnk_Github";
             this.lnk_Github.Size = new System.Drawing.Size(86, 19);
             this.lnk_Github.TabIndex = 2;
@@ -156,10 +163,11 @@ namespace SIBActivator
             // 
             // imgHeader
             // 
-            this.imgHeader.Image = global::SIBActivator.Properties.Resources.bg_about;
+            this.imgHeader.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imgHeader.BackgroundImage")));
+            this.imgHeader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.imgHeader.Location = new System.Drawing.Point(1, 1);
             this.imgHeader.Name = "imgHeader";
-            this.imgHeader.Size = new System.Drawing.Size(527, 129);
+            this.imgHeader.Size = new System.Drawing.Size(528, 129);
             this.imgHeader.TabIndex = 13;
             this.imgHeader.TabStop = false;
             this.imgHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.imgHeader_Paint);
@@ -226,7 +234,7 @@ namespace SIBActivator
             this.txt_Terms.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txt_Terms.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
             this.txt_Terms.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
-            this.txt_Terms.BorderSize = 1;
+            this.txt_Terms.BorderSize = 2;
             this.txt_Terms.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_Terms.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.txt_Terms.Location = new System.Drawing.Point(15, 153);
@@ -262,8 +270,8 @@ namespace SIBActivator
             this.Controls.Add(this.lnk_TPBLink);
             this.Controls.Add(this.lbl_Edu);
             this.Controls.Add(this.lbl_Product);
-            this.Controls.Add(this.txt_Version);
-            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.lbl_Version);
+            this.Controls.Add(this.btn_Close);
             this.Controls.Add(this.imgHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -283,8 +291,8 @@ namespace SIBActivator
 
         #endregion
 
-        private System.Windows.Forms.Label btnClose;
-        private Label txt_Version;
+        private System.Windows.Forms.Label btn_Close;
+        private Label lbl_Version;
         private Label lbl_Product;
         private Label lbl_Edu;
         private LinkLabel lnk_TPBLink;

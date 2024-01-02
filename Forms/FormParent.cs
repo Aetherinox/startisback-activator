@@ -16,6 +16,7 @@ using Cfg = SIBActivator.Properties.Settings;
 using System.Collections.Generic;
 using System.Drawing.Printing;
 using SIBActivator.Forms;
+using System.Runtime.ConstrainedExecution;
 
 namespace SIBActivator
 {
@@ -52,10 +53,26 @@ namespace SIBActivator
             StatusBar.InitializeReceiver( this );
 
             this.statusStrip.Renderer   = new StatusBar_Renderer( );
-            string product              = AppInfo.Title;
-            lblTitle.Text               = product;
 
-            txt_intro.Text              = string.Format( Lng.txt_intro, Environment.NewLine );
+            string ver                  = AppInfo.ProductVersionCore.ToString( );
+            string product              = AppInfo.Title;
+            string tm                   = AppInfo.Trademark;
+
+            btn_Close.Parent            = imgHeader;
+            btn_Close.BackColor         = Color.Transparent;
+
+            btn_Minimize.Parent         = imgHeader;
+            btn_Minimize.BackColor      = Color.Transparent;
+
+            lbl_Product.Parent          = imgHeader;
+            lbl_Product.BackColor       = Color.Transparent;
+
+            lbl_Version.Parent          = imgHeader;
+            lbl_Version.BackColor       = Color.Transparent;
+            lbl_Version.Text            = "v" + ver + " by " + tm;
+            lbl_Product.Text            = product;
+
+            lbl_intro.Text              = string.Format( Lng.txt_intro, Environment.NewLine );
             btnPatch.Text               = Lng.btn_patch;
 
             string l1                   = Lng.txt_intro1;
@@ -91,9 +108,6 @@ namespace SIBActivator
             mnuTop.Renderer             = new ToolStripProfessionalRenderer( new mnu_Top_ColorTable( ) );
             status_Label.Text           = string.Format( Lng.statusbar_generate );
             statusStrip.Refresh( );
-
-
-
         }
 
         #region "Main Window: Control Buttons"
@@ -123,7 +137,7 @@ namespace SIBActivator
 
             private void btn_Window_Minimize_MouseEnter( object sender, EventArgs e )
             {
-                minimizeBtn.ForeColor = Color.FromArgb( 222, 31, 100 );
+                btn_Minimize.ForeColor = Color.FromArgb( 243, 41, 101 );
             }
 
             /*
@@ -132,7 +146,7 @@ namespace SIBActivator
 
             private void btn_Window_Minimize_MouseLeave( object sender, EventArgs e )
             {
-                minimizeBtn.ForeColor = Color.FromArgb( 255, 255, 255 );
+                btn_Minimize.ForeColor = Color.FromArgb( 255, 255, 255 );
             }
 
             /*
@@ -150,7 +164,7 @@ namespace SIBActivator
 
             private void btn_Window_Close_MouseEnter( object sender, EventArgs e )
             {
-                btnClose.ForeColor = Color.FromArgb( 222, 31, 100 );
+                btn_Close.ForeColor = Color.FromArgb( 243, 41, 101 );
             }
 
             /*
@@ -159,7 +173,7 @@ namespace SIBActivator
 
             private void btn_Window_Close_MouseLeave( object sender, EventArgs e )
             {
-                btnClose.ForeColor = Color.FromArgb( 255, 255, 255 );
+                btn_Close.ForeColor = Color.FromArgb( 255, 255, 255 );
             }
 
         #endregion
@@ -585,9 +599,81 @@ namespace SIBActivator
 
         private void donateToolStripMenuItem_Click( object sender, EventArgs e )
         {
-                FormDonate to   = new FormDonate( );
-                to.TopMost      = true;
-                to.Show( );
+            FormContribute to   = new FormContribute( );
+            to.TopMost      = true;
+            to.Show( );
+        }
+
+        private void imgHeader_MouseDown( object sender, MouseEventArgs e )
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void imgHeader_MouseUp( object sender, MouseEventArgs e )
+        {
+            mouseDown       = false;
+        }
+
+        private void imgHeader_MouseMove( object sender, MouseEventArgs e )
+        {
+            if ( mouseDown )
+            {
+                this.Location = new Point(
+                    ( this.Location.X - lastLocation.X ) + e.X,
+                    ( this.Location.Y - lastLocation.Y ) + e.Y
+                );
+
+                this.Update( );
+            }
+        }
+
+        private void lbl_intro_MouseDown( object sender, MouseEventArgs e )
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void lbl_intro_MouseUp( object sender, MouseEventArgs e )
+        {
+            mouseDown       = false;
+        }
+
+        private void lbl_intro_MouseMove( object sender, MouseEventArgs e )
+        {
+            if ( mouseDown )
+            {
+                this.Location = new Point(
+                    ( this.Location.X - lastLocation.X ) + e.X,
+                    ( this.Location.Y - lastLocation.Y ) + e.Y
+                );
+
+                this.Update( );
+            }
+        }
+
+        private void rtxt_Intro_MouseDown( object sender, MouseEventArgs e )
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void rtxt_Intro_MouseUp( object sender, MouseEventArgs e )
+        {
+            mouseDown       = false;
+        }
+
+        private void rtxt_Intro_MouseMove( object sender, MouseEventArgs e )
+        {
+            if ( mouseDown )
+            {
+                this.Location = new Point(
+                    ( this.Location.X - lastLocation.X ) + e.X,
+                    ( this.Location.Y - lastLocation.Y ) + e.Y
+                );
+
+                this.Update( );
+            }
         }
     }
 }
