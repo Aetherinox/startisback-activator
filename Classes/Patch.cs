@@ -158,10 +158,8 @@ namespace SIBActivator
 
             if ( path_selected != "auto" )
             {
-
                 if ( File.Exists( path_selected ) )
                 {
-
                     paths_arr = new string [ ] { };
                     paths_lst = new string [ ] { };
 
@@ -170,16 +168,6 @@ namespace SIBActivator
 
                     Array.Resize( ref paths_lst, paths_lst.Length + 1 );
                     paths_lst [ paths_lst.Length - 1 ] = path_selected;
-
-                    #if DEBUG
-                        MessageBox.Show(
-                            "Message,
-                            "Debug: Title",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.None
-                        );
-                    #endif
-
                 }
             }
 
@@ -210,7 +198,7 @@ namespace SIBActivator
                     path_compiled = sb.ToString( );
                 }
 
-                StatusBar.Update( "StartIsBack not found, loading manual dialog ..." );
+                StatusBar.Update( Lng.status_manual_locate );
 
                 MessageBox.Show( string.Format( Lng.msgbox_nolocpath_msg, path_compiled ),
                     Lng.msgbox_nolocpath_title,
@@ -228,13 +216,13 @@ namespace SIBActivator
                     ext_default = src_file_path;
 
                 OpenFileDialog dlg      = new OpenFileDialog( );
-                dlg.Title               = "Locate StartIsBack EXE";
+                dlg.Title               = Lng.dlg_title;
                 dlg.InitialDirectory    = ext_default;
                 dlg.Filter              = "StartIsBack EXE|StartIsBackCfg.exe|All files (*.*)|*.*";
 
                 if ( dlg.ShowDialog( ) == DialogResult.Cancel )
                 {
-                    StatusBar.Update( "Cancelled by user" );
+                    StatusBar.Update( Lng.dlg_cancelled );
 
                     return;
                 }
@@ -253,11 +241,11 @@ namespace SIBActivator
                     }
                     sr.Close( );
 
-                    StatusBar.Update( "Loading " + dlg.FileName );
+                    StatusBar.Update( string.Format( Lng.status_dlg_loaded , dlg.FileName ) );
 
                 }
 
-                StatusBar.Update( Lng.statusbar_sib_not_found );
+                StatusBar.Update( Lng.status_sib_not_found );
 
             }
 
@@ -294,7 +282,7 @@ namespace SIBActivator
             }
             catch ( Exception )
             {
-                StatusBar.Update( Lng.statusbar_taskkill_proc );
+                StatusBar.Update( Lng.status_taskkill_proc );
                 return;
             }
 
@@ -308,7 +296,7 @@ namespace SIBActivator
             }
             catch ( Exception )
             {
-                StatusBar.Update( Lng.statusbar_taskkill_cmd );
+                StatusBar.Update( Lng.status_taskkill_cmd );
                 return;
             }
 
@@ -326,7 +314,7 @@ namespace SIBActivator
             }
             catch ( Exception )
             {
-                StatusBar.Update( Lng.statusbar_taskkill_startisback );
+                StatusBar.Update( Lng.status_taskkill_startisback );
                 return;
             }
 
@@ -353,11 +341,11 @@ namespace SIBActivator
                     }
                     catch ( Exception e )
                     {
-                        Console.WriteLine( "Dev Dump: Exception: " + e.Message );
+                        Console.WriteLine( String.format( Lng.cwrite_dmp_exception, e.Message ) );
                     }
                     finally
                     {
-                        Console.WriteLine( "Dev Dump: Finished" );
+                        Console.WriteLine( String.format( Lng.cwrite_dmp_finish ) );
                     }
                 #endif
 
@@ -430,8 +418,8 @@ namespace SIBActivator
 
                 #if DEBUG
                     MessageBox.Show(
-                        "The following file will be backed up: \n\n" + sib_path_exe + "\n" + patch_bak_fullpath,
-                        "Debug: Create Backup of DLL",
+                        string.Format( Lng.msgbox_dev_bak_msg, sib_path_exe, patch_bak_fullpath ),
+                        Lng.msgbox_dev_bak_title,
                         MessageBoxButtons.OK,
                         MessageBoxIcon.None
                     );
@@ -449,8 +437,8 @@ namespace SIBActivator
 
                 if ( !File.Exists( Cfg.Default.app_patch_file ) )
                 {
-                    MessageBox.Show( string.Format( "Could not extract patched DLL \n{0}", Cfg.Default.app_patch_file ),
-                        "Fatal Error",
+                    MessageBox.Show( string.Format( Lng.msgbox_extract_err_msg, Cfg.Default.app_patch_file ),
+                        Lng.msgbox_extract_err_title,
                         MessageBoxButtons.OK, MessageBoxIcon.Error
                     );
 
@@ -493,16 +481,16 @@ namespace SIBActivator
                         if ( x509_cert.ToLower( ) == Cfg.Default.app_dev_piv_thumbprint.ToLower( ) )
                         {
                             /* certificate: resource file signed and authentic */
-                            StatusBar.Update( "Integrity check success" );
+                            StatusBar.Update( Lng.status_integrity_success );
                         }
                         else
                         {
                             /* certificate: resource file signed but not by developer */
 
-                            StatusBar.Update( "Integrity check failed" );
+                            StatusBar.Update( Lng.status_integrity_fail );
 
-                            MessageBox.Show( string.Format( "The fails associated to this patch have a signature, however, it is not by the developer who wrote the patch, aborting...\n\nCertificate Thumbprint: \n{0}", x509_cert ),
-                                "Integrity Check Failed",
+                            MessageBox.Show( string.Format( Lng.msgbox_integrity_fail_msg, x509_cert ),
+                                Lng.msgbox_integrity_fail_title,
                                 MessageBoxButtons.OK, MessageBoxIcon.Error
                             );
 
@@ -513,10 +501,10 @@ namespace SIBActivator
                     {
                         /* certificate: resource file not signed at all */
 
-                        StatusBar.Update( "Integrity check failed" );
+                        StatusBar.Update( Lng.status_integrity_fail );
 
-                        MessageBox.Show( string.Format( "The files for this activator are not signed and may be fake from another source. Files from this activator's developer will ALWAYS be signed.\n\nEnsure you downloaded this patch from the developer.\n\nFailed File(s):\n     {0}", Cfg.Default.app_patch_file ),
-                            "Integrity Check Failed",
+                        MessageBox.Show( string.Format( Lng.msgbox_integrity_fail_nosign_msg, Cfg.Default.app_patch_file ),
+                            Lng.msgbox_integrity_fail_nosign_title,
                             MessageBoxButtons.OK, MessageBoxIcon.Error
                         );
 
@@ -529,10 +517,10 @@ namespace SIBActivator
                     if ( !File.Exists( StartIsBackCfg_fullpath ) || !bValidExe )
                     {
 
-                        StatusBar.Update( StartIsBackCfg_fullpath + " not valid" );
+                        StatusBar.Update( Lng.status_app_invalid );
 
-                        MessageBox.Show( string.Format( "The file {0} is not a valid Windows application or may be corrupted.\n\nReinstall StartIsBack", StartIsBackCfg_fullpath ),
-                            "Invalid Application",
+                        MessageBox.Show( string.Format( Lng.msgbox_app_invalid_msg, StartIsBackCfg_fullpath ),
+                            Lng.msgbox_app_invalid_title,
                             MessageBoxButtons.OK, MessageBoxIcon.Error
                         );
 
@@ -582,7 +570,7 @@ namespace SIBActivator
                 MessageBoxButtons.OK, MessageBoxIcon.Information
             );
 
-            StatusBar.Update( Lng.statusbar_patch_complete );
+            StatusBar.Update( Lng.status_patch_complete );
 
             return;
         }

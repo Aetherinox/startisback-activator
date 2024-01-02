@@ -164,6 +164,44 @@ namespace SIBActivator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dev Dump: Exception:
+        ///
+        ///{0}.
+        /// </summary>
+        internal static string cwrite_dmp_exception {
+            get {
+                return ResourceManager.GetString("cwrite_dmp_exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dev Dump: Finished.
+        /// </summary>
+        internal static string cwrite_dmp_finish {
+            get {
+                return ResourceManager.GetString("cwrite_dmp_finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancelled by user.
+        /// </summary>
+        internal static string dlg_cancelled {
+            get {
+                return ResourceManager.GetString("dlg_cancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locate StartIsBack EXE.
+        /// </summary>
+        internal static string dlg_title {
+            get {
+                return ResourceManager.GetString("dlg_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap error {
@@ -227,6 +265,110 @@ namespace SIBActivator.Properties {
         internal static string lbl_contrib_eth {
             get {
                 return ResourceManager.GetString("lbl_contrib_eth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file {0} is not a valid Windows application or may be corrupted.
+        ///
+        ///Reinstall StartIsBack.
+        /// </summary>
+        internal static string msgbox_app_invalid_msg {
+            get {
+                return ResourceManager.GetString("msgbox_app_invalid_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Application.
+        /// </summary>
+        internal static string msgbox_app_invalid_title {
+            get {
+                return ResourceManager.GetString("msgbox_app_invalid_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following file will be backed up:
+        ///
+        ///{0}
+        ///{1}.
+        /// </summary>
+        internal static string msgbox_dev_bak_msg {
+            get {
+                return ResourceManager.GetString("msgbox_dev_bak_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debug: Create Backup of DLL.
+        /// </summary>
+        internal static string msgbox_dev_bak_title {
+            get {
+                return ResourceManager.GetString("msgbox_dev_bak_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not extract patched DLL
+        ///{0}.
+        /// </summary>
+        internal static string msgbox_extract_err_msg {
+            get {
+                return ResourceManager.GetString("msgbox_extract_err_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fatal Error.
+        /// </summary>
+        internal static string msgbox_extract_err_title {
+            get {
+                return ResourceManager.GetString("msgbox_extract_err_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The fails associated to this patch have a signature, however, it is not by the developer who wrote the patch, aborting...
+        ///
+        ///Certificate Thumbprint:
+        ///   {0}.
+        /// </summary>
+        internal static string msgbox_integrity_fail_msg {
+            get {
+                return ResourceManager.GetString("msgbox_integrity_fail_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The files for this activator are not signed and may be fake from another source. Files from this activator&apos;s developer will ALWAYS be signed.
+        ///
+        ///Ensure you downloaded this patch from the developer.
+        ///
+        ///Failed File(s):
+        ///     {0}.
+        /// </summary>
+        internal static string msgbox_integrity_fail_nosign_msg {
+            get {
+                return ResourceManager.GetString("msgbox_integrity_fail_nosign_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Integrity Check Failed.
+        /// </summary>
+        internal static string msgbox_integrity_fail_nosign_title {
+            get {
+                return ResourceManager.GetString("msgbox_integrity_fail_nosign_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Integrity Check Failed.
+        /// </summary>
+        internal static string msgbox_integrity_fail_title {
+            get {
+                return ResourceManager.GetString("msgbox_integrity_fail_title", resourceCulture);
             }
         }
         
@@ -328,56 +470,101 @@ namespace SIBActivator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} - invalid win32.
+        /// </summary>
+        internal static string status_app_invalid {
+            get {
+                return ResourceManager.GetString("status_app_invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loaded {0}.
+        /// </summary>
+        internal static string status_dlg_loaded {
+            get {
+                return ResourceManager.GetString("status_dlg_loaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click Patch to begin ....
         /// </summary>
-        internal static string statusbar_generate {
+        internal static string status_generate {
             get {
-                return ResourceManager.GetString("statusbar_generate", resourceCulture);
+                return ResourceManager.GetString("status_generate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Integrity check failed.
+        /// </summary>
+        internal static string status_integrity_fail {
+            get {
+                return ResourceManager.GetString("status_integrity_fail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Integrity check success.
+        /// </summary>
+        internal static string status_integrity_success {
+            get {
+                return ResourceManager.GetString("status_integrity_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to StartIsBack not found, loading manual dialog ....
+        /// </summary>
+        internal static string status_manual_locate {
+            get {
+                return ResourceManager.GetString("status_manual_locate", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Successfully patched StartIsBack.
         /// </summary>
-        internal static string statusbar_patch_complete {
+        internal static string status_patch_complete {
             get {
-                return ResourceManager.GetString("statusbar_patch_complete", resourceCulture);
+                return ResourceManager.GetString("status_patch_complete", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to StartIsBack not found.
         /// </summary>
-        internal static string statusbar_sib_not_found {
+        internal static string status_sib_not_found {
             get {
-                return ResourceManager.GetString("statusbar_sib_not_found", resourceCulture);
+                return ResourceManager.GetString("status_sib_not_found", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Could not restart task explorer.exe.
         /// </summary>
-        internal static string statusbar_taskkill_cmd {
+        internal static string status_taskkill_cmd {
             get {
-                return ResourceManager.GetString("statusbar_taskkill_cmd", resourceCulture);
+                return ResourceManager.GetString("status_taskkill_cmd", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Could not kill task explorer.exe.
         /// </summary>
-        internal static string statusbar_taskkill_proc {
+        internal static string status_taskkill_proc {
             get {
-                return ResourceManager.GetString("statusbar_taskkill_proc", resourceCulture);
+                return ResourceManager.GetString("status_taskkill_proc", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Could not kill StartIsBackCfg.exe.
         /// </summary>
-        internal static string statusbar_taskkill_startisback {
+        internal static string status_taskkill_startisback {
             get {
-                return ResourceManager.GetString("statusbar_taskkill_startisback", resourceCulture);
+                return ResourceManager.GetString("status_taskkill_startisback", resourceCulture);
             }
         }
         

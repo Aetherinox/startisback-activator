@@ -157,6 +157,20 @@
   <data name="chat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Materials\bell.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cwrite_dmp_exception" xml:space="preserve">
+    <value>Dev Dump: Exception:
+
+{0}</value>
+  </data>
+  <data name="cwrite_dmp_finish" xml:space="preserve">
+    <value>Dev Dump: Finished</value>
+  </data>
+  <data name="dlg_cancelled" xml:space="preserve">
+    <value>Cancelled by user</value>
+  </data>
+  <data name="dlg_title" xml:space="preserve">
+    <value>Locate StartIsBack EXE</value>
+  </data>
   <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Materials\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -180,6 +194,50 @@
   <data name="lbl_contrib_eth" xml:space="preserve">
     <value>ETH</value>
     <comment>Etherium</comment>
+  </data>
+  <data name="msgbox_app_invalid_msg" xml:space="preserve">
+    <value>The file {0} is not a valid Windows application or may be corrupted.
+
+Reinstall StartIsBack</value>
+  </data>
+  <data name="msgbox_app_invalid_title" xml:space="preserve">
+    <value>Invalid Application</value>
+  </data>
+  <data name="msgbox_dev_bak_msg" xml:space="preserve">
+    <value>The following file will be backed up:
+
+{0}
+{1}</value>
+  </data>
+  <data name="msgbox_dev_bak_title" xml:space="preserve">
+    <value>Debug: Create Backup of DLL</value>
+  </data>
+  <data name="msgbox_extract_err_msg" xml:space="preserve">
+    <value>Could not extract patched DLL
+{0}</value>
+  </data>
+  <data name="msgbox_extract_err_title" xml:space="preserve">
+    <value>Fatal Error</value>
+  </data>
+  <data name="msgbox_integrity_fail_msg" xml:space="preserve">
+    <value>The fails associated to this patch have a signature, however, it is not by the developer who wrote the patch, aborting...
+
+Certificate Thumbprint:
+   {0}</value>
+  </data>
+  <data name="msgbox_integrity_fail_nosign_msg" xml:space="preserve">
+    <value>The files for this activator are not signed and may be fake from another source. Files from this activator's developer will ALWAYS be signed.
+
+Ensure you downloaded this patch from the developer.
+
+Failed File(s):
+     {0}</value>
+  </data>
+  <data name="msgbox_integrity_fail_nosign_title" xml:space="preserve">
+    <value>Integrity Check Failed</value>
+  </data>
+  <data name="msgbox_integrity_fail_title" xml:space="preserve">
+    <value>Integrity Check Failed</value>
   </data>
   <data name="msgbox_nolocopen_msg" xml:space="preserve">
     <value>Could not find StartIsBack. It must be installed first before you can run the patcher.</value>
@@ -214,22 +272,37 @@ You will be prompted to manually locate StartIsBackCfg.exe. Ensure that StartIsB
   <data name="sib_logo_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Materials\sib_logo_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="statusbar_generate" xml:space="preserve">
+  <data name="status_app_invalid" xml:space="preserve">
+    <value>{0} - invalid win32</value>
+  </data>
+  <data name="status_dlg_loaded" xml:space="preserve">
+    <value>Loaded {0}</value>
+  </data>
+  <data name="status_generate" xml:space="preserve">
     <value>Click Patch to begin ...</value>
   </data>
-  <data name="statusbar_patch_complete" xml:space="preserve">
+  <data name="status_integrity_fail" xml:space="preserve">
+    <value>Integrity check failed</value>
+  </data>
+  <data name="status_integrity_success" xml:space="preserve">
+    <value>Integrity check success</value>
+  </data>
+  <data name="status_manual_locate" xml:space="preserve">
+    <value>StartIsBack not found, loading manual dialog ...</value>
+  </data>
+  <data name="status_patch_complete" xml:space="preserve">
     <value>Successfully patched StartIsBack</value>
   </data>
-  <data name="statusbar_sib_not_found" xml:space="preserve">
+  <data name="status_sib_not_found" xml:space="preserve">
     <value>StartIsBack not found</value>
   </data>
-  <data name="statusbar_taskkill_cmd" xml:space="preserve">
+  <data name="status_taskkill_cmd" xml:space="preserve">
     <value>Could not restart task explorer.exe</value>
   </data>
-  <data name="statusbar_taskkill_proc" xml:space="preserve">
+  <data name="status_taskkill_proc" xml:space="preserve">
     <value>Could not kill task explorer.exe</value>
   </data>
-  <data name="statusbar_taskkill_startisback" xml:space="preserve">
+  <data name="status_taskkill_startisback" xml:space="preserve">
     <value>Could not kill StartIsBackCfg.exe</value>
   </data>
   <data name="template_btn_abort" xml:space="preserve">

@@ -108,7 +108,7 @@ namespace SIBActivator
         private void FormParent_Load( object sender, EventArgs e )
         {
             mnuTop.Renderer             = new ToolStripProfessionalRenderer( new mnu_ColorTable( ) );
-            status_Label.Text           = string.Format( Lng.statusbar_generate );
+            status_Label.Text           = string.Format( Lng.status_generate );
             statusStrip.Refresh( );
         }
 
