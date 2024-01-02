@@ -270,7 +270,7 @@ namespace SIBActivator
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormAbout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "StartIsBack : About";
             this.Load += new System.EventHandler(this.FormAbout_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormAbout_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormAbout_MouseMove);

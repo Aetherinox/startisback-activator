@@ -15,6 +15,7 @@ using Lng = SIBActivator.Properties.Resources;
 using Cfg = SIBActivator.Properties.Settings;
 using System.Collections.Generic;
 using System.Drawing.Printing;
+using SIBActivator.Forms;
 
 namespace SIBActivator
 {
@@ -580,6 +581,13 @@ namespace SIBActivator
             var imgSize                 = mnuTop.ClientSize;
             e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, 1, imgSize.Width - 2, 1 );
             e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, imgSize.Height - 2, imgSize.Width - 2, 1 );
+        }
+
+        private void donateToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+                FormDonate to   = new FormDonate( );
+                to.TopMost      = true;
+                to.Show( );
         }
     }
 }

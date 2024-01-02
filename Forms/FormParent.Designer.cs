@@ -63,6 +63,7 @@ namespace SIBActivator
             this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.txt_intro = new System.Windows.Forms.Label();
+            this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rtxt_Intro = new FZPatch.Controls.AetherxRTextBox();
             this.btnOpenFolder = new SIBActivator.AetherxButton();
             this.btnPatch = new SIBActivator.AetherxButton();
@@ -121,6 +122,7 @@ namespace SIBActivator
             this.mnuTop.GripMargin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.mnuTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.donateToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.mnuTop.Location = new System.Drawing.Point(1, 46);
             this.mnuTop.Name = "mnuTop";
@@ -140,8 +142,8 @@ namespace SIBActivator
             this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem.Margin = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 0, 4, 0);
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 34);
+            this.fileToolStripMenuItem.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(53, 34);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
@@ -152,7 +154,7 @@ namespace SIBActivator
             this.exitToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 21);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(95, 21);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.mnu_Item_Exit_Click);
@@ -166,8 +168,8 @@ namespace SIBActivator
             this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 34);
+            this.aboutToolStripMenuItem.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(60, 34);
             this.aboutToolStripMenuItem.Text = "Help";
             // 
             // githubUpdatesToolStripMenuItem
@@ -287,6 +289,15 @@ namespace SIBActivator
             this.txt_intro.TabIndex = 31;
             this.txt_intro.Text = "label1";
             // 
+            // donateToolStripMenuItem
+            // 
+            this.donateToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
+            this.donateToolStripMenuItem.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(73, 34);
+            this.donateToolStripMenuItem.Text = "Donate";
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
+            // 
             // rtxt_Intro
             // 
             this.rtxt_Intro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
@@ -309,7 +320,7 @@ namespace SIBActivator
             this.btnOpenFolder.FlatAppearance.BorderSize = 0;
             this.btnOpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenFolder.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenFolder.Location = new System.Drawing.Point(399, 346);
+            this.btnOpenFolder.Location = new System.Drawing.Point(399, 350);
             this.btnOpenFolder.Name = "btnOpenFolder";
             this.btnOpenFolder.Size = new System.Drawing.Size(111, 29);
             this.btnOpenFolder.TabIndex = 25;
@@ -325,7 +336,7 @@ namespace SIBActivator
             this.btnPatch.FlatAppearance.BorderSize = 0;
             this.btnPatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPatch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPatch.Location = new System.Drawing.Point(19, 346);
+            this.btnPatch.Location = new System.Drawing.Point(19, 350);
             this.btnPatch.Name = "btnPatch";
             this.btnPatch.Size = new System.Drawing.Size(111, 29);
             this.btnPatch.TabIndex = 5;
@@ -357,7 +368,7 @@ namespace SIBActivator
             this.Name = "FormParent";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "   ";
+            this.Text = "StartIsBack Activator";
             this.Load += new System.EventHandler(this.FormParent_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
@@ -394,6 +405,7 @@ namespace SIBActivator
         private ToolStripSeparator toolStripMenuItem1;
         private FZPatch.Controls.AetherxRTextBox rtxt_Intro;
         private Label txt_intro;
+        private ToolStripMenuItem donateToolStripMenuItem;
     }
 }
 

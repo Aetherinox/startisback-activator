@@ -20,6 +20,9 @@ namespace SIBActivator
     public partial class FormAbout : Form
     {
 
+        private bool mouseDown;
+        private Point lastLocation;
+
         public string GetReadme(string product, string version, string developer)
         {
 
@@ -65,9 +68,6 @@ This key is used to sign the releases on Github.com, all commits are also signed
 
             return string.Format( str_about, product, version, developer );
         }
-
-        private bool mouseDown;
-        private Point lastLocation;
 
         public FormAbout( )
         {
