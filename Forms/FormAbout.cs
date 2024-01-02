@@ -66,29 +66,50 @@ This key is used to sign the releases on Github.com, all commits are also signed
             return string.Format( str_about, product, version, developer );
         }
 
+        private bool mouseDown;
+        private Point lastLocation;
+
         public FormAbout( )
         {
             InitializeComponent( );
 
-            string ver          = AppInfo.ProductVersionCore.ToString( );
-            string product      = AppInfo.Title;
-            string tm           = AppInfo.Trademark;
+            string ver              = AppInfo.ProductVersionCore.ToString( );
+            string product          = AppInfo.Title;
+            string tm               = AppInfo.Trademark;
 
-            txt_Version.Text    = "v" + ver + " by " + tm;
-            lbl_Product.Text    = product;
+            lbl_Product.Parent      = imgHeader;
+            lbl_Product.BackColor   = Color.Transparent;
 
-            txt_Terms.Value     = GetReadme(product, ver, tm);
-            txt_Terms.Text      = GetReadme(product, ver, tm);
+            txt_Version.Parent      = imgHeader;
+            txt_Version.BackColor   = Color.Transparent;
 
-            lbl_Edu.Text        = Lng.about_hdr_desc;
-            lnk_TPBLink.Text    = Lng.about_lnk_tpb;
-            lnk_Github.Text     = Lng.about_lnk_github;
+            btnClose.Parent         = imgHeader;
+            btnClose.BackColor      = Color.Transparent;
 
-            lbl_Dev_PIV_Thumbprint.Text         = Lng.about_lbl_thumbprint;
-            lbl_Dev_GPG_KeyID.Text              = Lng.about_lbl_gpg;
+            lbl_Edu.Parent          = imgHeader;
+            lbl_Edu.BackColor       = Color.Transparent;
 
-            txt_Dev_PIV_Thumbprint.Value        = Cfg.Default.app_dev_piv_thumbprint;
-            txt_Dev_GPG_KeyID.Value             = Cfg.Default.app_dev_gpg_keyid;
+            lnk_TPBLink.Parent      = imgHeader;
+            lnk_TPBLink.BackColor   = Color.Transparent;
+
+            lnk_Github.Parent       = imgHeader;
+            lnk_Github.BackColor    = Color.Transparent;
+
+            txt_Version.Text        = "v" + ver + " by " + tm;
+            lbl_Product.Text        = product;
+
+            txt_Terms.Value         = GetReadme(product, ver, tm);
+            txt_Terms.Text          = GetReadme(product, ver, tm);
+
+            lbl_Edu.Text            = Lng.about_hdr_desc;
+            lnk_TPBLink.Text        = Lng.about_lnk_tpb;
+            lnk_Github.Text         = Lng.about_lnk_github;
+
+            lbl_Dev_PIV_Thumbprint.Text     = Lng.about_lbl_thumbprint;
+            lbl_Dev_GPG_KeyID.Text          = Lng.about_lbl_gpg;
+
+            txt_Dev_PIV_Thumbprint.Value    = Cfg.Default.app_dev_piv_thumbprint;
+            txt_Dev_GPG_KeyID.Value         = Cfg.Default.app_dev_gpg_keyid;
         }
 
         private void FormAbout_Load(object sender, EventArgs e)
@@ -100,9 +121,6 @@ This key is used to sign the releases on Github.com, all commits are also signed
              Main Form > Mouse Down
              deals with moving form around on screen
          */
-
-        private bool mouseDown;
-        private Point lastLocation;
 
         private void FormAbout_MouseDown(object sender, MouseEventArgs e)
         {
@@ -151,7 +169,7 @@ This key is used to sign the releases on Github.com, all commits are also signed
 
         private void btn_Window_Close_MouseEnter(object sender, EventArgs e)
         {
-            closeBtn.ForeColor = Color.FromArgb(222, 31, 100);
+            btnClose.ForeColor = Color.FromArgb(222, 31, 100);
         }
 
         /*
@@ -160,7 +178,7 @@ This key is used to sign the releases on Github.com, all commits are also signed
 
         private void btn_Window_Close_MouseLeave(object sender, EventArgs e)
         {
-            closeBtn.ForeColor = Color.FromArgb(255, 255, 255);
+            btnClose.ForeColor = Color.FromArgb(255, 255, 255);
         }
 
         /*
@@ -213,6 +231,39 @@ This key is used to sign the releases on Github.com, all commits are also signed
         private void txt_Terms__TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void imgHeader_Paint( object sender, PaintEventArgs e )
+        {
+            Graphics g          = e.Graphics;
+            Color backColor     = Color.FromArgb( 65, 255, 255, 255 );
+            var imgSize         = imgHeader.ClientSize;
+
+            e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, imgSize.Height - 2, imgSize.Width - 2, 2 );
+        }
+
+        private void imgHeader_MouseDown( object sender, MouseEventArgs e )
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void imgHeader_MouseUp( object sender, MouseEventArgs e )
+        {
+            mouseDown = false;
+        }
+
+        private void imgHeader_MouseMove( object sender, MouseEventArgs e )
+        {
+            if ( mouseDown )
+            {
+                this.Location = new Point(
+                    ( this.Location.X - lastLocation.X ) + e.X,
+                    ( this.Location.Y - lastLocation.Y ) + e.Y
+                );
+
+                this.Update( );
+            }
         }
     }
 }

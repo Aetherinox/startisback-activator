@@ -46,7 +46,7 @@ namespace SIBActivator
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormParent));
             this.minimizeBtn = new System.Windows.Forms.Label();
-            this.closeBtn = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.mnuTop = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,8 +62,8 @@ namespace SIBActivator
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.txt_intro = new System.Windows.Forms.TextBox();
-            this.rtxt_Intro = new System.Windows.Forms.RichTextBox();
+            this.txt_intro = new System.Windows.Forms.Label();
+            this.rtxt_Intro = new FZPatch.Controls.AetherxRTextBox();
             this.btnOpenFolder = new SIBActivator.AetherxButton();
             this.btnPatch = new SIBActivator.AetherxButton();
             this.mnuTop.SuspendLayout();
@@ -73,39 +73,39 @@ namespace SIBActivator
             // minimizeBtn
             // 
             this.minimizeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.minimizeBtn.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minimizeBtn.Location = new System.Drawing.Point(468, 12);
+            this.minimizeBtn.Font = new System.Drawing.Font("Segoe MDL2 Assets", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minimizeBtn.Location = new System.Drawing.Point(464, 8);
             this.minimizeBtn.Name = "minimizeBtn";
             this.minimizeBtn.Size = new System.Drawing.Size(13, 32);
             this.minimizeBtn.TabIndex = 8;
-            this.minimizeBtn.Text = "―";
-            this.minimizeBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.minimizeBtn.Text = "";
+            this.minimizeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.minimizeBtn.Click += new System.EventHandler(this.btn_Window_Minimize_Click);
             this.minimizeBtn.MouseEnter += new System.EventHandler(this.btn_Window_Minimize_MouseEnter);
             this.minimizeBtn.MouseLeave += new System.EventHandler(this.btn_Window_Minimize_MouseLeave);
             // 
-            // closeBtn
+            // btnClose
             // 
-            this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeBtn.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold);
-            this.closeBtn.Location = new System.Drawing.Point(493, 7);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(24, 32);
-            this.closeBtn.TabIndex = 9;
-            this.closeBtn.Text = "x";
-            this.closeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.closeBtn.Click += new System.EventHandler(this.btn_Window_Close_Click);
-            this.closeBtn.MouseEnter += new System.EventHandler(this.btn_Window_Close_MouseEnter);
-            this.closeBtn.MouseLeave += new System.EventHandler(this.btn_Window_Close_MouseLeave);
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Font = new System.Drawing.Font("Segoe MDL2 Assets", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(492, 7);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(24, 32);
+            this.btnClose.TabIndex = 9;
+            this.btnClose.Text = "";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnClose.Click += new System.EventHandler(this.btn_Window_Close_Click);
+            this.btnClose.MouseEnter += new System.EventHandler(this.btn_Window_Close_MouseEnter);
+            this.btnClose.MouseLeave += new System.EventHandler(this.btn_Window_Close_MouseLeave);
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Myriad Pro Light", 20F);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
-            this.lblTitle.Location = new System.Drawing.Point(14, 9);
+            this.lblTitle.Location = new System.Drawing.Point(13, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(213, 30);
+            this.lblTitle.Size = new System.Drawing.Size(231, 32);
             this.lblTitle.TabIndex = 5;
             this.lblTitle.Text = "StartIsBack Activator";
             this.lblTitle.Click += new System.EventHandler(this.lbl_Title_Click);
@@ -118,7 +118,7 @@ namespace SIBActivator
             this.mnuTop.AutoSize = false;
             this.mnuTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.mnuTop.Dock = System.Windows.Forms.DockStyle.None;
-            this.mnuTop.GripMargin = new System.Windows.Forms.Padding(12, 2, 0, 2);
+            this.mnuTop.GripMargin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.mnuTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.aboutToolStripMenuItem});
@@ -126,10 +126,11 @@ namespace SIBActivator
             this.mnuTop.Name = "mnuTop";
             this.mnuTop.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.mnuTop.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.mnuTop.Size = new System.Drawing.Size(528, 32);
+            this.mnuTop.Size = new System.Drawing.Size(528, 38);
             this.mnuTop.TabIndex = 1;
             this.mnuTop.Text = "menuStrip1";
             this.mnuTop.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnu_Main_ItemClicked);
+            this.mnuTop.Paint += new System.Windows.Forms.PaintEventHandler(this.mnuTop_Paint);
             // 
             // fileToolStripMenuItem
             // 
@@ -139,16 +140,21 @@ namespace SIBActivator
             this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem.Margin = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 28);
+            this.fileToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 0, 4, 0);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 34);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.exitToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.exitToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.exitToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.exitToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 21);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.mnu_Item_Exit_Click);
             // 
             // aboutToolStripMenuItem
@@ -160,24 +166,27 @@ namespace SIBActivator
             this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 28);
+            this.aboutToolStripMenuItem.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 34);
             this.aboutToolStripMenuItem.Text = "Help";
             // 
             // githubUpdatesToolStripMenuItem
             // 
             this.githubUpdatesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.githubUpdatesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.githubUpdatesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.githubUpdatesToolStripMenuItem.Name = "githubUpdatesToolStripMenuItem";
-            this.githubUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.githubUpdatesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.githubUpdatesToolStripMenuItem.Text = "Check for Updates";
             this.githubUpdatesToolStripMenuItem.Click += new System.EventHandler(this.mnu_Item_GithubUpdates_Click);
             // 
             // validateSignatureToolStripMenuItem
             // 
             this.validateSignatureToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.validateSignatureToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.validateSignatureToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.validateSignatureToolStripMenuItem.Name = "validateSignatureToolStripMenuItem";
-            this.validateSignatureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.validateSignatureToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.validateSignatureToolStripMenuItem.Text = "Validate Signature";
             this.validateSignatureToolStripMenuItem.Click += new System.EventHandler(this.validateSignatureToolStripMenuItem_Click);
             // 
@@ -188,15 +197,16 @@ namespace SIBActivator
             this.toolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 1);
             this.toolStripMenuItem1.Paint += new System.Windows.Forms.PaintEventHandler(this.mnu_Sep_Exit_Paint);
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.aboutToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.aboutToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(183, 22);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.mnu_Item_About_Click);
             // 
@@ -211,14 +221,15 @@ namespace SIBActivator
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.status_Label});
             this.statusStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.statusStrip.Location = new System.Drawing.Point(1, 399);
+            this.statusStrip.Location = new System.Drawing.Point(1, 393);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.statusStrip.Size = new System.Drawing.Size(528, 31);
+            this.statusStrip.Size = new System.Drawing.Size(528, 37);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 0;
             this.statusStrip.Text = "statusStrip1";
             this.statusStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.status_Strip_ItemClicked);
+            this.statusStrip.Paint += new System.Windows.Forms.PaintEventHandler(this.statusStrip_Paint);
             this.statusStrip.MouseDown += new System.Windows.Forms.MouseEventHandler(this.status_MouseDown);
             this.statusStrip.MouseMove += new System.Windows.Forms.MouseEventHandler(this.status_MouseMove);
             this.statusStrip.MouseUp += new System.Windows.Forms.MouseEventHandler(this.status_MouseUp);
@@ -229,10 +240,11 @@ namespace SIBActivator
             this.status_Label.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.status_Label.ForeColor = System.Drawing.Color.White;
             this.status_Label.LinkVisited = true;
-            this.status_Label.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
+            this.status_Label.Margin = new System.Windows.Forms.Padding(8, 6, 0, 2);
             this.status_Label.Name = "status_Label";
-            this.status_Label.Size = new System.Drawing.Size(84, 26);
+            this.status_Label.Size = new System.Drawing.Size(84, 29);
             this.status_Label.Text = "status_Label";
+            this.status_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // fileToolStripMenuItem1
             // 
@@ -268,17 +280,12 @@ namespace SIBActivator
             // 
             // txt_intro
             // 
-            this.txt_intro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.txt_intro.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_intro.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txt_intro.ForeColor = System.Drawing.Color.White;
+            this.txt_intro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txt_intro.Location = new System.Drawing.Point(19, 100);
-            this.txt_intro.Multiline = true;
             this.txt_intro.Name = "txt_intro";
-            this.txt_intro.ReadOnly = true;
-            this.txt_intro.Size = new System.Drawing.Size(499, 55);
-            this.txt_intro.TabIndex = 24;
-            this.txt_intro.Text = "Intro";
+            this.txt_intro.Size = new System.Drawing.Size(491, 58);
+            this.txt_intro.TabIndex = 31;
+            this.txt_intro.Text = "label1";
             // 
             // rtxt_Intro
             // 
@@ -289,8 +296,9 @@ namespace SIBActivator
             this.rtxt_Intro.Location = new System.Drawing.Point(19, 161);
             this.rtxt_Intro.Name = "rtxt_Intro";
             this.rtxt_Intro.ReadOnly = true;
-            this.rtxt_Intro.Size = new System.Drawing.Size(491, 160);
-            this.rtxt_Intro.TabIndex = 27;
+            this.rtxt_Intro.Selectable = false;
+            this.rtxt_Intro.Size = new System.Drawing.Size(491, 158);
+            this.rtxt_Intro.TabIndex = 29;
             this.rtxt_Intro.Text = "";
             // 
             // btnOpenFolder
@@ -301,7 +309,7 @@ namespace SIBActivator
             this.btnOpenFolder.FlatAppearance.BorderSize = 0;
             this.btnOpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenFolder.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenFolder.Location = new System.Drawing.Point(399, 338);
+            this.btnOpenFolder.Location = new System.Drawing.Point(399, 346);
             this.btnOpenFolder.Name = "btnOpenFolder";
             this.btnOpenFolder.Size = new System.Drawing.Size(111, 29);
             this.btnOpenFolder.TabIndex = 25;
@@ -317,7 +325,7 @@ namespace SIBActivator
             this.btnPatch.FlatAppearance.BorderSize = 0;
             this.btnPatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPatch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPatch.Location = new System.Drawing.Point(19, 338);
+            this.btnPatch.Location = new System.Drawing.Point(19, 346);
             this.btnPatch.Name = "btnPatch";
             this.btnPatch.Size = new System.Drawing.Size(111, 29);
             this.btnPatch.TabIndex = 5;
@@ -331,13 +339,13 @@ namespace SIBActivator
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(530, 432);
+            this.Controls.Add(this.txt_intro);
             this.Controls.Add(this.rtxt_Intro);
             this.Controls.Add(this.btnOpenFolder);
-            this.Controls.Add(this.txt_intro);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnPatch);
-            this.Controls.Add(this.closeBtn);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.minimizeBtn);
             this.Controls.Add(this.mnuTop);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -366,7 +374,7 @@ namespace SIBActivator
         #endregion
 
         private System.Windows.Forms.Label minimizeBtn;
-        private System.Windows.Forms.Label closeBtn;
+        private System.Windows.Forms.Label btnClose;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.MenuStrip mnuTop;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -380,12 +388,12 @@ namespace SIBActivator
         private ToolStripMenuItem exitToolStripMenuItem1;
         private ToolStripMenuItem aboutToolStripMenuItem3;
         private AetherxButton btnPatch;
-        private TextBox txt_intro;
         private AetherxButton btnOpenFolder;
-        private RichTextBox rtxt_Intro;
         private ToolStripMenuItem githubUpdatesToolStripMenuItem;
         private ToolStripMenuItem validateSignatureToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem1;
+        private FZPatch.Controls.AetherxRTextBox rtxt_Intro;
+        private Label txt_intro;
     }
 }
 

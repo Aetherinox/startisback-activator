@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent( )
         {
-            this.textBox1 = new System.Windows.Forms.TextBox( );
-            this.SuspendLayout( );
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
             // 
             // textBox1
             // 
@@ -61,7 +61,7 @@
             this.Name = "AetherxTextBox";
             this.Size = new System.Drawing.Size(250, 24);
             this.ResumeLayout(false);
-            this.PerformLayout( );
+            this.PerformLayout();
 
         }
 

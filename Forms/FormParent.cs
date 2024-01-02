@@ -13,6 +13,8 @@ using System.IO;
 using System.Windows.Forms;
 using Lng = SIBActivator.Properties.Resources;
 using Cfg = SIBActivator.Properties.Settings;
+using System.Collections.Generic;
+using System.Drawing.Printing;
 
 namespace SIBActivator
 {
@@ -51,6 +53,7 @@ namespace SIBActivator
             this.statusStrip.Renderer   = new StatusBar_Renderer( );
             string product              = AppInfo.Title;
             lblTitle.Text               = product;
+
             txt_intro.Text              = string.Format( Lng.txt_intro, Environment.NewLine );
             btnPatch.Text               = Lng.btn_patch;
 
@@ -94,6 +97,16 @@ namespace SIBActivator
 
         #region "Main Window: Control Buttons"
 
+        /*
+            Control Buttons
+                ->  Minimize
+                ->  Maximize
+                ->  Close
+
+            Icons:  http://modernicons.io/segoe-mdl2/cheatsheet/
+            Font:   Segoe MDL2 Assets
+        */
+
             /*
                 Window > Button > Minimize > Click
             */
@@ -136,7 +149,7 @@ namespace SIBActivator
 
             private void btn_Window_Close_MouseEnter( object sender, EventArgs e )
             {
-                closeBtn.ForeColor = Color.FromArgb( 222, 31, 100 );
+                btnClose.ForeColor = Color.FromArgb( 222, 31, 100 );
             }
 
             /*
@@ -145,7 +158,7 @@ namespace SIBActivator
 
             private void btn_Window_Close_MouseLeave( object sender, EventArgs e )
             {
-                closeBtn.ForeColor = Color.FromArgb( 255, 255, 255 );
+                btnClose.ForeColor = Color.FromArgb( 255, 255, 255 );
             }
 
         #endregion
@@ -546,12 +559,27 @@ namespace SIBActivator
 
             int width           = toolStripSeparator.Width;
             int height          = toolStripSeparator.Height;
-            Color bt            = Color.FromArgb( 255, 40, 40, 40 );
             Color backColor     = Color.FromArgb( 255, 222, 31, 103 );
 
             // Fill the background.
-            e.Graphics.FillRectangle( new SolidBrush( bt ), 0, 0, width, height );
-            e.Graphics.FillRectangle( new SolidBrush( backColor ), 0, 2, width, 2 );
+            e.Graphics.FillRectangle( new SolidBrush( backColor ), 0, 0, width, height );
+        }
+
+        private void statusStrip_Paint( object sender, PaintEventArgs e )
+        {
+            Graphics g                  = e.Graphics;
+            Color backColor             = Color.FromArgb( 35, 255, 255, 255 );
+            var imgSize                 = statusStrip.ClientSize;
+            e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, 1, imgSize.Width - 2, 2 );
+        }
+
+        private void mnuTop_Paint( object sender, PaintEventArgs e )
+        {
+            Graphics g                  = e.Graphics;
+            Color backColor             = Color.FromArgb( 35, 255, 255, 255 );
+            var imgSize                 = mnuTop.ClientSize;
+            e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, 1, imgSize.Width - 2, 1 );
+            e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, imgSize.Height - 2, imgSize.Width - 2, 1 );
         }
     }
 }

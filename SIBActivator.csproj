@@ -115,6 +115,9 @@
     <Compile Include="Classes\Perms.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\MessageBox.cs" />
+    <Compile Include="Controls\ControlRichTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ControlButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -185,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Materials\sib_128.ico" />
+    <None Include="Resources\bg_about.jpg" />
     <None Include="Resources\msimg32.dll" />
     <None Include="Materials\sib_logo_1.png" />
     <None Include="Materials\error.png" />

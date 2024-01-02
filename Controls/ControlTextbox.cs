@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 /*
 
@@ -36,7 +37,9 @@ namespace SIBActivator
         private int borderSize = 1;
         private bool underlineStyle = false;
         private Color borderFocusColor = Color.HotPink;
+        private bool bAllowFocus = true;
         private bool isFocused = false;
+        private bool bEnableScrollbars = true;
         private Color placeholderColor = Color.DarkGray;
         private string placeholderText = "";
         public bool isPlaceholder = false;
@@ -49,7 +52,13 @@ namespace SIBActivator
         public AetherxTextBox( )
         {
             InitializeComponent( );
+            Selectable = true;
+            this.Padding = new System.Windows.Forms.Padding( 3, 3, 3, 3 );
         }
+
+
+        const int WM_SETFOCUS = 0x0007;
+        const int WM_KILLFOCUS = 0x0008;
 
         /*
             Events
@@ -58,10 +67,85 @@ namespace SIBActivator
         public event EventHandler _TextChanged;
 
         /*
+            Properties > Scrollbars
+        */
+
+        /*
+        [
+            Category    ( "Aetherx" ),
+            Description ( "Display scrollbars if text box set to Multiline" ),
+        ] 
+
+        public enum ArrowColor { Red, Green, Magenta, Pink, Orange, Black, Yellow };
+        private ArrowColor _foreColor;
+
+        [ Browsable( true ) ]
+        public ArrowColor ArrowColr
+        {
+            get { return _foreColor; }
+            set { _foreColor = value; }
+        }
+        */
+
+        /*
+            Enables or disables selection highlight. 
+            If you set `Selectable` to `false` then the selection highlight will be disabled.
+
+            enabled by default.
+        */
+
+        [
+            Category    ( "Aetherx" ),
+            Description ( "Display scrollbars if text box set to Multiline" ),
+        ] 
+
+        public bool Selectable { get; set; }
+
+        protected override void WndProc( ref Message m )
+        {
+            if (m.Msg == WM_SETFOCUS && !Selectable)
+            {
+                m.Msg = WM_KILLFOCUS;
+                this.Cursor = Cursors.Default;
+            }
+
+            base.WndProc( ref m );
+        }
+
+        /*
+            Properties > Scrollbars
+        */
+
+        [
+            Category    ( "Aetherx" ),
+            Description ( "Display scrollbars if text box set to Multiline" ),
+        ] 
+
+        public bool MultilineScrollbars
+        {
+            get
+            {
+                return bEnableScrollbars;
+            }
+
+            set
+            {
+                bEnableScrollbars = value;
+
+                if ( bEnableScrollbars )
+                    textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+                else if ( !bEnableScrollbars )
+                    textBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+
+                UpdateControlHeight( );
+            }
+        }
+
+        /*
             Properties > Border Color
         */
 
-        [Category("Aetherx")]
+        [ Category( "Aetherx" ) ]
         public Color BorderColor
         {
             get
@@ -99,7 +183,7 @@ namespace SIBActivator
             Properties > Underline Style
         */
 
-        [Category("Aetherx")]
+        [ Category( "Aetherx" ) ]
         public bool UnderlineStyle
         {
             get
@@ -118,7 +202,7 @@ namespace SIBActivator
             Properties > Password Char
         */
 
-        [Category("Aetherx")]
+        [ Category( "Aetherx" ) ]
         public bool PasswordChar
         {
             get { return isPasswordChar; }
@@ -133,7 +217,7 @@ namespace SIBActivator
             Properties > Multiline
         */
 
-        [Category("Aetherx")]
+        [ Category( "Aetherx" ) ]
         public bool Multiline
         {
             get
@@ -144,7 +228,16 @@ namespace SIBActivator
             set
             {
                 textBox1.Multiline = value;
-                textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+
+                if ( bEnableScrollbars == true )
+                {
+                    textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+                }
+                else if ( bEnableScrollbars == false )
+                {
+                    textBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+                }
+
                 UpdateControlHeight( );
             }
         }
@@ -264,6 +357,24 @@ namespace SIBActivator
         }
 
         /*
+            Properties > Allow Focus
+        */
+
+        [Category("Aetherx")]
+        public bool AllowFocus
+        {
+            get
+            {
+                return bAllowFocus;
+            }
+
+            set
+            {
+                bAllowFocus = value;
+            }
+        }
+
+        /*
             Properties > Focus Border Color
         */
 
@@ -348,37 +459,40 @@ namespace SIBActivator
             Graphics graph = e.Graphics;
 
             // Border
-            using (Pen penBorder = new Pen(borderColor, borderSize))
+            if (borderSize > 0 )
             {
-                penBorder.Alignment = System.Drawing.Drawing2D.PenAlignment.Inset;
-
-                if (!isFocused)
+                using (Pen penBorder = new Pen(borderColor, borderSize))
                 {
-                    if (underlineStyle)
+                    penBorder.Alignment = System.Drawing.Drawing2D.PenAlignment.Inset;
+
+                    if (!isFocused)
                     {
-                        // underline
-                        graph.DrawLine(penBorder, 0, this.Height - 1, this.Width, this.Height - 1);
+                        if (underlineStyle)
+                        {
+                            // underline
+                            graph.DrawLine( penBorder, 0, this.Height - 1, this.Width, this.Height - 1 );
+                        }
+                        else
+                        {
+                            // normal style
+                            graph.DrawRectangle( penBorder, 0, 0, this.Width - 1, this.Height - 1 );
+                        }
                     }
                     else
                     {
-                        // normal style
-                        graph.DrawRectangle(penBorder, 0, 0, this.Width - 0.5F, this.Height - 0.5F);
-                    }
-                }
-                else
-                {
 
-                    penBorder.Color = borderFocusColor;
+                        penBorder.Color = borderFocusColor;
 
-                    if (underlineStyle)
-                    {
-                        // underline
-                        graph.DrawLine(penBorder, 0, this.Height - 1, this.Width, this.Height - 1);
-                    }
-                    else
-                    {
-                        // normal style
-                        graph.DrawRectangle(penBorder, 0, 0, this.Width - 0.5F, this.Height - 0.5F);
+                        if (underlineStyle)
+                        {
+                            // underline
+                            graph.DrawLine(penBorder, 0, this.Height - 1, this.Width, this.Height - 1);
+                        }
+                        else
+                        {
+                            // normal style
+                            graph.DrawRectangle(penBorder, 0, 0, this.Width - 1, this.Height - 1 );
+                        }
                     }
                 }
             }
@@ -454,9 +568,12 @@ namespace SIBActivator
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            isFocused = true;
-            this.Invalidate( );
-            RemovePlaceholder( );
+            if (bAllowFocus)
+            {
+                isFocused = true;
+                this.Invalidate();
+                RemovePlaceholder();
+            }
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
