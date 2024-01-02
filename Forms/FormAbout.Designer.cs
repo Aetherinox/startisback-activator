@@ -55,7 +55,7 @@ namespace SIBActivator
             // 
             // btn_Close
             // 
-            this.btn_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btn_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.btn_Close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Close.Font = new System.Drawing.Font("Segoe MDL2 Assets", 14.25F, System.Drawing.FontStyle.Bold);
             this.btn_Close.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
@@ -87,7 +87,7 @@ namespace SIBActivator
             this.lbl_Product.AutoSize = true;
             this.lbl_Product.Font = new System.Drawing.Font("Myriad Pro Light", 20F);
             this.lbl_Product.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(41)))), ((int)(((byte)(101)))));
-            this.lbl_Product.Location = new System.Drawing.Point(10, 19);
+            this.lbl_Product.Location = new System.Drawing.Point(21, 23);
             this.lbl_Product.Name = "lbl_Product";
             this.lbl_Product.Size = new System.Drawing.Size(79, 32);
             this.lbl_Product.TabIndex = 5;
@@ -102,7 +102,7 @@ namespace SIBActivator
             this.lbl_Edu.AutoSize = true;
             this.lbl_Edu.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbl_Edu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.lbl_Edu.Location = new System.Drawing.Point(12, 51);
+            this.lbl_Edu.Location = new System.Drawing.Point(23, 56);
             this.lbl_Edu.Name = "lbl_Edu";
             this.lbl_Edu.Size = new System.Drawing.Size(355, 19);
             this.lbl_Edu.TabIndex = 8;
@@ -117,7 +117,7 @@ namespace SIBActivator
             this.lnk_TPBLink.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lnk_TPBLink.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnk_TPBLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lnk_TPBLink.Location = new System.Drawing.Point(14, 100);
+            this.lnk_TPBLink.Location = new System.Drawing.Point(25, 100);
             this.lnk_TPBLink.Name = "lnk_TPBLink";
             this.lnk_TPBLink.Size = new System.Drawing.Size(60, 19);
             this.lnk_TPBLink.TabIndex = 1;
@@ -131,7 +131,7 @@ namespace SIBActivator
             this.lnk_Github.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lnk_Github.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnk_Github.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lnk_Github.Location = new System.Drawing.Point(94, 100);
+            this.lnk_Github.Location = new System.Drawing.Point(105, 100);
             this.lnk_Github.Name = "lnk_Github";
             this.lnk_Github.Size = new System.Drawing.Size(86, 19);
             this.lnk_Github.TabIndex = 2;
@@ -144,7 +144,7 @@ namespace SIBActivator
             this.lbl_Dev_PIV_Thumbprint.AutoSize = true;
             this.lbl_Dev_PIV_Thumbprint.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbl_Dev_PIV_Thumbprint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.lbl_Dev_PIV_Thumbprint.Location = new System.Drawing.Point(11, 372);
+            this.lbl_Dev_PIV_Thumbprint.Location = new System.Drawing.Point(11, 365);
             this.lbl_Dev_PIV_Thumbprint.Name = "lbl_Dev_PIV_Thumbprint";
             this.lbl_Dev_PIV_Thumbprint.Size = new System.Drawing.Size(45, 19);
             this.lbl_Dev_PIV_Thumbprint.TabIndex = 9;
@@ -155,7 +155,7 @@ namespace SIBActivator
             this.lbl_Dev_GPG_KeyID.AutoSize = true;
             this.lbl_Dev_GPG_KeyID.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbl_Dev_GPG_KeyID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.lbl_Dev_GPG_KeyID.Location = new System.Drawing.Point(11, 431);
+            this.lbl_Dev_GPG_KeyID.Location = new System.Drawing.Point(11, 430);
             this.lbl_Dev_GPG_KeyID.Name = "lbl_Dev_GPG_KeyID";
             this.lbl_Dev_GPG_KeyID.Size = new System.Drawing.Size(45, 19);
             this.lbl_Dev_GPG_KeyID.TabIndex = 11;
@@ -179,13 +179,13 @@ namespace SIBActivator
             // 
             this.txt_Dev_GPG_KeyID.AllowFocus = true;
             this.txt_Dev_GPG_KeyID.AutoScroll = true;
-            this.txt_Dev_GPG_KeyID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txt_Dev_GPG_KeyID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.txt_Dev_GPG_KeyID.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(41)))), ((int)(((byte)(99)))));
             this.txt_Dev_GPG_KeyID.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txt_Dev_GPG_KeyID.BorderSize = 1;
             this.txt_Dev_GPG_KeyID.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txt_Dev_GPG_KeyID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txt_Dev_GPG_KeyID.Location = new System.Drawing.Point(15, 452);
+            this.txt_Dev_GPG_KeyID.Location = new System.Drawing.Point(15, 451);
             this.txt_Dev_GPG_KeyID.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Dev_GPG_KeyID.Multiline = false;
             this.txt_Dev_GPG_KeyID.MultilineScrollbars = true;
@@ -205,13 +205,13 @@ namespace SIBActivator
             // 
             this.txt_Dev_PIV_Thumbprint.AllowFocus = true;
             this.txt_Dev_PIV_Thumbprint.AutoScroll = true;
-            this.txt_Dev_PIV_Thumbprint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txt_Dev_PIV_Thumbprint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.txt_Dev_PIV_Thumbprint.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(41)))), ((int)(((byte)(99)))));
             this.txt_Dev_PIV_Thumbprint.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txt_Dev_PIV_Thumbprint.BorderSize = 1;
             this.txt_Dev_PIV_Thumbprint.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txt_Dev_PIV_Thumbprint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txt_Dev_PIV_Thumbprint.Location = new System.Drawing.Point(15, 393);
+            this.txt_Dev_PIV_Thumbprint.Location = new System.Drawing.Point(15, 386);
             this.txt_Dev_PIV_Thumbprint.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Dev_PIV_Thumbprint.Multiline = false;
             this.txt_Dev_PIV_Thumbprint.MultilineScrollbars = true;
@@ -231,13 +231,13 @@ namespace SIBActivator
             // 
             this.txt_Terms.AllowFocus = false;
             this.txt_Terms.AutoScroll = true;
-            this.txt_Terms.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txt_Terms.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.txt_Terms.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
             this.txt_Terms.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
             this.txt_Terms.BorderSize = 2;
             this.txt_Terms.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_Terms.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.txt_Terms.Location = new System.Drawing.Point(15, 153);
+            this.txt_Terms.Location = new System.Drawing.Point(15, 143);
             this.txt_Terms.Margin = new System.Windows.Forms.Padding(0);
             this.txt_Terms.Multiline = true;
             this.txt_Terms.MultilineScrollbars = true;

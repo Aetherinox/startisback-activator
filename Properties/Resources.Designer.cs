@@ -204,6 +204,33 @@ namespace SIBActivator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BCH.
+        /// </summary>
+        internal static string lbl_contrib_bch {
+            get {
+                return ResourceManager.GetString("lbl_contrib_bch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BTC.
+        /// </summary>
+        internal static string lbl_contrib_btc {
+            get {
+                return ResourceManager.GetString("lbl_contrib_btc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ETH.
+        /// </summary>
+        internal static string lbl_contrib_eth {
+            get {
+                return ResourceManager.GetString("lbl_contrib_eth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find StartIsBack. It must be installed first before you can run the patcher..
         /// </summary>
         internal static string msgbox_nolocopen_msg {
@@ -301,7 +328,7 @@ namespace SIBActivator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click PATCH to begin ....
+        ///   Looks up a localized string similar to Click Patch to begin ....
         /// </summary>
         internal static string statusbar_generate {
             get {
@@ -414,6 +441,15 @@ namespace SIBActivator.Properties {
         internal static string template_btn_yes {
             get {
                 return ResourceManager.GetString("template_btn_yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I do this because I enjoy giving back, and I&apos;m not looking to make a profit off my work. However, donations would help immensely for one purpose -- purchasing libraries and other commercial products which have insane licensing systems. These types of products would make life much easier and get releases pumped out on a more regular basis. Don&apos;t feel obligated, this is just &quot;if you can&quot;. My main goal is better tools..
+        /// </summary>
+        internal static string txt_contrib_intro {
+            get {
+                return ResourceManager.GetString("txt_contrib_intro", resourceCulture);
             }
         }
         

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lng = SIBActivator.Properties.Resources;
+using Cfg = SIBActivator.Properties.Settings;
+using System.Runtime.ConstrainedExecution;
 
 namespace SIBActivator.Forms
 {
     public partial class FormContribute : Form
     {
+
+        /*
+            Define
+        */
+
+        private Patch Patch         = new Patch( );
+        private Helpers Helpers     = new Helpers( );
 
         private bool mouseDown;
         private Point lastLocation;
@@ -28,6 +39,18 @@ namespace SIBActivator.Forms
 
             lbl_Subtitle.Parent         = imgHeader;
             lbl_Subtitle.BackColor      = Color.Transparent;
+
+            string ver                  = AppInfo.ProductVersionCore.ToString( );
+            string product              = AppInfo.Title;
+            string tm                   = AppInfo.Trademark;
+
+            lbl_Subtitle.Text           = "v" + ver + " by " + tm;
+            lbl_Subtitle.Text           = product;
+
+            txt_contrib_intro.Value     = Lng.txt_contrib_intro;
+            lbl_BTC.Text                = Lng.lbl_contrib_btc; 
+            lbl_ETH.Text                = Lng.lbl_contrib_eth; 
+            lbl_BCH.Text                = Lng.lbl_contrib_bch; 
 
         }
 

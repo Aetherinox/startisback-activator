@@ -11,12 +11,10 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Lng = SIBActivator.Properties.Resources;
-using Cfg = SIBActivator.Properties.Settings;
-using System.Collections.Generic;
-using System.Drawing.Printing;
 using SIBActivator.Forms;
 using System.Runtime.ConstrainedExecution;
+using Lng = SIBActivator.Properties.Resources;
+using Cfg = SIBActivator.Properties.Settings;
 
 namespace SIBActivator
 {

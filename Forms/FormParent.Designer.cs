@@ -105,11 +105,11 @@ namespace SIBActivator
             // lbl_Product
             // 
             this.lbl_Product.AutoSize = true;
-            this.lbl_Product.Font = new System.Drawing.Font("Myriad Pro Light", 22F);
+            this.lbl_Product.Font = new System.Drawing.Font("Myriad Pro Light", 20F);
             this.lbl_Product.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(41)))), ((int)(((byte)(101)))));
-            this.lbl_Product.Location = new System.Drawing.Point(21, 19);
+            this.lbl_Product.Location = new System.Drawing.Point(21, 23);
             this.lbl_Product.Name = "lbl_Product";
-            this.lbl_Product.Size = new System.Drawing.Size(258, 36);
+            this.lbl_Product.Size = new System.Drawing.Size(231, 32);
             this.lbl_Product.TabIndex = 5;
             this.lbl_Product.Text = "StartIsBack Activator";
             this.lbl_Product.Click += new System.EventHandler(this.lbl_Title_Click);
@@ -320,10 +320,11 @@ namespace SIBActivator
             // lbl_Version
             // 
             this.lbl_Version.AutoSize = true;
-            this.lbl_Version.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lbl_Version.Location = new System.Drawing.Point(25, 58);
+            this.lbl_Version.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbl_Version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.lbl_Version.Location = new System.Drawing.Point(23, 56);
             this.lbl_Version.Name = "lbl_Version";
-            this.lbl_Version.Size = new System.Drawing.Size(45, 15);
+            this.lbl_Version.Size = new System.Drawing.Size(54, 19);
             this.lbl_Version.TabIndex = 33;
             this.lbl_Version.Text = "Version";
             // 
