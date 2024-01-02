@@ -21,17 +21,38 @@ Allows you to generate and activate a copy of [StartIsBack v2.x](https://startis
 
 # About
 
+`StartIsBack` returns Windows 10 and Windows 8 to a real fully featured start menu and start button, behaving exactly like the ones in Windows 7.
+
+<br />
+
+Be aware that there are different programs for different versions of Windows. If you are looking to restore the start menu in Windows 11, check out [StartAllBack](https://github.com/Aetherinox/startallback-activator).
+
+<br />
+
+| Program | Operating System |
+| --- | --- |
+| [StartIsBack](https://github.com/Aetherinox/startisback-activator) | Windows 8, 10 |
+| [StartAllBack](https://github.com/Aetherinox/startallback-activator) | Windows 11 |
+
+<br />
+
+This generator has been developed to work on the following versions:
+- StartIsBack v2.x
+
+<br />
+
+---
+
+<br />
+
+# Notice
+
 Developer holds no responsibility with what people decide to do with this app. It was developed strictly for demonstration purposes only.
 Developed under the following conditions:
 
 - Visual Studio 2022 (17.6.5)
 - v4.8.0 .NET Framework
 - C# language
-
-<br />
-
-This generator has been developed to work on the following versions:
-- StartIsBack v2.x
 
 <br />
 
@@ -99,12 +120,12 @@ I scanned with Windows Defender and it reported that the files are clean.
 
 # Previews
 
-<p style="border: 1px solid #353535;" align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/uZZMz8w.png"></p>
+<p align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/uZZMz8w.png"></p>
 
-<p style="border: 1px solid #353535;" align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/f9dwTAT.png"></p>
+<p align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/f9dwTAT.png"></p>
 
-<p style="border: 1px solid #353535;" align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/8mDwu0k.png"></p>
+<p align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/8mDwu0k.png"></p>
 
-<p style="border: 1px solid #353535;" align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/coygbwM.png"></p>
+<p align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/coygbwM.png"></p>
 
-<p style="border: 1px solid #353535;" align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/wK56rlg.png"></p>
+<p align="center"><img style="width: 85%;text-align: center;border: 1px solid #353535;" src="https://i.imgur.com/wK56rlg.png"></p>
