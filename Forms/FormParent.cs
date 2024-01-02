@@ -79,7 +79,6 @@ namespace SIBActivator
 
             string l1                   = Lng.txt_intro1;
             string l2                   = Lng.txt_intro2;
-            string l3                   = Lng.txt_intro3;
 
             rtxt_Intro.Text             = "";
 
@@ -94,10 +93,6 @@ namespace SIBActivator
             rtxt_Intro.SelectionColor   = Color.FromArgb( 31, 133, 222 );
 
             rtxt_Intro.AppendText       ( "\n" );
-
-            rtxt_Intro.AppendText       ( l3 );
-            rtxt_Intro.Select           ( l1.Length + 1 + l2.Length + 1, l3.Length );
-            rtxt_Intro.SelectionColor   = Color.FromArgb( 189, 164, 49 );
 
         }
 

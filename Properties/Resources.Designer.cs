@@ -666,14 +666,5 @@ namespace SIBActivator.Properties {
                 return ResourceManager.GetString("txt_intro2", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Press MANUALLY LOCATE if patch cannot automatically locate StartIsBack..
-        /// </summary>
-        internal static string txt_intro3 {
-            get {
-                return ResourceManager.GetString("txt_intro3", resourceCulture);
-            }
-        }
     }
 }

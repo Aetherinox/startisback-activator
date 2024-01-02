@@ -377,7 +377,4 @@ You will be prompted to manually locate StartIsBackCfg.exe. Ensure that StartIsB
   <data name="txt_intro2" xml:space="preserve">
     <value>Press PATCH to begin.</value>
   </data>
-  <data name="txt_intro3" xml:space="preserve">
-    <value>Press MANUALLY LOCATE if patch cannot automatically locate StartIsBack.</value>
-  </data>
 </root>
