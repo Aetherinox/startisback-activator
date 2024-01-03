@@ -73,37 +73,37 @@ This key is used to sign the releases on Github.com, all commits are also signed
         {
             InitializeComponent( );
 
-            string ver              = AppInfo.ProductVersionCore.ToString( );
-            string product          = AppInfo.Title;
-            string tm               = AppInfo.Trademark;
+            string ver                      = AppInfo.ProductVersionCore.ToString( );
+            string product                  = AppInfo.Title;
+            string tm                       = AppInfo.Trademark;
 
-            lbl_Product.Parent      = imgHeader;
-            lbl_Product.BackColor   = Color.Transparent;
+            lbl_HeaderName.Parent           = imgHeader;
+            lbl_HeaderName.BackColor        = Color.Transparent;
 
-            lbl_Version.Parent      = imgHeader;
-            lbl_Version.BackColor   = Color.Transparent;
+            lbl_Version.Parent              = imgHeader;
+            lbl_Version.BackColor           = Color.Transparent;
 
-            btn_Close.Parent        = imgHeader;
-            btn_Close.BackColor     = Color.Transparent;
+            btn_Close.Parent                = imgHeader;
+            btn_Close.BackColor             = Color.Transparent;
 
-            lbl_Edu.Parent          = imgHeader;
-            lbl_Edu.BackColor       = Color.Transparent;
+            lbl_HeaderSub.Parent            = imgHeader;
+            lbl_HeaderSub.BackColor         = Color.Transparent;
 
-            lnk_TPBLink.Parent      = imgHeader;
-            lnk_TPBLink.BackColor   = Color.Transparent;
+            lnk_TPBLink.Parent              = imgHeader;
+            lnk_TPBLink.BackColor           = Color.Transparent;
 
-            lnk_Github.Parent       = imgHeader;
-            lnk_Github.BackColor    = Color.Transparent;
+            lnk_Github.Parent               = imgHeader;
+            lnk_Github.BackColor            = Color.Transparent;
 
-            lbl_Version.Text        = "v" + ver + " by " + tm;
-            lbl_Product.Text        = product;
+            lbl_Version.Text                = "v" + ver + " by " + tm;
+            lbl_HeaderName.Text             = product;
 
-            txt_Terms.Value         = GetReadme(product, ver, tm);
-            txt_Terms.Text          = GetReadme(product, ver, tm);
+            txt_Terms.Value                 = GetReadme(product, ver, tm);
+            txt_Terms.Text                  = GetReadme(product, ver, tm);
 
-            lbl_Edu.Text            = Lng.about_hdr_desc;
-            lnk_TPBLink.Text        = Lng.about_lnk_tpb;
-            lnk_Github.Text         = Lng.about_lnk_github;
+            lbl_HeaderSub.Text              = Lng.about_hdr_desc;
+            lnk_TPBLink.Text                = Lng.about_lnk_tpb;
+            lnk_Github.Text                 = Lng.about_lnk_github;
 
             lbl_Dev_PIV_Thumbprint.Text     = Lng.about_lbl_thumbprint;
             lbl_Dev_GPG_KeyID.Text          = Lng.about_lbl_gpg;

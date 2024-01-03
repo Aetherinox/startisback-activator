@@ -68,30 +68,30 @@ namespace SIBActivator
         private Perms Perms                     = new Perms( );
 
         private static string patch_launch_dir  = System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetEntryAssembly( ).Location );
-        private static string sib_exe_filename  = Cfg.Default.app_target_exe;
+        private static string app_target_exe    = Cfg.Default.app_target_exe;
 
         /*
              StartIsBack Search Locations
         */
 
-        private static string findSib_Appdata   = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.LocalApplicationData ),
+        private static string find_InAppData    = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.LocalApplicationData ),
                                                     "StartIsBack",
-                                                    sib_exe_filename
+                                                    app_target_exe
                                                 );
 
-        private static string findSib_Prog64    = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.ProgramFiles ),
+        private static string find_InProg64     = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.ProgramFiles ),
                                                     "StartIsBack",
-                                                    sib_exe_filename
+                                                    app_target_exe
                                                 );
 
-        private static string findSib_Prog86    = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.ProgramFilesX86 ),
+        private static string find_InProg86     = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.ProgramFilesX86 ),
                                                     "StartIsBack",
-                                                    sib_exe_filename
+                                                    app_target_exe
                                                 );
 
-        private static string findSib_PatchHome = Path.Combine( patch_launch_dir,
+        private static string find_InAppHome    = Path.Combine( patch_launch_dir,
                                                     "StartIsBack",
-                                                    sib_exe_filename
+                                                    app_target_exe
                                                 );
 
         /*
@@ -113,43 +113,43 @@ namespace SIBActivator
         */
 
             Array.Resize( ref paths_lst, paths_lst.Length + 1 );
-            paths_lst [ paths_lst.Length - 1 ] = findSib_Appdata;
+            paths_lst [ paths_lst.Length - 1 ] = find_InAppData;
 
             Array.Resize( ref paths_lst, paths_lst.Length + 1 );
-            paths_lst [ paths_lst.Length - 1 ] = findSib_Prog64;
+            paths_lst [ paths_lst.Length - 1 ] = find_InProg64;
 
             Array.Resize( ref paths_lst, paths_lst.Length + 1 );
-            paths_lst [ paths_lst.Length - 1 ] = findSib_Prog86;
+            paths_lst [ paths_lst.Length - 1 ] = find_InProg86;
 
             Array.Resize( ref paths_lst, paths_lst.Length + 1 );
-            paths_lst [ paths_lst.Length - 1 ] = findSib_PatchHome;
+            paths_lst [ paths_lst.Length - 1 ] = find_InAppHome;
 
             /*
                 define
             */
 
-            if ( File.Exists( findSib_Appdata ) )
+            if ( File.Exists( find_InAppData ) )
             {
                 Array.Resize( ref paths_arr, paths_arr.Length + 1 );
-                paths_arr [ paths_arr.Length - 1 ] = findSib_Appdata;
+                paths_arr [ paths_arr.Length - 1 ] = find_InAppData;
             }
 
-            if ( File.Exists( findSib_Prog64 ) )
+            if ( File.Exists( find_InProg64 ) )
             {
                 Array.Resize( ref paths_arr, paths_arr.Length + 1 );
-                paths_arr [ paths_arr.Length - 1 ] = findSib_Prog64;
+                paths_arr [ paths_arr.Length - 1 ] = find_InProg64;
             }
 
-            if ( File.Exists( findSib_Prog86 ) )
+            if ( File.Exists( find_InProg86 ) )
             {
                 Array.Resize( ref paths_arr, paths_arr.Length + 1 );
-                paths_arr [ paths_arr.Length - 1 ] = findSib_Prog86;
+                paths_arr [ paths_arr.Length - 1 ] = find_InProg86;
             }
 
-            if ( File.Exists( findSib_PatchHome ) )
+            if ( File.Exists( find_InAppHome ) )
             {
                 Array.Resize( ref paths_arr, paths_arr.Length + 1 );
-                paths_arr [ paths_arr.Length - 1 ] = findSib_PatchHome;
+                paths_arr [ paths_arr.Length - 1 ] = find_InAppHome;
             }
 
             /*
@@ -253,7 +253,7 @@ namespace SIBActivator
                 msimg32.dll filename
             */
             
-            string msImg32_filename             = Cfg.Default.app_patch_file;
+            string msImg32_filename = Cfg.Default.app_patch_file;
 
 
             /*

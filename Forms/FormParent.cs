@@ -66,13 +66,13 @@ namespace SIBActivator
             btn_Minimize.Parent         = imgHeader;
             btn_Minimize.BackColor      = Color.Transparent;
 
-            lbl_Product.Parent          = imgHeader;
-            lbl_Product.BackColor       = Color.Transparent;
+            lbl_HeaderName.Parent          = imgHeader;
+            lbl_HeaderName.BackColor       = Color.Transparent;
 
             lbl_Version.Parent          = imgHeader;
             lbl_Version.BackColor       = Color.Transparent;
             lbl_Version.Text            = "v" + ver + " by " + tm;
-            lbl_Product.Text            = product;
+            lbl_HeaderName.Text            = product;
 
             lbl_intro.Text              = string.Format( Lng.txt_intro, Environment.NewLine );
             btnPatch.Text               = Lng.btn_patch;
@@ -102,7 +102,7 @@ namespace SIBActivator
 
         private void FormParent_Load( object sender, EventArgs e )
         {
-            mnuTop.Renderer             = new ToolStripProfessionalRenderer( new mnu_ColorTable( ) );
+            mnu_Main.Renderer             = new ToolStripProfessionalRenderer( new mnu_ColorTable( ) );
             status_Label.Text           = string.Format( Lng.status_generate );
             statusStrip.Refresh( );
         }
@@ -309,11 +309,11 @@ namespace SIBActivator
                 Top Menu > Paint
             */
 
-            private void mnu_Paint( object sender, PaintEventArgs e )
+            private void mnu_Main_Paint( object sender, PaintEventArgs e )
             {
                 Graphics g                  = e.Graphics;
                 Color backColor             = Color.FromArgb( 35, 255, 255, 255 );
-                var imgSize                 = mnuTop.ClientSize;
+                var imgSize                 = mnu_Main.ClientSize;
                 e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, 1, imgSize.Width - 2, 1 );
                 e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, imgSize.Height - 2, imgSize.Width - 2, 1 );
             }
@@ -328,7 +328,7 @@ namespace SIBActivator
                 Top Menu > Help > About
             */
 
-            private void mnu_Item_About_Click( object sender, EventArgs e )
+            private void mnu_Sub_About_Click( object sender, EventArgs e )
             {
                 FormAbout to    = new FormAbout( );
                 to.TopMost      = true;
@@ -339,7 +339,7 @@ namespace SIBActivator
                 Top Menu > Help > Contribute
             */
 
-            private void mnu_Item_Contribute_Click( object sender, EventArgs e )
+            private void mnu_Cat_Contribute_Click( object sender, EventArgs e )
             {
                 FormContribute to   = new FormContribute( );
                 to.TopMost      = true;
@@ -350,7 +350,7 @@ namespace SIBActivator
                 Top Menu > Help > Github Updates
             */
 
-            private void mnu_Item_GithubUpdates_Click( object sender, EventArgs e )
+            private void mnu_Sub_Updates_Click( object sender, EventArgs e )
             {
                 System.Diagnostics.Process.Start( Cfg.Default.app_url_github );
             }
@@ -359,7 +359,7 @@ namespace SIBActivator
                 Top Menu > Help > x509 Certificate Validation
             */
 
-            private void mnu_Item_Validate_Click( object sender, EventArgs e )
+            private void mnu_Sub_Validate_Click( object sender, EventArgs e )
             {
 
                 string exe_target = System.AppDomain.CurrentDomain.FriendlyName;
@@ -424,7 +424,7 @@ namespace SIBActivator
                 Separates "Exit" from the other items in "About" dropdown.
             */
 
-            private void mnu_Sep_Exit_Paint( object sender, PaintEventArgs e )
+            private void mnu_Help_Sep_1_Paint( object sender, PaintEventArgs e )
             {
                 ToolStripSeparator toolStripSeparator = (ToolStripSeparator)sender;
 
@@ -440,7 +440,7 @@ namespace SIBActivator
                 Top Menu > File > Exit
             */
 
-            private void mnu_Item_Exit_Click( object sender, EventArgs e )
+            private void mnu_Sub_Exit_Click( object sender, EventArgs e )
             {
                 Application.Exit( );
             }

@@ -37,8 +37,8 @@
             this.lbl_ETH = new System.Windows.Forms.Label();
             this.txt_BCH = new SIBActivator.AetherxTextBox();
             this.lbl_BCH = new System.Windows.Forms.Label();
-            this.lbl_Subtitle = new System.Windows.Forms.Label();
-            this.lbl_Title = new System.Windows.Forms.Label();
+            this.lbl_HeaderSub = new System.Windows.Forms.Label();
+            this.lbl_HeaderName = new System.Windows.Forms.Label();
             this.pic_BTC = new System.Windows.Forms.PictureBox();
             this.pic_ETH = new System.Windows.Forms.PictureBox();
             this.pic_BCH = new System.Windows.Forms.PictureBox();
@@ -58,10 +58,10 @@
             this.btn_Close.Location = new System.Drawing.Point(492, 7);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(24, 32);
-            this.btn_Close.TabIndex = 0;
+            this.btn_Close.TabIndex = 4;
             this.btn_Close.Text = "";
             this.btn_Close.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_Close.Click += new System.EventHandler(this.btnClose_Click);
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // imgHeader
             // 
@@ -97,9 +97,9 @@
             this.txt_BTC.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txt_BTC.PlaceholderText = "";
             this.txt_BTC.ReadOnly = true;
-            this.txt_BTC.Selectable = true;
+            this.txt_BTC.Selectable = false;
             this.txt_BTC.Size = new System.Drawing.Size(503, 33);
-            this.txt_BTC.TabIndex = 12;
+            this.txt_BTC.TabIndex = 1;
             this.txt_BTC.UnderlineStyle = true;
             this.txt_BTC.Value = "1QGTXH5gdkWDueFU46fQiZEwkjtHk1yriy";
             // 
@@ -134,9 +134,9 @@
             this.txt_ETH.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txt_ETH.PlaceholderText = "";
             this.txt_ETH.ReadOnly = true;
-            this.txt_ETH.Selectable = true;
+            this.txt_ETH.Selectable = false;
             this.txt_ETH.Size = new System.Drawing.Size(503, 33);
-            this.txt_ETH.TabIndex = 14;
+            this.txt_ETH.TabIndex = 2;
             this.txt_ETH.UnderlineStyle = true;
             this.txt_ETH.Value = "0xC6A9cA5B17265f41636a45dF165a5821f9d26445";
             // 
@@ -161,7 +161,7 @@
             this.txt_BCH.BorderSize = 1;
             this.txt_BCH.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txt_BCH.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.txt_BCH.Location = new System.Drawing.Point(15, 434);
+            this.txt_BCH.Location = new System.Drawing.Point(15, 435);
             this.txt_BCH.Margin = new System.Windows.Forms.Padding(4);
             this.txt_BCH.Multiline = false;
             this.txt_BCH.MultilineScrollbars = true;
@@ -171,9 +171,9 @@
             this.txt_BCH.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txt_BCH.PlaceholderText = "";
             this.txt_BCH.ReadOnly = true;
-            this.txt_BCH.Selectable = true;
+            this.txt_BCH.Selectable = false;
             this.txt_BCH.Size = new System.Drawing.Size(503, 33);
-            this.txt_BCH.TabIndex = 16;
+            this.txt_BCH.TabIndex = 3;
             this.txt_BCH.UnderlineStyle = true;
             this.txt_BCH.Value = "bitcoincash:qrf53klxwhh6t74cfdkv3u3knvhdtpwaku4qgdapja";
             // 
@@ -182,39 +182,39 @@
             this.lbl_BCH.AutoSize = true;
             this.lbl_BCH.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbl_BCH.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.lbl_BCH.Location = new System.Drawing.Point(11, 413);
+            this.lbl_BCH.Location = new System.Drawing.Point(11, 414);
             this.lbl_BCH.Name = "lbl_BCH";
             this.lbl_BCH.Size = new System.Drawing.Size(36, 19);
             this.lbl_BCH.TabIndex = 15;
             this.lbl_BCH.Text = "BCH";
             // 
-            // lbl_Subtitle
+            // lbl_HeaderSub
             // 
-            this.lbl_Subtitle.AutoSize = true;
-            this.lbl_Subtitle.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lbl_Subtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.lbl_Subtitle.Location = new System.Drawing.Point(23, 69);
-            this.lbl_Subtitle.Name = "lbl_Subtitle";
-            this.lbl_Subtitle.Size = new System.Drawing.Size(54, 19);
-            this.lbl_Subtitle.TabIndex = 35;
-            this.lbl_Subtitle.Text = "Version";
-            this.lbl_Subtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseDown);
-            this.lbl_Subtitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseMove);
-            this.lbl_Subtitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseUp);
+            this.lbl_HeaderSub.AutoSize = true;
+            this.lbl_HeaderSub.Font = new System.Drawing.Font("Segoe UI", 9.2F);
+            this.lbl_HeaderSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.lbl_HeaderSub.Location = new System.Drawing.Point(24, 69);
+            this.lbl_HeaderSub.Name = "lbl_HeaderSub";
+            this.lbl_HeaderSub.Size = new System.Drawing.Size(51, 17);
+            this.lbl_HeaderSub.TabIndex = 35;
+            this.lbl_HeaderSub.Text = "Version";
+            this.lbl_HeaderSub.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseDown);
+            this.lbl_HeaderSub.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseMove);
+            this.lbl_HeaderSub.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseUp);
             // 
-            // lbl_Title
+            // lbl_HeaderName
             // 
-            this.lbl_Title.AutoSize = true;
-            this.lbl_Title.Font = new System.Drawing.Font("Myriad Pro Light", 20F);
-            this.lbl_Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(41)))), ((int)(((byte)(101)))));
-            this.lbl_Title.Location = new System.Drawing.Point(21, 36);
-            this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(129, 32);
-            this.lbl_Title.TabIndex = 34;
-            this.lbl_Title.Text = "Contribute";
-            this.lbl_Title.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseDown);
-            this.lbl_Title.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseMove);
-            this.lbl_Title.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseUp);
+            this.lbl_HeaderName.AutoSize = true;
+            this.lbl_HeaderName.Font = new System.Drawing.Font("Myriad Pro Light", 20F);
+            this.lbl_HeaderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(41)))), ((int)(((byte)(101)))));
+            this.lbl_HeaderName.Location = new System.Drawing.Point(21, 36);
+            this.lbl_HeaderName.Name = "lbl_HeaderName";
+            this.lbl_HeaderName.Size = new System.Drawing.Size(129, 32);
+            this.lbl_HeaderName.TabIndex = 34;
+            this.lbl_HeaderName.Text = "Contribute";
+            this.lbl_HeaderName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseDown);
+            this.lbl_HeaderName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseMove);
+            this.lbl_HeaderName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseUp);
             // 
             // pic_BTC
             // 
@@ -242,7 +242,7 @@
             // 
             this.pic_BCH.BackColor = System.Drawing.Color.Transparent;
             this.pic_BCH.Image = global::SIBActivator.Properties.Resources.bch;
-            this.pic_BCH.Location = new System.Drawing.Point(21, 438);
+            this.pic_BCH.Location = new System.Drawing.Point(21, 439);
             this.pic_BCH.Name = "pic_BCH";
             this.pic_BCH.Size = new System.Drawing.Size(25, 25);
             this.pic_BCH.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -256,11 +256,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_contrib_intro.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lbl_contrib_intro.ForeColor = System.Drawing.Color.Gray;
-            this.lbl_contrib_intro.Location = new System.Drawing.Point(15, 143);
+            this.lbl_contrib_intro.Location = new System.Drawing.Point(15, 136);
+            this.lbl_contrib_intro.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_contrib_intro.Name = "lbl_contrib_intro";
-            this.lbl_contrib_intro.Padding = new System.Windows.Forms.Padding(10);
+            this.lbl_contrib_intro.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.lbl_contrib_intro.Size = new System.Drawing.Size(503, 137);
-            this.lbl_contrib_intro.TabIndex = 39;
+            this.lbl_contrib_intro.TabIndex = 0;
             this.lbl_contrib_intro.Text = resources.GetString("lbl_contrib_intro.Text");
             this.lbl_contrib_intro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_contrib_intro_MouseDown);
             this.lbl_contrib_intro.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_contrib_intro_MouseMove);
@@ -277,8 +278,8 @@
             this.Controls.Add(this.pic_BCH);
             this.Controls.Add(this.pic_ETH);
             this.Controls.Add(this.pic_BTC);
-            this.Controls.Add(this.lbl_Subtitle);
-            this.Controls.Add(this.lbl_Title);
+            this.Controls.Add(this.lbl_HeaderSub);
+            this.Controls.Add(this.lbl_HeaderName);
             this.Controls.Add(this.txt_BCH);
             this.Controls.Add(this.lbl_BCH);
             this.Controls.Add(this.txt_ETH);
@@ -295,11 +296,11 @@
             this.Name = "FormContribute";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Donate";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormDonate_Paint);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormDonate_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormDonate_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormDonate_MouseUp);
+            this.Text = "Contribute";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormContribute_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormContribute_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormContribute_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormContribute_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.imgHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_BTC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ETH)).EndInit();
@@ -315,15 +316,15 @@
         private System.Windows.Forms.PictureBox imgHeader;
         private AetherxTextBox txt_BTC;
         private System.Windows.Forms.Label lbl_BTC;
-        private AetherxTextBox txt_ETH;
         private System.Windows.Forms.Label lbl_ETH;
         private AetherxTextBox txt_BCH;
         private System.Windows.Forms.Label lbl_BCH;
-        private System.Windows.Forms.Label lbl_Subtitle;
-        private System.Windows.Forms.Label lbl_Title;
+        private System.Windows.Forms.Label lbl_HeaderSub;
+        private System.Windows.Forms.Label lbl_HeaderName;
         private System.Windows.Forms.PictureBox pic_BTC;
         private System.Windows.Forms.PictureBox pic_ETH;
         private System.Windows.Forms.PictureBox pic_BCH;
         private System.Windows.Forms.Label lbl_contrib_intro;
+        private AetherxTextBox txt_ETH;
     }
 }

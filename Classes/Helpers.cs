@@ -39,34 +39,34 @@ namespace SIBActivator
     {
 
         private static string patch_launch_dir  = System.IO.Path.GetDirectoryName( System.Reflection.Assembly.GetEntryAssembly( ).Location );
-        private static string sib_exe_filename  = Cfg.Default.app_target_exe;
+        private static string app_target_exe    = Cfg.Default.app_target_exe;
 
         /*
              StartIsBack Search Locations
         */
 
-        private static string findSib_Appdata   = Path.Combine(
+        private static string find_InAppData    = Path.Combine(
                                                     Environment.GetFolderPath( Environment.SpecialFolder.LocalApplicationData ),
                                                     "StartIsBack",
-                                                    sib_exe_filename
+                                                    app_target_exe
                                                 );
 
-        private static string findSib_Prog64    = Path.Combine(
+        private static string find_InProg64     = Path.Combine(
                                                     Environment.GetFolderPath( Environment.SpecialFolder.ProgramFiles ),
                                                     "StartIsBack",
-                                                    sib_exe_filename
+                                                    app_target_exe
                                                 );
 
-        private static string findSib_Prog86    = Path.Combine(
+        private static string find_InProg86     = Path.Combine(
                                                     Environment.GetFolderPath( Environment.SpecialFolder.ProgramFilesX86 ),
                                                     "StartIsBack",
-                                                    sib_exe_filename
+                                                    app_target_exe
                                                 );
 
-        private static string findSib_PatchHome = Path.Combine(
+        private static string find_InAppHome    = Path.Combine(
                                                     patch_launch_dir,
                                                     "StartIsBack",
-                                                    sib_exe_filename
+                                                    app_target_exe
                                                 );
 
         /*
@@ -97,9 +97,9 @@ namespace SIBActivator
 
             foreach ( String folder in folders )
             {
-                if ( File.Exists( folder + sib_exe_filename ) )
+                if ( File.Exists( folder + app_target_exe ) )
                     return folder;
-                else if ( File.Exists( folder + "\\" + sib_exe_filename ) )
+                else if ( File.Exists( folder + "\\" + app_target_exe ) )
                     return folder + "\\";
             }
 
@@ -108,9 +108,9 @@ namespace SIBActivator
                     C:\Program Files
             */
 
-            if ( File.Exists( findSib_Prog64 ) )
+            if ( File.Exists( find_InProg64 ) )
             {
-                return Path.GetDirectoryName( findSib_Prog64 );
+                return Path.GetDirectoryName( find_InProg64 );
             }
 
             /*
@@ -118,9 +118,9 @@ namespace SIBActivator
                     C:\Program Files (x86)
             */
 
-            if ( File.Exists( findSib_Prog86 ) )
+            if ( File.Exists( find_InProg86 ) )
             {
-                return Path.GetDirectoryName( findSib_Prog86 );
+                return Path.GetDirectoryName( find_InProg86 );
             }
 
             /*
@@ -128,9 +128,9 @@ namespace SIBActivator
                     C:\Users\$USER\AppData\Local
             */
 
-            if ( File.Exists( findSib_Appdata ) )
+            if ( File.Exists( find_InAppData ) )
             {
-                return Path.GetDirectoryName( findSib_Appdata );
+                return Path.GetDirectoryName( find_InAppData );
             }
 
             /*
@@ -138,9 +138,9 @@ namespace SIBActivator
                     This is where the exe patcher resides
             */
 
-            if ( File.Exists( findSib_PatchHome ) )
+            if ( File.Exists( find_InAppHome ) )
             {
-                return Path.GetDirectoryName( findSib_PatchHome );
+                return Path.GetDirectoryName( find_InAppHome );
             }
 
             /*
@@ -318,7 +318,6 @@ namespace SIBActivator
             }
         }
 
-
         /*
             x509 > File Is Signed
             checks to see if a target file has been signed with x509 cert
@@ -342,8 +341,7 @@ namespace SIBActivator
  
                     var sig             = results[ 0 ].BaseObject as Signature;
 
-                    return sig == null || sig.SignerCertificate == null ? 
-                           false : ( sig.Status != SignatureStatus.NotSigned );
+                    return sig == null || sig.SignerCertificate == null ? false : ( sig.Status != SignatureStatus.NotSigned );
                 }
             }
         }

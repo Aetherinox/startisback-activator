@@ -34,18 +34,18 @@ namespace SIBActivator.Forms
             btn_Close.Parent            = imgHeader;
             btn_Close.BackColor         = Color.Transparent;
 
-            lbl_Title.Parent            = imgHeader;
-            lbl_Title.BackColor         = Color.Transparent;
+            lbl_HeaderName.Parent            = imgHeader;
+            lbl_HeaderName.BackColor         = Color.Transparent;
 
-            lbl_Subtitle.Parent         = imgHeader;
-            lbl_Subtitle.BackColor      = Color.Transparent;
+            lbl_HeaderSub.Parent         = imgHeader;
+            lbl_HeaderSub.BackColor      = Color.Transparent;
 
             string ver                  = AppInfo.ProductVersionCore.ToString( );
             string product              = AppInfo.Title;
             string tm                   = AppInfo.Trademark;
 
-            lbl_Subtitle.Text           = "v" + ver + " by " + tm;
-            lbl_Subtitle.Text           = product;
+            lbl_HeaderSub.Text           = "v" + ver + " by " + tm;
+            lbl_HeaderSub.Text           = product;
 
             lbl_contrib_intro.Text      = Lng.txt_contrib_intro;
             lbl_BTC.Text                = Lng.lbl_contrib_btc; 
@@ -54,29 +54,29 @@ namespace SIBActivator.Forms
 
         }
 
-        private void FormDonate_Paint( object sender, PaintEventArgs e )
+        private void FormContribute_Paint( object sender, PaintEventArgs e )
         {
             Pen clr_border = new Pen(Color.FromArgb(75, 75, 75));
             e.Graphics.DrawRectangle(clr_border, 0, 0, Width - 1, Height - 1);
         }
 
-        private void btnClose_Click( object sender, EventArgs e )
+        private void btn_Close_Click( object sender, EventArgs e )
         {
             this.Close( );
         }
 
-        private void FormDonate_MouseDown( object sender, MouseEventArgs e )
+        private void FormContribute_MouseDown( object sender, MouseEventArgs e )
         {
             mouseDown = true;
             lastLocation = e.Location;
         }
 
-        private void FormDonate_MouseUp( object sender, MouseEventArgs e )
+        private void FormContribute_MouseUp( object sender, MouseEventArgs e )
         {
             mouseDown = false;
         }
 
-        private void FormDonate_MouseMove( object sender, MouseEventArgs e )
+        private void FormContribute_MouseMove( object sender, MouseEventArgs e )
         {
             if (mouseDown)
             {
