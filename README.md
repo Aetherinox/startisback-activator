@@ -106,11 +106,15 @@ Unfortunately, virus scanners such as VirusTotal can report false positives. The
 
 The only option I'd have is to contact these websites and tell them that it's a false positive, but I'm writing a keygen; I highly doubt they're going to be happy with doing anything.
 
-I scanned with Windows Defender and it reported that the files are clean.
+VirusTotal reported that there were a few hits on this, and the results are odd. I've spent a few hours trying to see exactly what parts of the code are triggering these specific hits, but the funny thing is that when I remove code, it actually hits for even more "viruses".
 
-- [VirusTotal](https://www.virustotal.com/gui/file/45b6147b0f15ab0da200b560c90f522fd5ebc4df536b3789c86c973cde272823)
-- [Jotti](https://virusscan.jotti.org/en-US/filescanjob/34oiw5q3lk)
-- [MetaDefender](https://metadefender.opswat.com/results/file/bzIzMTIzMUppOTRRNGdvcnZTVGxBREkxeldB_mdaas/regular/overview)
+The files are clean, and contain no malware. I may spend a full day attempting to see what exactly triggers this, but my initial attempt did nothing but make it add even more.
+
+At one point, I even made a completely empty .DLL with the standard DLL headers, signed it with my certificate and uploaded that. VirusTotal reported that my signature itself was `TR/Crypt.XPACK.Gen`. Which is just ridiuclous. 
+
+- [VirusTotal](https://virustotal.com/gui/file/0ebb59bab9335586918aab49dc14877ecd82c7447b5f7f29d395ef3cdfbee1f7)
+- [Jotti](https://virusscan.jotti.org/en-US/filescanjob/z6k36u9nfb)
+- [MetaDefender](https://metadefender.opswat.com/results/file/bzI0MDEwM1d6S3FBNHhpcGFCbWhQUWpBMGNX_mdaas/regular/overview)
 
 <br />
 
