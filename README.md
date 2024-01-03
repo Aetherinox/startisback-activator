@@ -110,7 +110,9 @@ VirusTotal reported that there were a few hits on this, and the results are odd.
 
 The files are clean, and contain no malware. I may spend a full day attempting to see what exactly triggers this, but my initial attempt did nothing but make it add even more.
 
-At one point, I even made a completely empty .DLL with the standard DLL headers, signed it with my certificate and uploaded that. VirusTotal reported that my signature itself was `TR/Crypt.XPACK.Gen`. Which is just ridiuclous. 
+At one point, I even made a completely empty .DLL with the standard DLL headers, signed it with my certificate and uploaded that. VirusTotal reported that my signature itself was flagged as `TR/Crypt.XPACK.Gen`. Which is just ridiculous.
+
+For some, as long as it's not actually a virus; then it's not a big deal. But some people treat these virus scanners like a God, so it's nice to clear up the hits so that false positives don't freak people out.
 
 - [VirusTotal](https://virustotal.com/gui/file/0ebb59bab9335586918aab49dc14877ecd82c7447b5f7f29d395ef3cdfbee1f7)
 - [Jotti](https://virusscan.jotti.org/en-US/filescanjob/z6k36u9nfb)
