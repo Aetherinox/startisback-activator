@@ -19,7 +19,7 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>H:\Apps\StartIsBack\StartIsBack Activator\Source\Built\\</PublishUrl>
+    <PublishUrl>H:\Apps\StartIsBack\StartIsBack Activator\Built\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AppInfo.cs" />
+    <Compile Include="Classes\Receiver.cs" />
     <Compile Include="Classes\Perms.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\MessageBox.cs" />

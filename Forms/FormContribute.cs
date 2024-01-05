@@ -102,18 +102,10 @@ namespace SIBActivator.Forms
                 this.Close      ( );
             }
 
-            /*
-                Window > Button > Close > Mouse Enter
-            */
-
             private void btn_Window_Close_MouseEnter( object sender, EventArgs e )
             {
                 btn_Close.ForeColor = Color.FromArgb( 222, 31, 100 );
             }
-
-            /*
-                Window > Button > Close > Mouse Leave
-            */
 
             private void btn_Window_Close_MouseLeave( object sender, EventArgs e )
             {
