@@ -41,15 +41,17 @@ namespace SIBActivator
             this.lbl_Version = new System.Windows.Forms.Label();
             this.lbl_HeaderName = new System.Windows.Forms.Label();
             this.lbl_HeaderSub = new System.Windows.Forms.Label();
-            this.lnk_TPBLink = new System.Windows.Forms.LinkLabel();
+            this.lnk_TPB = new System.Windows.Forms.LinkLabel();
             this.lnk_Github = new System.Windows.Forms.LinkLabel();
             this.lbl_Dev_PIV_Thumbprint = new System.Windows.Forms.Label();
             this.lbl_Dev_GPG_KeyID = new System.Windows.Forms.Label();
             this.imgHeader = new System.Windows.Forms.PictureBox();
+            this.pnl_HeaderBtm = new System.Windows.Forms.PictureBox();
             this.txt_Dev_GPG_KeyID = new SIBActivator.AetherxTextBox();
             this.txt_Dev_PIV_Thumbprint = new SIBActivator.AetherxTextBox();
             this.txt_Terms = new SIBActivator.AetherxTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeader)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_HeaderBtm)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Close
@@ -58,7 +60,7 @@ namespace SIBActivator
             this.btn_Close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Close.Font = new System.Drawing.Font("Segoe MDL2 Assets", 14.25F, System.Drawing.FontStyle.Bold);
             this.btn_Close.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btn_Close.Location = new System.Drawing.Point(492, 7);
+            this.btn_Close.Location = new System.Drawing.Point(490, 7);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(24, 32);
             this.btn_Close.TabIndex = 4;
@@ -71,14 +73,16 @@ namespace SIBActivator
             // lbl_Version
             // 
             this.lbl_Version.AutoSize = true;
+            this.lbl_Version.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Version.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lbl_Version.ForeColor = System.Drawing.Color.White;
-            this.lbl_Version.Location = new System.Drawing.Point(391, 100);
+            this.lbl_Version.ForeColor = System.Drawing.Color.Transparent;
+            this.lbl_Version.Location = new System.Drawing.Point(375, 104);
             this.lbl_Version.Name = "lbl_Version";
-            this.lbl_Version.Size = new System.Drawing.Size(45, 19);
+            this.lbl_Version.Size = new System.Drawing.Size(127, 19);
             this.lbl_Version.TabIndex = 4;
-            this.lbl_Version.Text = "label1";
+            this.lbl_Version.Text = "v1.2.0.0 by Aetherx";
             this.lbl_Version.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lbl_Version.Paint += new System.Windows.Forms.PaintEventHandler(this.lbl_Version_Paint);
             // 
             // lbl_HeaderName
             // 
@@ -108,33 +112,39 @@ namespace SIBActivator
             this.lbl_HeaderSub.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderSub_MouseMove);
             this.lbl_HeaderSub.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderSub_MouseUp);
             // 
-            // lnk_TPBLink
+            // lnk_TPB
             // 
-            this.lnk_TPBLink.AutoSize = true;
-            this.lnk_TPBLink.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lnk_TPBLink.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnk_TPBLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lnk_TPBLink.Location = new System.Drawing.Point(25, 101);
-            this.lnk_TPBLink.Name = "lnk_TPBLink";
-            this.lnk_TPBLink.Size = new System.Drawing.Size(60, 19);
-            this.lnk_TPBLink.TabIndex = 1;
-            this.lnk_TPBLink.TabStop = true;
-            this.lnk_TPBLink.Text = "Releases";
-            this.lnk_TPBLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_TPB_LinkClicked);
+            this.lnk_TPB.AutoSize = true;
+            this.lnk_TPB.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lnk_TPB.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.lnk_TPB.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lnk_TPB.Location = new System.Drawing.Point(25, 104);
+            this.lnk_TPB.Name = "lnk_TPB";
+            this.lnk_TPB.Size = new System.Drawing.Size(74, 19);
+            this.lnk_TPB.TabIndex = 1;
+            this.lnk_TPB.TabStop = true;
+            this.lnk_TPB.Text = "TPB Profile";
+            this.lnk_TPB.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_TPB_LinkClicked);
+            this.lnk_TPB.Paint += new System.Windows.Forms.PaintEventHandler(this.lnk_TPB_Paint);
+            this.lnk_TPB.MouseEnter += new System.EventHandler(this.lnk_TPB_MouseEnter);
+            this.lnk_TPB.MouseLeave += new System.EventHandler(this.lnk_TPB_MouseLeave);
             // 
             // lnk_Github
             // 
             this.lnk_Github.AutoSize = true;
             this.lnk_Github.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lnk_Github.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnk_Github.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lnk_Github.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lnk_Github.Location = new System.Drawing.Point(105, 101);
+            this.lnk_Github.Location = new System.Drawing.Point(105, 104);
             this.lnk_Github.Name = "lnk_Github";
             this.lnk_Github.Size = new System.Drawing.Size(86, 19);
             this.lnk_Github.TabIndex = 2;
             this.lnk_Github.TabStop = true;
             this.lnk_Github.Text = "Github Repo";
             this.lnk_Github.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_Github_LinkClicked);
+            this.lnk_Github.Paint += new System.Windows.Forms.PaintEventHandler(this.lnk_Github_Paint);
+            this.lnk_Github.MouseEnter += new System.EventHandler(this.lnk_Github_MouseEnter);
+            this.lnk_Github.MouseLeave += new System.EventHandler(this.lnk_Github_MouseLeave);
             // 
             // lbl_Dev_PIV_Thumbprint
             // 
@@ -171,6 +181,18 @@ namespace SIBActivator
             this.imgHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.imgHeader_MouseDown);
             this.imgHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imgHeader_MouseMove);
             this.imgHeader.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imgHeader_MouseUp);
+            // 
+            // pnl_HeaderBtm
+            // 
+            this.pnl_HeaderBtm.Location = new System.Drawing.Point(1, 98);
+            this.pnl_HeaderBtm.Name = "pnl_HeaderBtm";
+            this.pnl_HeaderBtm.Size = new System.Drawing.Size(528, 32);
+            this.pnl_HeaderBtm.TabIndex = 19;
+            this.pnl_HeaderBtm.TabStop = false;
+            this.pnl_HeaderBtm.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_HeaderBtm_Paint);
+            this.pnl_HeaderBtm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnl_HeaderBtm_MouseDown);
+            this.pnl_HeaderBtm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_HeaderBtm_MouseMove);
+            this.pnl_HeaderBtm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnl_HeaderBtm_MouseUp);
             // 
             // txt_Dev_GPG_KeyID
             // 
@@ -263,11 +285,12 @@ namespace SIBActivator
             this.Controls.Add(this.lbl_Dev_PIV_Thumbprint);
             this.Controls.Add(this.txt_Terms);
             this.Controls.Add(this.lnk_Github);
-            this.Controls.Add(this.lnk_TPBLink);
+            this.Controls.Add(this.lnk_TPB);
             this.Controls.Add(this.lbl_HeaderSub);
             this.Controls.Add(this.lbl_HeaderName);
             this.Controls.Add(this.lbl_Version);
             this.Controls.Add(this.btn_Close);
+            this.Controls.Add(this.pnl_HeaderBtm);
             this.Controls.Add(this.imgHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -280,6 +303,7 @@ namespace SIBActivator
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormAbout_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormAbout_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.imgHeader)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_HeaderBtm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,7 +315,7 @@ namespace SIBActivator
         private Label lbl_Version;
         private Label lbl_HeaderName;
         private Label lbl_HeaderSub;
-        private LinkLabel lnk_TPBLink;
+        private LinkLabel lnk_TPB;
         private LinkLabel lnk_Github;
         private AetherxTextBox txt_Terms;
         private Label lbl_Dev_PIV_Thumbprint;
@@ -299,5 +323,6 @@ namespace SIBActivator
         private Label lbl_Dev_GPG_KeyID;
         private AetherxTextBox txt_Dev_GPG_KeyID;
         private PictureBox imgHeader;
+        private PictureBox pnl_HeaderBtm;
     }
 }

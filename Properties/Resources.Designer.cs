@@ -88,7 +88,7 @@ namespace SIBActivator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Patcher Updates.
+        ///   Looks up a localized string similar to Github Repo.
         /// </summary>
         internal static string about_lnk_github {
             get {
@@ -97,7 +97,7 @@ namespace SIBActivator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Releases.
+        ///   Looks up a localized string similar to TPB Profile.
         /// </summary>
         internal static string about_lnk_tpb {
             get {

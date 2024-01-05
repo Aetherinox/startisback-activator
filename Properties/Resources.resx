@@ -130,11 +130,11 @@
     <comment>About &gt;PIV ID Label</comment>
   </data>
   <data name="about_lnk_github" xml:space="preserve">
-    <value>Patcher Updates</value>
+    <value>Github Repo</value>
     <comment>About &gt;Link &gt; Github</comment>
   </data>
   <data name="about_lnk_tpb" xml:space="preserve">
-    <value>Releases</value>
+    <value>TPB Profile</value>
     <comment>About &gt;Link &gt; TPB</comment>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
