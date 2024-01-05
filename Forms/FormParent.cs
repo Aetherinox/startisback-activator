@@ -4,15 +4,12 @@
     @author     : Aetherinox
 */
 
-using SIBActivator;
 using System;
-using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using SIBActivator.Forms;
-using System.Runtime.ConstrainedExecution;
 using Lng = SIBActivator.Properties.Resources;
 using Cfg = SIBActivator.Properties.Settings;
 
@@ -21,91 +18,135 @@ namespace SIBActivator
     public partial class FormParent : Form, IReceiver
     {
 
-        /*
-            Define > Classes
-        */
+        #region "Declarations"
 
-        private Patch Patch         = new Patch( );
-        private Helpers Helpers     = new Helpers( );
+            /*
+                Define > Classes
+            */
 
-        /*
-            Define > Internal > Helper
-        */
+            private Patch Patch         = new Patch( );
+            private Helpers Helpers     = new Helpers( );
 
-        internal Helpers Helper
-        {
-            set     { Helpers = value;  }
-            get     { return Helpers;   }
-        }
+            /*
+                Define > Internal > Helper
+            */
 
-        /*
-            Define > Mouse
-        */
+            internal Helpers Helper
+            {
+                set     { Helpers = value;  }
+                get     { return Helpers;   }
+            }
 
-        private bool mouseDown;
-        private Point lastLocation;
+            /*
+                Define > Mouse
+            */
+
+            private bool mouseDown;
+            private Point lastLocation;
+
+        #endregion
+
+        #region "Main Window: Initialize"
 
         /*
             Frame > Parent
         */
 
         public FormParent( )
-        {
-            InitializeComponent( );
-            StatusBar.InitializeReceiver( this );
+            {
+                InitializeComponent( );
+                StatusBar.InitializeReceiver( this );
 
-            this.statusStrip.Renderer   = new StatusBar_Renderer( );
+                this.status_Strip.Renderer  = new StatusBar_Renderer( );
 
-            string ver                  = AppInfo.ProductVersionCore.ToString( );
-            string product              = AppInfo.Title;
-            string tm                   = AppInfo.Trademark;
+                /*
+                    Product, trademark, etc.
+                */
 
-            btn_Close.Parent            = imgHeader;
-            btn_Close.BackColor         = Color.Transparent;
+                string ver                  = AppInfo.ProductVersionCore.ToString( );
+                string product              = AppInfo.Title;
+                string tm                   = AppInfo.Trademark;
 
-            btn_Minimize.Parent         = imgHeader;
-            btn_Minimize.BackColor      = Color.Transparent;
+                /*
+                    Form Control Buttons
+                */
 
-            lbl_HeaderName.Parent          = imgHeader;
-            lbl_HeaderName.BackColor       = Color.Transparent;
+                btn_Close.Parent            = imgHeader;
+                btn_Close.BackColor         = Color.Transparent;
 
-            lbl_Version.Parent          = imgHeader;
-            lbl_Version.BackColor       = Color.Transparent;
-            lbl_Version.Text            = "v" + ver + " by " + tm;
-            lbl_HeaderName.Text            = product;
+                btn_Minimize.Parent         = imgHeader;
+                btn_Minimize.BackColor      = Color.Transparent;
 
-            lbl_intro.Text              = string.Format( Lng.txt_intro, Environment.NewLine );
-            btnPatch.Text               = Lng.btn_patch;
+                /*
+                    Headers
+                */
 
-            string l1                   = Lng.txt_intro1;
-            string l2                   = Lng.txt_intro2;
+                lbl_HeaderName.Parent       = imgHeader;
+                lbl_HeaderName.BackColor    = Color.Transparent;
+                lbl_HeaderName.Text         = product;
 
-            rtxt_Intro.Text             = "";
+                lbl_HeaderSub.Parent        = imgHeader;
+                lbl_HeaderSub.BackColor     = Color.Transparent;
+                lbl_HeaderSub.Text          = "v" + ver + " by " + tm;
 
-            rtxt_Intro.AppendText       ( l1 );
-            rtxt_Intro.Select           ( 0, l1.Length );
-            rtxt_Intro.SelectionColor   = Color.White;
+                /*
+                    Richtext in body of interface
+                */
 
-            rtxt_Intro.AppendText       ( "\n\n" );
+                lbl_intro.Text              = string.Format( Lng.txt_intro, Environment.NewLine );
 
-            rtxt_Intro.AppendText       ( l2 );
-            rtxt_Intro.Select           ( l1.Length + 1, l2.Length );
-            rtxt_Intro.SelectionColor   = Color.FromArgb( 31, 133, 222 );
+                string l1                   = Lng.txt_intro1;
+                string l2                   = Lng.txt_intro2;
 
-            rtxt_Intro.AppendText       ( "\n" );
+                rtxt_Intro.Text             = "";
 
-        }
+                rtxt_Intro.AppendText       ( l1 );
+                rtxt_Intro.Select           ( 0, l1.Length );
+                rtxt_Intro.SelectionColor   = Color.White;
 
-        /*
-            Frame > Parent > Load
-        */
+                rtxt_Intro.AppendText       ( "\n\n" );
 
-        private void FormParent_Load( object sender, EventArgs e )
-        {
-            mnu_Main.Renderer             = new ToolStripProfessionalRenderer( new mnu_ColorTable( ) );
-            status_Label.Text           = string.Format( Lng.status_generate );
-            statusStrip.Refresh( );
-        }
+                rtxt_Intro.AppendText       ( l2 );
+                rtxt_Intro.Select           ( l1.Length + 1, l2.Length );
+                rtxt_Intro.SelectionColor   = Color.FromArgb( 31, 133, 222 );
+
+                rtxt_Intro.AppendText       ( "\n" );
+
+                /*
+                    Buttons
+                */
+
+                btn_Patch.Text              = Lng.btn_patch;
+                btn_OpenFolder.Text         = Lng.btn_open_folder;
+
+            }
+
+            /*
+                Frame > Parent > Load
+            */
+
+            private void FormParent_Load( object sender, EventArgs e )
+            {
+                mnu_Main.Renderer           = new ToolStripProfessionalRenderer( new mnu_ColorTable( ) );
+                lbl_StatusOutput.Text       = string.Format( Lng.status_generate );
+                status_Strip.Refresh( );
+            }
+
+            /*
+                Tweak to fix frame flickering
+            */
+
+            protected override CreateParams CreateParams
+            {
+                get
+                {
+                    CreateParams cp = base.CreateParams;
+                    cp.ExStyle |= 0x02000000;  // enable WS_EX_COMPOSITED
+                    return cp;
+                }
+            }
+
+        #endregion
 
         #region "Main Window: Control Buttons"
 
@@ -204,6 +245,94 @@ namespace SIBActivator
             */
 
             private void MainForm_MouseMove( object sender, MouseEventArgs e )
+            {
+                if ( mouseDown )
+                {
+                    this.Location = new Point(
+                        ( this.Location.X - lastLocation.X ) + e.X,
+                        ( this.Location.Y - lastLocation.Y ) + e.Y
+                    );
+
+                    this.Update( );
+                }
+            }
+
+        #endregion
+
+        #region "Header"
+
+        /*
+            Header Image
+        */
+
+            private void imgHeader_MouseDown( object sender, MouseEventArgs e )
+            {
+                mouseDown = true;
+                lastLocation = e.Location;
+            }
+
+            private void imgHeader_MouseUp( object sender, MouseEventArgs e )
+            {
+                mouseDown       = false;
+            }
+
+            private void imgHeader_MouseMove( object sender, MouseEventArgs e )
+            {
+                if ( mouseDown )
+                {
+                    this.Location = new Point(
+                        ( this.Location.X - lastLocation.X ) + e.X,
+                        ( this.Location.Y - lastLocation.Y ) + e.Y
+                    );
+
+                    this.Update( );
+                }
+            }
+
+        /*
+            Header > Name Label
+        */
+
+            private void lbl_HeaderName_MouseDown( object sender, MouseEventArgs e )
+            {
+                mouseDown = true;
+                lastLocation = e.Location;
+            }
+
+            private void lbl_HeaderName_MouseUp( object sender, MouseEventArgs e )
+            {
+                mouseDown = false;
+            }
+
+            private void lbl_HeaderName_MouseMove( object sender, MouseEventArgs e )
+            {
+                if ( mouseDown )
+                {
+                    this.Location = new Point(
+                        ( this.Location.X - lastLocation.X ) + e.X,
+                        ( this.Location.Y - lastLocation.Y ) + e.Y
+                    );
+
+                    this.Update( );
+                }
+            }
+
+        /*
+            Header > Sub Label
+        */
+
+            private void lbl_HeaderSub_MouseDown( object sender, MouseEventArgs e )
+            {
+                mouseDown = true;
+                lastLocation = e.Location;
+            }
+
+            private void lbl_HeaderSub_MouseUp( object sender, MouseEventArgs e )
+            {
+                mouseDown = false;
+            }
+
+            private void lbl_HeaderSub_MouseMove( object sender, MouseEventArgs e )
             {
                 if ( mouseDown )
                 {
@@ -319,30 +448,24 @@ namespace SIBActivator
             }
 
             /*
-                Top Menu > Click Item
+                Top Menu > File > Exit
             */
 
-            private void mnu_Main_ItemClicked( object sender, ToolStripItemClickedEventArgs e ) { }
-
-            /*
-                Top Menu > Help > About
-            */
-
-            private void mnu_Sub_About_Click( object sender, EventArgs e )
+            private void mnu_Sub_Exit_Click( object sender, EventArgs e )
             {
-                FormAbout to    = new FormAbout( );
-                to.TopMost      = true;
-                to.Show( );
+                Application.Exit( );
             }
 
             /*
-                Top Menu > Help > Contribute
+                Top Menu > Contribute
             */
 
             private void mnu_Cat_Contribute_Click( object sender, EventArgs e )
             {
+                this.Hide( );
+
                 FormContribute to   = new FormContribute( );
-                to.TopMost      = true;
+                to.TopMost          = true;
                 to.Show( );
             }
 
@@ -374,7 +497,7 @@ namespace SIBActivator
                     return;
                 }
 
-                string x509_cert    = Helpers.x509_Thumbprint( exe_target );
+                string x509_cert    = Helper.x509_Thumbprint( exe_target );
 
                 /*
                     x509 certificate
@@ -437,70 +560,16 @@ namespace SIBActivator
             }
 
             /*
-                Top Menu > File > Exit
+                Top Menu > Help > About
             */
 
-            private void mnu_Sub_Exit_Click( object sender, EventArgs e )
+            private void mnu_Sub_About_Click( object sender, EventArgs e )
             {
-                Application.Exit( );
-            }
+                this.Hide( );
 
-        #endregion
-
-        #region "Header"
-
-            private void imgHeader_MouseDown( object sender, MouseEventArgs e )
-            {
-                mouseDown = true;
-                lastLocation = e.Location;
-            }
-
-            private void imgHeader_MouseUp( object sender, MouseEventArgs e )
-            {
-                mouseDown       = false;
-            }
-
-            private void imgHeader_MouseMove( object sender, MouseEventArgs e )
-            {
-                if ( mouseDown )
-                {
-                    this.Location = new Point(
-                        ( this.Location.X - lastLocation.X ) + e.X,
-                        ( this.Location.Y - lastLocation.Y ) + e.Y
-                    );
-
-                    this.Update( );
-                }
-            }
-
-        #endregion
-
-        #region "Label: Title"
-
-            private void lbl_Title_Click( object sender, EventArgs e ) { }
-
-            private void lbl_Title_MouseDown( object sender, MouseEventArgs e )
-            {
-                mouseDown = true;
-                lastLocation = e.Location;
-            }
-
-            private void lbl_Title_MouseUp( object sender, MouseEventArgs e )
-            {
-                mouseDown = false;
-            }
-
-            private void lbl_Title_MouseMove( object sender, MouseEventArgs e )
-            {
-                if ( mouseDown )
-                {
-                    this.Location = new Point(
-                        ( this.Location.X - lastLocation.X ) + e.X,
-                        ( this.Location.Y - lastLocation.Y ) + e.Y
-                    );
-
-                    this.Update( );
-                }
+                FormAbout to    = new FormAbout( );
+                to.TopMost      = true;
+                to.Show( );
             }
 
         #endregion
@@ -557,7 +626,7 @@ namespace SIBActivator
 
         #endregion
 
-        #region "Button: Patch"
+        #region "Body: Patch Button"
 
             /*
                 Button > Patch > Click
@@ -570,7 +639,7 @@ namespace SIBActivator
 
         #endregion
 
-        #region "Button: Open Folder"
+        #region "Body: Open Folder Button"
 
             /*
                 Auto-detects which folder StartIsBack is installed in and opens that folder
@@ -627,62 +696,11 @@ namespace SIBActivator
                 updated when certain actions are completed to inform the user.
             */
 
-            private void status_Strip_ItemClicked( object sender, ToolStripItemClickedEventArgs e ) { }
-
-            /*
-                Statusbar > Mouse Actions
-            */
-
-            private void status_MouseDown( object sender, MouseEventArgs e )
-            {
-                mouseDown = true;
-                lastLocation = e.Location;
-            }
-
-            private void status_MouseUp( object sender, MouseEventArgs e )
-            {
-                mouseDown = false;
-            }
-
-            private void status_MouseMove( object sender, MouseEventArgs e )
-            {
-                if ( mouseDown )
-                {
-                    this.Location = new Point(
-                        ( this.Location.X - lastLocation.X ) + e.X,
-                        ( this.Location.Y - lastLocation.Y ) + e.Y
-                    );
-
-                    this.Update( );
-                }
-            }
-
-            /*
-                Statusbar > Paint
-            */
-
-            private void statusStrip_Paint( object sender, PaintEventArgs e )
-            {
-                Graphics g                  = e.Graphics;
-                Color backColor             = Color.FromArgb( 35, 255, 255, 255 );
-                var imgSize                 = statusStrip.ClientSize;
-                e.Graphics.FillRectangle( new SolidBrush( backColor ), 1, 1, imgSize.Width - 2, 2 );
-            }
-
-            /*
-                Receiver > Update Status
-            */
-
-            public void Status( string message )
-            {
-                status_Label.Text = message;
-            }
-
             /*
                 Status Bar > Color Table (Override)
             */
 
-            public class Status_ClrTable : ProfessionalColorTable
+            public class StatusBar_ClrTable : ProfessionalColorTable
             {
                 public override Color StatusStripGradientBegin => Color.FromArgb( 35, 35, 35 );
                 public override Color StatusStripGradientEnd => Color.FromArgb( 35, 35, 35 );
@@ -696,7 +714,7 @@ namespace SIBActivator
             public class StatusBar_Renderer : ToolStripProfessionalRenderer
             {
                 public StatusBar_Renderer( )
-                    : base( new Status_ClrTable( ) ) { }
+                    : base( new StatusBar_ClrTable( ) ) { }
 
                 protected override void OnRenderToolStripBorder( ToolStripRenderEventArgs e )
                 {
@@ -705,7 +723,55 @@ namespace SIBActivator
                 }
             }
 
-        #endregion
+            /*
+                Statusbar > Paint
+            */
 
+            private void status_Strip_Paint( object sender, PaintEventArgs e )
+            {
+                Graphics g                  = e.Graphics;
+                Color backColor             = Color.FromArgb( 35, 255, 255, 255 );
+                var imgSize                 = status_Strip.ClientSize;
+                e.Graphics.FillRectangle    ( new SolidBrush( backColor ), 1, 1, imgSize.Width - 2, 2 );
+            }
+
+            /*
+                Statusbar > Mouse Actions
+            */
+
+            private void status_Strip_MouseDown( object sender, MouseEventArgs e )
+            {
+                mouseDown = true;
+                lastLocation = e.Location;
+            }
+
+            private void status_Strip_MouseUp( object sender, MouseEventArgs e )
+            {
+                mouseDown = false;
+            }
+
+            private void status_Strip_MouseMove( object sender, MouseEventArgs e )
+            {
+                if ( mouseDown )
+                {
+                    this.Location = new Point(
+                        ( this.Location.X - lastLocation.X ) + e.X,
+                        ( this.Location.Y - lastLocation.Y ) + e.Y
+                    );
+
+                    this.Update( );
+                }
+            }
+
+            /*
+                Receiver > Update Status
+            */
+
+            public void Status( string message )
+            {
+                lbl_StatusOutput.Text = message;
+            }
+
+        #endregion
     }
 }

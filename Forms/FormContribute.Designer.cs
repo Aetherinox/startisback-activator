@@ -42,7 +42,7 @@
             this.pic_BTC = new System.Windows.Forms.PictureBox();
             this.pic_ETH = new System.Windows.Forms.PictureBox();
             this.pic_BCH = new System.Windows.Forms.PictureBox();
-            this.lbl_contrib_intro = new System.Windows.Forms.Label();
+            this.lbl_Contrib_Intro = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_BTC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ETH)).BeginInit();
@@ -61,10 +61,11 @@
             this.btn_Close.TabIndex = 4;
             this.btn_Close.Text = "";
             this.btn_Close.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            this.btn_Close.Click += new System.EventHandler(this.btn_Window_Close_Click);
             // 
             // imgHeader
             // 
+            this.imgHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.imgHeader.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imgHeader.BackgroundImage")));
             this.imgHeader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.imgHeader.Location = new System.Drawing.Point(1, 1);
@@ -198,9 +199,9 @@
             this.lbl_HeaderSub.Size = new System.Drawing.Size(51, 17);
             this.lbl_HeaderSub.TabIndex = 35;
             this.lbl_HeaderSub.Text = "Version";
-            this.lbl_HeaderSub.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseDown);
-            this.lbl_HeaderSub.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseMove);
-            this.lbl_HeaderSub.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Subtitle_MouseUp);
+            this.lbl_HeaderSub.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderSub_MouseDown);
+            this.lbl_HeaderSub.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderSub_MouseMove);
+            this.lbl_HeaderSub.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderSub_MouseUp);
             // 
             // lbl_HeaderName
             // 
@@ -212,9 +213,9 @@
             this.lbl_HeaderName.Size = new System.Drawing.Size(129, 32);
             this.lbl_HeaderName.TabIndex = 34;
             this.lbl_HeaderName.Text = "Contribute";
-            this.lbl_HeaderName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseDown);
-            this.lbl_HeaderName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseMove);
-            this.lbl_HeaderName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseUp);
+            this.lbl_HeaderName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderName_MouseDown);
+            this.lbl_HeaderName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderName_MouseMove);
+            this.lbl_HeaderName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderName_MouseUp);
             // 
             // pic_BTC
             // 
@@ -249,23 +250,23 @@
             this.pic_BCH.TabIndex = 38;
             this.pic_BCH.TabStop = false;
             // 
-            // lbl_contrib_intro
+            // lbl_Contrib_Intro
             // 
-            this.lbl_contrib_intro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lbl_Contrib_Intro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_contrib_intro.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lbl_contrib_intro.ForeColor = System.Drawing.Color.Gray;
-            this.lbl_contrib_intro.Location = new System.Drawing.Point(15, 136);
-            this.lbl_contrib_intro.Margin = new System.Windows.Forms.Padding(0);
-            this.lbl_contrib_intro.Name = "lbl_contrib_intro";
-            this.lbl_contrib_intro.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.lbl_contrib_intro.Size = new System.Drawing.Size(503, 137);
-            this.lbl_contrib_intro.TabIndex = 0;
-            this.lbl_contrib_intro.Text = resources.GetString("lbl_contrib_intro.Text");
-            this.lbl_contrib_intro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_contrib_intro_MouseDown);
-            this.lbl_contrib_intro.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_contrib_intro_MouseMove);
-            this.lbl_contrib_intro.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_contrib_intro_MouseUp);
+            this.lbl_Contrib_Intro.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbl_Contrib_Intro.ForeColor = System.Drawing.Color.Gray;
+            this.lbl_Contrib_Intro.Location = new System.Drawing.Point(15, 136);
+            this.lbl_Contrib_Intro.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_Contrib_Intro.Name = "lbl_Contrib_Intro";
+            this.lbl_Contrib_Intro.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.lbl_Contrib_Intro.Size = new System.Drawing.Size(503, 137);
+            this.lbl_Contrib_Intro.TabIndex = 0;
+            this.lbl_Contrib_Intro.Text = resources.GetString("lbl_Contrib_Intro.Text");
+            this.lbl_Contrib_Intro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Contrib_Intro_MouseDown);
+            this.lbl_Contrib_Intro.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Contrib_Intro_MouseMove);
+            this.lbl_Contrib_Intro.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Contrib_Intro_MouseUp);
             // 
             // FormContribute
             // 
@@ -274,7 +275,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(530, 481);
             this.ControlBox = false;
-            this.Controls.Add(this.lbl_contrib_intro);
+            this.Controls.Add(this.lbl_Contrib_Intro);
             this.Controls.Add(this.pic_BCH);
             this.Controls.Add(this.pic_ETH);
             this.Controls.Add(this.pic_BTC);
@@ -296,7 +297,7 @@
             this.Name = "FormContribute";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Contribute";
+            this.Text = "StartIsBack : Contribute";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormContribute_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormContribute_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormContribute_MouseMove);
@@ -324,7 +325,7 @@
         private System.Windows.Forms.PictureBox pic_BTC;
         private System.Windows.Forms.PictureBox pic_ETH;
         private System.Windows.Forms.PictureBox pic_BCH;
-        private System.Windows.Forms.Label lbl_contrib_intro;
+        private System.Windows.Forms.Label lbl_Contrib_Intro;
         private AetherxTextBox txt_ETH;
     }
 }

@@ -65,7 +65,6 @@ namespace SIBActivator
 
         private static string find_InAppHome    = Path.Combine(
                                                     patch_launch_dir,
-                                                    "StartIsBack",
                                                     app_target_exe
                                                 );
 

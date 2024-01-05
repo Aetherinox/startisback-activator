@@ -79,7 +79,6 @@ namespace SIBActivator
             this.lbl_Version.TabIndex = 4;
             this.lbl_Version.Text = "label1";
             this.lbl_Version.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.lbl_Version.Click += new System.EventHandler(this.lbl_Serial_Click);
             // 
             // lbl_HeaderName
             // 
@@ -91,10 +90,9 @@ namespace SIBActivator
             this.lbl_HeaderName.Size = new System.Drawing.Size(79, 32);
             this.lbl_HeaderName.TabIndex = 5;
             this.lbl_HeaderName.Text = "label1";
-            this.lbl_HeaderName.Click += new System.EventHandler(this.lbl_Product_Click);
-            this.lbl_HeaderName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Product_MouseDown);
-            this.lbl_HeaderName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Product_MouseMove);
-            this.lbl_HeaderName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Product_MouseUp);
+            this.lbl_HeaderName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderName_MouseDown);
+            this.lbl_HeaderName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderName_MouseMove);
+            this.lbl_HeaderName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderName_MouseUp);
             // 
             // lbl_HeaderSub
             // 
@@ -106,9 +104,9 @@ namespace SIBActivator
             this.lbl_HeaderSub.Size = new System.Drawing.Size(341, 17);
             this.lbl_HeaderSub.TabIndex = 8;
             this.lbl_HeaderSub.Text = "Educational purposes only. No ads, no music, no bullshit.";
-            this.lbl_HeaderSub.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Edu_MouseDown);
-            this.lbl_HeaderSub.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Edu_MouseMove);
-            this.lbl_HeaderSub.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Edu_MouseUp);
+            this.lbl_HeaderSub.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderSub_MouseDown);
+            this.lbl_HeaderSub.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderSub_MouseMove);
+            this.lbl_HeaderSub.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderSub_MouseUp);
             // 
             // lnk_TPBLink
             // 
@@ -122,7 +120,7 @@ namespace SIBActivator
             this.lnk_TPBLink.TabIndex = 1;
             this.lnk_TPBLink.TabStop = true;
             this.lnk_TPBLink.Text = "Releases";
-            this.lnk_TPBLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblLink_TPB_LinkClicked_1);
+            this.lnk_TPBLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_TPB_LinkClicked);
             // 
             // lnk_Github
             // 
@@ -251,7 +249,6 @@ namespace SIBActivator
             this.txt_Terms.TabIndex = 3;
             this.txt_Terms.UnderlineStyle = false;
             this.txt_Terms.Value = "";
-            this.txt_Terms._TextChanged += new System.EventHandler(this.txt_Terms__TextChanged);
             // 
             // FormAbout
             // 

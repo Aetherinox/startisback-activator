@@ -57,21 +57,23 @@ namespace SIBActivator
             this.mnu_Sub_Validate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_Help_Sep_1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnu_Sub_About = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.status_Label = new System.Windows.Forms.ToolStripStatusLabel();
+            this.status_Strip = new System.Windows.Forms.StatusStrip();
+            this.lbl_StatusOutput = new System.Windows.Forms.ToolStripStatusLabel();
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_intro = new System.Windows.Forms.Label();
             this.imgHeader = new System.Windows.Forms.PictureBox();
-            this.lbl_Version = new System.Windows.Forms.Label();
+            this.lbl_HeaderSub = new System.Windows.Forms.Label();
             this.rtxt_Intro = new FZPatch.Controls.AetherxRTextBox();
-            this.btnOpenFolder = new SIBActivator.AetherxButton();
-            this.btnPatch = new SIBActivator.AetherxButton();
+            this.btn_OpenFolder = new SIBActivator.AetherxButton();
+            this.btn_Patch = new SIBActivator.AetherxButton();
+            this.pnl_StatusParent = new System.Windows.Forms.Panel();
             this.mnu_Main.SuspendLayout();
-            this.statusStrip.SuspendLayout();
+            this.status_Strip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeader)).BeginInit();
+            this.pnl_StatusParent.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Minimize
@@ -112,10 +114,9 @@ namespace SIBActivator
             this.lbl_HeaderName.Size = new System.Drawing.Size(231, 32);
             this.lbl_HeaderName.TabIndex = 5;
             this.lbl_HeaderName.Text = "StartIsBack Activator";
-            this.lbl_HeaderName.Click += new System.EventHandler(this.lbl_Title_Click);
-            this.lbl_HeaderName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseDown);
-            this.lbl_HeaderName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseMove);
-            this.lbl_HeaderName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_Title_MouseUp);
+            this.lbl_HeaderName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderName_MouseDown);
+            this.lbl_HeaderName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderName_MouseMove);
+            this.lbl_HeaderName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderName_MouseUp);
             // 
             // mnu_Main
             // 
@@ -134,7 +135,6 @@ namespace SIBActivator
             this.mnu_Main.Size = new System.Drawing.Size(528, 38);
             this.mnu_Main.TabIndex = 1;
             this.mnu_Main.Text = "menuStrip1";
-            this.mnu_Main.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnu_Main_ItemClicked);
             this.mnu_Main.Paint += new System.Windows.Forms.PaintEventHandler(this.mnu_Main_Paint);
             // 
             // mnu_Cat_File
@@ -157,9 +157,8 @@ namespace SIBActivator
             this.mnu_Sub_Exit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mnu_Sub_Exit.Name = "mnu_Sub_Exit";
             this.mnu_Sub_Exit.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.mnu_Sub_Exit.Size = new System.Drawing.Size(180, 21);
+            this.mnu_Sub_Exit.Size = new System.Drawing.Size(95, 21);
             this.mnu_Sub_Exit.Text = "Exit";
-            this.mnu_Sub_Exit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.mnu_Sub_Exit.Click += new System.EventHandler(this.mnu_Sub_Exit_Click);
             // 
             // mnu_Cat_Contribute
@@ -224,41 +223,40 @@ namespace SIBActivator
             this.mnu_Sub_About.Text = "About";
             this.mnu_Sub_About.Click += new System.EventHandler(this.mnu_Sub_About_Click);
             // 
-            // statusStrip
+            // status_Strip
             // 
-            this.statusStrip.AutoSize = false;
-            this.statusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.statusStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.statusStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip.ForeColor = System.Drawing.Color.Red;
-            this.statusStrip.GripMargin = new System.Windows.Forms.Padding(0);
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.status_Label});
-            this.statusStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.statusStrip.Location = new System.Drawing.Point(1, 444);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.statusStrip.Size = new System.Drawing.Size(528, 35);
-            this.statusStrip.SizingGrip = false;
-            this.statusStrip.TabIndex = 0;
-            this.statusStrip.Text = "statusStrip1";
-            this.statusStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.status_Strip_ItemClicked);
-            this.statusStrip.Paint += new System.Windows.Forms.PaintEventHandler(this.statusStrip_Paint);
-            this.statusStrip.MouseDown += new System.Windows.Forms.MouseEventHandler(this.status_MouseDown);
-            this.statusStrip.MouseMove += new System.Windows.Forms.MouseEventHandler(this.status_MouseMove);
-            this.statusStrip.MouseUp += new System.Windows.Forms.MouseEventHandler(this.status_MouseUp);
+            this.status_Strip.AutoSize = false;
+            this.status_Strip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.status_Strip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.status_Strip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.status_Strip.ForeColor = System.Drawing.Color.Red;
+            this.status_Strip.GripMargin = new System.Windows.Forms.Padding(0);
+            this.status_Strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lbl_StatusOutput});
+            this.status_Strip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.status_Strip.Location = new System.Drawing.Point(1, 0);
+            this.status_Strip.Name = "status_Strip";
+            this.status_Strip.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
+            this.status_Strip.Size = new System.Drawing.Size(528, 30);
+            this.status_Strip.SizingGrip = false;
+            this.status_Strip.TabIndex = 0;
+            this.status_Strip.Text = "statusStrip1";
+            this.status_Strip.Paint += new System.Windows.Forms.PaintEventHandler(this.status_Strip_Paint);
+            this.status_Strip.MouseDown += new System.Windows.Forms.MouseEventHandler(this.status_Strip_MouseDown);
+            this.status_Strip.MouseMove += new System.Windows.Forms.MouseEventHandler(this.status_Strip_MouseMove);
+            this.status_Strip.MouseUp += new System.Windows.Forms.MouseEventHandler(this.status_Strip_MouseUp);
             // 
-            // status_Label
+            // lbl_StatusOutput
             // 
-            this.status_Label.ActiveLinkColor = System.Drawing.Color.White;
-            this.status_Label.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.status_Label.ForeColor = System.Drawing.Color.White;
-            this.status_Label.LinkVisited = true;
-            this.status_Label.Margin = new System.Windows.Forms.Padding(8, 6, 0, 2);
-            this.status_Label.Name = "status_Label";
-            this.status_Label.Size = new System.Drawing.Size(84, 27);
-            this.status_Label.Text = "status_Label";
-            this.status_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_StatusOutput.ActiveLinkColor = System.Drawing.Color.White;
+            this.lbl_StatusOutput.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbl_StatusOutput.ForeColor = System.Drawing.Color.White;
+            this.lbl_StatusOutput.LinkVisited = true;
+            this.lbl_StatusOutput.Margin = new System.Windows.Forms.Padding(8, 6, 0, 2);
+            this.lbl_StatusOutput.Name = "lbl_StatusOutput";
+            this.lbl_StatusOutput.Size = new System.Drawing.Size(96, 22);
+            this.lbl_StatusOutput.Text = "Status Output";
+            this.lbl_StatusOutput.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // fileToolStripMenuItem1
             // 
@@ -306,6 +304,7 @@ namespace SIBActivator
             // 
             // imgHeader
             // 
+            this.imgHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.imgHeader.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imgHeader.BackgroundImage")));
             this.imgHeader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.imgHeader.Location = new System.Drawing.Point(1, 1);
@@ -317,16 +316,19 @@ namespace SIBActivator
             this.imgHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imgHeader_MouseMove);
             this.imgHeader.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imgHeader_MouseUp);
             // 
-            // lbl_Version
+            // lbl_HeaderSub
             // 
-            this.lbl_Version.AutoSize = true;
-            this.lbl_Version.Font = new System.Drawing.Font("Segoe UI", 9.2F);
-            this.lbl_Version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.lbl_Version.Location = new System.Drawing.Point(24, 56);
-            this.lbl_Version.Name = "lbl_Version";
-            this.lbl_Version.Size = new System.Drawing.Size(51, 17);
-            this.lbl_Version.TabIndex = 33;
-            this.lbl_Version.Text = "Version";
+            this.lbl_HeaderSub.AutoSize = true;
+            this.lbl_HeaderSub.Font = new System.Drawing.Font("Segoe UI", 9.2F);
+            this.lbl_HeaderSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.lbl_HeaderSub.Location = new System.Drawing.Point(24, 56);
+            this.lbl_HeaderSub.Name = "lbl_HeaderSub";
+            this.lbl_HeaderSub.Size = new System.Drawing.Size(51, 17);
+            this.lbl_HeaderSub.TabIndex = 33;
+            this.lbl_HeaderSub.Text = "Version";
+            this.lbl_HeaderSub.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderSub_MouseDown);
+            this.lbl_HeaderSub.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderSub_MouseMove);
+            this.lbl_HeaderSub.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbl_HeaderSub_MouseUp);
             // 
             // rtxt_Intro
             // 
@@ -345,37 +347,48 @@ namespace SIBActivator
             this.rtxt_Intro.MouseMove += new System.Windows.Forms.MouseEventHandler(this.rtxt_Intro_MouseMove);
             this.rtxt_Intro.MouseUp += new System.Windows.Forms.MouseEventHandler(this.rtxt_Intro_MouseUp);
             // 
-            // btnOpenFolder
+            // btn_OpenFolder
             // 
-            this.btnOpenFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
-            this.btnOpenFolder.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOpenFolder.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnOpenFolder.FlatAppearance.BorderSize = 0;
-            this.btnOpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenFolder.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenFolder.Location = new System.Drawing.Point(394, 396);
-            this.btnOpenFolder.Name = "btnOpenFolder";
-            this.btnOpenFolder.Size = new System.Drawing.Size(111, 29);
-            this.btnOpenFolder.TabIndex = 25;
-            this.btnOpenFolder.Text = "&Open Folder";
-            this.btnOpenFolder.UseVisualStyleBackColor = false;
-            this.btnOpenFolder.Click += new System.EventHandler(this.btn_OpenFolder_Click);
+            this.btn_OpenFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
+            this.btn_OpenFolder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_OpenFolder.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_OpenFolder.FlatAppearance.BorderSize = 0;
+            this.btn_OpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_OpenFolder.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_OpenFolder.Location = new System.Drawing.Point(394, 396);
+            this.btn_OpenFolder.Name = "btn_OpenFolder";
+            this.btn_OpenFolder.Size = new System.Drawing.Size(111, 29);
+            this.btn_OpenFolder.TabIndex = 25;
+            this.btn_OpenFolder.Text = "&Open Folder";
+            this.btn_OpenFolder.UseVisualStyleBackColor = false;
+            this.btn_OpenFolder.Click += new System.EventHandler(this.btn_OpenFolder_Click);
             // 
-            // btnPatch
+            // btn_Patch
             // 
-            this.btnPatch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
-            this.btnPatch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPatch.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnPatch.FlatAppearance.BorderSize = 0;
-            this.btnPatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPatch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPatch.Location = new System.Drawing.Point(25, 396);
-            this.btnPatch.Name = "btnPatch";
-            this.btnPatch.Size = new System.Drawing.Size(111, 29);
-            this.btnPatch.TabIndex = 5;
-            this.btnPatch.Text = "&Patch";
-            this.btnPatch.UseVisualStyleBackColor = false;
-            this.btnPatch.Click += new System.EventHandler(this.btn_Patch_Click);
+            this.btn_Patch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(6)))), ((int)(((byte)(85)))));
+            this.btn_Patch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Patch.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_Patch.FlatAppearance.BorderSize = 0;
+            this.btn_Patch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Patch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Patch.Location = new System.Drawing.Point(25, 396);
+            this.btn_Patch.Name = "btn_Patch";
+            this.btn_Patch.Size = new System.Drawing.Size(111, 29);
+            this.btn_Patch.TabIndex = 5;
+            this.btn_Patch.Text = "&Patch";
+            this.btn_Patch.UseVisualStyleBackColor = false;
+            this.btn_Patch.Click += new System.EventHandler(this.btn_Patch_Click);
+            // 
+            // pnl_StatusParent
+            // 
+            this.pnl_StatusParent.BackColor = System.Drawing.Color.Transparent;
+            this.pnl_StatusParent.Controls.Add(this.status_Strip);
+            this.pnl_StatusParent.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnl_StatusParent.Location = new System.Drawing.Point(0, 450);
+            this.pnl_StatusParent.Name = "pnl_StatusParent";
+            this.pnl_StatusParent.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
+            this.pnl_StatusParent.Size = new System.Drawing.Size(530, 31);
+            this.pnl_StatusParent.TabIndex = 22;
             // 
             // FormParent
             // 
@@ -383,13 +396,13 @@ namespace SIBActivator
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(530, 481);
-            this.Controls.Add(this.lbl_Version);
+            this.Controls.Add(this.pnl_StatusParent);
+            this.Controls.Add(this.lbl_HeaderSub);
             this.Controls.Add(this.lbl_intro);
             this.Controls.Add(this.rtxt_Intro);
-            this.Controls.Add(this.btnOpenFolder);
-            this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.btn_OpenFolder);
             this.Controls.Add(this.lbl_HeaderName);
-            this.Controls.Add(this.btnPatch);
+            this.Controls.Add(this.btn_Patch);
             this.Controls.Add(this.btn_Close);
             this.Controls.Add(this.btn_Minimize);
             this.Controls.Add(this.mnu_Main);
@@ -410,9 +423,10 @@ namespace SIBActivator
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseUp);
             this.mnu_Main.ResumeLayout(false);
             this.mnu_Main.PerformLayout();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
+            this.status_Strip.ResumeLayout(false);
+            this.status_Strip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeader)).EndInit();
+            this.pnl_StatusParent.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,14 +442,14 @@ namespace SIBActivator
         private System.Windows.Forms.ToolStripMenuItem mnu_Sub_Exit;
         private System.Windows.Forms.ToolStripMenuItem mnu_Cat_Help;
         private System.Windows.Forms.ToolStripMenuItem mnu_Sub_About;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel status_Label;
+        private System.Windows.Forms.StatusStrip status_Strip;
+        private System.Windows.Forms.ToolStripStatusLabel lbl_StatusOutput;
         private ToolStripMenuItem fileToolStripMenuItem1;
         private ToolStripMenuItem aboutToolStripMenuItem2;
         private ToolStripMenuItem exitToolStripMenuItem1;
         private ToolStripMenuItem aboutToolStripMenuItem3;
-        private AetherxButton btnPatch;
-        private AetherxButton btnOpenFolder;
+        private AetherxButton btn_Patch;
+        private AetherxButton btn_OpenFolder;
         private ToolStripMenuItem mnu_Sub_Updates;
         private ToolStripMenuItem mnu_Sub_Validate;
         private ToolStripSeparator mnu_Help_Sep_1;
@@ -443,7 +457,8 @@ namespace SIBActivator
         private Label lbl_intro;
         private ToolStripMenuItem mnu_Cat_Contribute;
         private PictureBox imgHeader;
-        private Label lbl_Version;
+        private Label lbl_HeaderSub;
+        private Panel pnl_StatusParent;
     }
 }
 

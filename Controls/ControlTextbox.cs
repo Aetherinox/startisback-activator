@@ -36,8 +36,8 @@ namespace SIBActivator
         private Color borderColor = Color.MediumSlateBlue;
         private int borderSize = 1;
         private bool underlineStyle = false;
-        private Color borderFocusColor = Color.HotPink;
         private bool bAllowFocus = true;
+        private Color borderFocusColor = Color.HotPink;
         private bool isFocused = false;
         private bool bEnableScrollbars = true;
         private Color placeholderColor = Color.DarkGray;

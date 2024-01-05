@@ -219,15 +219,16 @@ namespace SIBActivator
                 dlg.Title               = Lng.dlg_title;
                 dlg.InitialDirectory    = ext_default;
                 dlg.Filter              = "StartIsBack EXE|StartIsBackCfg.exe|All files (*.*)|*.*";
+                DialogResult result     = dlg.ShowDialog( );
 
-                if ( dlg.ShowDialog( ) == DialogResult.Cancel )
+                if ( result == DialogResult.Cancel )
                 {
                     StatusBar.Update( Lng.dlg_cancelled );
 
                     return;
                 }
 
-                if ( dlg.ShowDialog( ) == DialogResult.OK )
+                if ( result == DialogResult.OK )
                 {
                     StreamReader sr     = File.OpenText(dlg.FileName);
 

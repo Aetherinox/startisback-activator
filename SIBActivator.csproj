@@ -196,6 +196,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\bg_header.jpg" />
     <None Include="Materials\bch.png" />
     <None Include="Materials\btc.png" />
     <None Include="Materials\eth.png" />

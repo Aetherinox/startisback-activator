@@ -145,6 +145,15 @@ namespace SIBActivator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Open Folder.
+        /// </summary>
+        internal static string btn_open_folder {
+            get {
+                return ResourceManager.GetString("btn_open_folder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Patch.
         /// </summary>
         internal static string btn_patch {
